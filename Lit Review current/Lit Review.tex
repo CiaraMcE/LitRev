@@ -1,5 +1,6 @@
 \documentclass[12pt]{article} 
 \usepackage[pdftex]{graphicx}
+\usepackage{subfigure}
 \usepackage{geometry, amsmath, amssymb, array, cite, caption, float}
 \setlength{\parindent}{0pt} 
 \setlength{\parskip}{2ex}
@@ -42,7 +43,7 @@
 
 \subsection{Common artefacts}
 
-%Axis of rotation problems.
+Axis of rotation problems. Corrections suggested by many groups. Recently by Dong in 2012 \cite{Dong:2012}  discuss method.
 
 %Ring artefacts are generated when a feature not associated with the dosimeter sample is present in the same place in all projections. A typical cause might be a bubble or scratch on the wall of the tank containing the matching liquid. (Directly from Doran 2008)
 
@@ -62,7 +63,8 @@ The idea of OptCT scanning in dosimetry was quickly developed by other groups. L
 Kelly \textit{et al.} claim to have independently developed their scanner which is very similar to that of Gore's. In in both Kelly's and Tarte's  scanners, the sample is rotated and translated using a stage whereas Gore used mirrors to translate the laser spot across the sample. 
 
 
-A commercial laser scanning OptCT system, OCTOPUS\texttrademark by MGS Research, Inc.(Madison, CT),  is an extension of Gore's original set-up with the addition of a platform capable of vertical movement for automated slice-selection. \cite{Islam:2003gs} For a number of years it was the only commercially available system and has been characterised by several groups. \cite{Xu:2003cc, Islam:2003gs, Xu:2004iv, Sakhalkar:2009hb} According to Oldham, characterisation of OptCT systems should include checks on geometric distortion, accuracy of reconstruction, scatter artefacts and reflection and refraction artefacts.\cite{Oldham:2004cj}
+A commercial laser scanning OptCT system, OCTOPUS\texttrademark by MGS Research, Inc.
+(Madison, CT),  is an extension of Gore's original set-up with the addition of a platform capable of vertical movement for automated slice-selection. \cite{Islam:2003gs} For a number of years it was the only commercially available system and has been characterised by several groups. \cite{Xu:2003cc, Islam:2003gs, Xu:2004iv, Sakhalkar:2009hb} According to Oldham, characterisation of OptCT systems should include checks on geometric distortion, accuracy of reconstruction, scatter artefacts and reflection and refraction artefacts.\cite{Oldham:2004cj}
 
 
  
@@ -170,32 +172,103 @@ When pixelated detectors are used, there appears to be more literature based on 
 
 
 \newpage
-\section{Optical Projection Tomography}
+\section{Tissue imaging}
+\subsection{Optical Projection Tomography}
 
-%Start with Sharpe's 2002 paper. What was his area? What adjustments did he make to the set-up for imaging organic tissue. What resolution, FOV possible. \cite{Sharpe:2002jp}
+Another version of OptCT was  developed by Sharpe \textit{et al.} in the area of 3-D microscopy for gene expression studies. \cite{Sharpe:2002jp} Although this set-up in 2002 came after Gore's they are apparently independent and Sharpe named his technique Optical Projection Tomography (OPT).
 
-%Optical clearing required for imaging scattering material. Refer to section \ref{sec:clearing}
+Other techniques for 3-D microscopy include confocal microscopy which can image to a depth of about 1mm. \cite{Webb:1996} However, this is limited to fluorescent signals meaning many optical stains used routinely in histology would not work. Optical coherence tomography is another technique capable of micrometer-scale resolution. \cite{huang1993optical} However, its depth is limited to 2-3mm in tisse. Sharpe's OPT set-up could image much larger specimen, up to 15mm thick.  \cite{Sharpe:2002jp} OPT is a projection based tomography technique, as the name implies, which means mathematical reconstruction is required. The other techniques mentioned give tomographic images by sectioning. \cite{Sharpe:2003cm} \textbf{Discuss}
 
-%Oldham also developing in this area. 
+Sharpe's system includes a microscope to focus projections of a mouse embryo onto a camera imaging chip (CIC). Image-focusing optics are one difference between OPT and x-ray CT, which records shadows of the sample. Sharpe reports some impressive images (see Figure~\ref{fig:SharpeOPT}). Use of the microscope gives resolution of about 5-10$\mu$m meaning single-cell membranes, around 10$\mu$m thick, can be seen.\cite{Sharpe:2002jp} The axis of rotation is chosen so only half of the specimen is in focus at once which compensates for poor depth of focus. 
+
+To reduce scattering and refraction within the specimen it was immersed in Murray's Clear, also known as BABBs (1:2 mixture of benzyl alcohol and benzyl benzoate). BABBs works as an optical clearing agent (OCA) which reduces refraction by replacing fluid in a specimen. The OCA is chosen with a refractive index close to that of the solid structures in the specimen. See Section~\ref{sec:clearing} for more detail on the clearing mechanism and possible agents. 
+The result of clearing means that the light paths through the specimen can be approximated as parallel line integrals  making high resolution reconstruction through back projection possible.
+
+Sharpe - low NA optics.
+
+\begin{figure}[H]
+\centering
+\subfigure[OPT setup]{\label{subfig:OPTsetup}
+\includegraphics[width=0.6\textwidth]{Sharpe_2002_setup.jpg}}
+\subfigure[Mouse images]{\label{subfig:OPTmouse}
+\includegraphics[scale=0.8]{Sharpe_2002_mouse.jpg}}
+\caption{Part (a) shows the optical setup for the first OPT system by Sharpe. CIC indicates the camera imaging chip. A microscope is used to focus. The specimen is set in agarose gel for stability. Part (b) shows some sample images from OPT scanning of a mouse embryo. The iso-surface shows contours linking all regions above a certain intensity. Both figures are adapted from \cite{Sharpe:2002jp}}
+\label{fig:SharpeOPT}
+\end{figure}
 
 
-\section{Fluorescent OPT}
-%Oldham has dual set-up. However, it was not originally quantitative. Just pretty pictures. Steps by various groups to get quantitative information out of emission. What is the change to the set-up?
 
-%Imperial group investigating Opt combined with FRET and FLIM. Define these and some uses for the combined modality. Again, what physical/software changes needed for this imaging.
-%\cite{McGinty:2008ix}
+
+
+
+
+
+Fauver 2005
+\cite{Fauver:2005}
+Single cell, $0.9\mu m$ resolution. Extended DOF, pseudoprojection. High NA lens scanned axially. $180^{\circ}$ of data taken. Microcapillary, some cells injected into it. Rotation to sub-micron precision. Refractive index matching to 0.02.
+\textit{Focal plane of high NA objective lens was  scanned axially through the cell to create an extended depth of field image or pseudoprojection through incoherent superposition.} \cite{hausler1972method, Fauver:2005} Not truly quantitative.
+
+They modified a conventional bright-field microscope with rotation stage and piezoelectric lens. See Figure~\ref{fig:fauver_setup} Extended DOF means all features have same focus from all viewing angles which is necessary for reconstruction.
+
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.8]{Fauver_2005_setup.jpg}
+\caption{OPT microscope from \cite{Fauver:2005}}
+\label{fig:fauver_setup}
+\end{figure}
+
+
+
+
+Optimisation of optics for OPT by Wang in 2006 + 2007 \cite{Wang:2006hy, Wang:2007} 
+\textit{Place an iris at the back focus of the objective lens to reduce divergence of projection from true parallel projection.} Resolution $40\mu m$
+Fourier slice theorem requirements.
+2007 is comparison of new iris system (described in 2006) with conventional system.
+
+Live specimen OPT not a topic taken up by many other groups due to difficulties in keeping specimen alive, problems with OCA, can only image very small specimen anyway. \cite{Boot:2008dt} Boot and Sharpe 2008.
+Colas and Sharpe do live, time-lapse OPT in 2009, not particularly useful. Poor resolution due to lack of clearing \cite{Colas:2009}  
+
+
+Computational methods for improving reconstructions in OPT by Birk in 2011 \cite{Birk:2011}
+
+
+
+
+
+
+\subsection{Fluorescent OPT/emission OptCT}
+Oldham has dual set-up. However, it was not originally quantitative. Just pretty pictures. Steps by various groups to get quantitative information out of emission. What is the change to the set-up? \cite{Oldham:2006dfa}
+quantitative: \cite{Kim:2008eua}
+
+
+Imperial group investigating Opt combined with FRET and FLIM. Define these and some uses for the combined modality. What physical/software changes needed for this imaging.
+FLIM OPT: \cite{McGinty:2008ix}, In vivo FLIM OPT \cite{McGinty:2011vm}.
 
 %Lorbeer - SLOT
-
+\newpage
 \section{Optical Clearing}
 \label{sec:clearing}
 
 %Need for refractive index matching to ensure parallel beam assumption is true enough that we can emloy traditional reconstrion techniques. 
 
+
+
 \section{Optical Staining}
+Sharpe 2002 stains for gene expression and limb bud growth. 
+
+Discuss which stains are relevant for cancer biomarkers. \cite{Hanahan:2011gua}
+
+Being able to use optical stains is extremely useful for computer recognition of organs, can pick better thresholds. \cite{Sharpe:2003cm}
+
+Soufan 2003 \cite{Soufan:2003cd} gene expression during cardiac development. 
+Highlights problem of whole-mount staining not working for all stains. Depends on size of specimen. Therefore, they took slices of embryo heart.
+
 
 \section{Recent Research}
-
+ Time gated OPT Bassi 2010 \cite{Bassi:2010}
+ 
+ CLAHE Hornblad 2011 \cite{Hornblad:2011fh}
 
 
 \bibliography{bibliography2}

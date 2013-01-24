@@ -1,5 +1,12 @@
 \begin{thebibliography}{10}
 
+\bibitem{Dong:2012}
+D~Dong, S~Zhu, C~Qin, V~Kumar, J~V~Stein, S~Oehler, C~Savakis, J~Tian, and
+  J~Ripoll.
+\newblock {Automated Recovery of the Center of Rotation in Optical Projection
+  Tomography in the Presence of Scattering}.
+\newblock 2012.
+
 \bibitem{Maryanski:1996}
 MJ~Maryanski, YZ~Zastavker, and J.C. Gore.
 \newblock Radiation dose distributions in three dimensions from tomographic
@@ -134,5 +141,123 @@ Andrew Thomas, Joseph Newton, and Mark Oldham.
 \newblock {A method to correct for stray light in telecentric optical-CT
   imaging of radiochromic dosimeters}.
 \newblock {\em Physics in Medicine and Biology}, 56(14):4433--4451, June 2011.
+
+\bibitem{Sharpe:2002jp}
+J~Sharpe.
+\newblock {Optical Projection Tomography as a Tool for 3D Microscopy and Gene
+  Expression Studies}.
+\newblock {\em Science}, 296(5567):541--545, April 2002.
+
+\bibitem{Webb:1996}
+R~H Webb.
+\newblock {Confocal optical microscopy}.
+\newblock {\em Reports on Progress in Physics}, 59:427--471, 1996.
+
+\bibitem{huang1993optical}
+D.~Huang, E.A. Swanson, C.P. Lin, J.S. Schuman, W.G. Stinson, W.~Chang, M.R.
+  Hee, T.~Flotte, K.~Gregory, C.A. Puliafito, et~al.
+\newblock {\em Optical coherence tomography}.
+\newblock PhD thesis, Massachusetts Institute of Technology, Whitaker College
+  of Health Sciences and Technology, 1993.
+
+\bibitem{Sharpe:2003cm}
+James Sharpe.
+\newblock {Optical projection tomography as a new tool for studying embryo
+  anatomy}.
+\newblock {\em Journal of Anatomy}, 202(2):175--181, February 2003.
+
+\bibitem{Fauver:2005}
+M~Fauver, E~J Seibel, J~R Rahn, M~G Meyer, F~W Patten, T~Neumann, and A~C
+  Nelson.
+\newblock {Three-dimensional imaging of single isolated cell nuclei using
+  optical projection tomography}.
+\newblock {\em Opt. Express}, 13(11):4210--4223, 2005.
+
+\bibitem{hausler1972method}
+G.~H{\"a}usler.
+\newblock A method to increase the depth of focus by two step image processing.
+\newblock {\em Optics Communications}, 6(1):38--42, 1972.
+
+\bibitem{Wang:2006hy}
+Yi~Wang and Ruikang Wang.
+\newblock {Imaging using parallel integrals in optical projection tomography}.
+\newblock {\em Physics in Medicine and Biology}, 51(23):6023--6032, October
+  2006.
+
+\bibitem{Wang:2007}
+Y~Wang and R~K Wang.
+\newblock {Optimization of image-forming optics for transmission optical
+  projection tomography}.
+\newblock {\em Applied optics}, 46(27):6815--6820, 2007.
+
+\bibitem{Boot:2008dt}
+Marit~J Boot, C~Henrik Westerberg, Juanjo Sanz-Ezquerro, James Cotterell, Ronen
+  Schweitzer, Miguel Torres, and James Sharpe.
+\newblock {In vitro whole-organ imaging: 4D quantification of growing mouse
+  limb buds}.
+\newblock {\em Nature Methods}, 5(7):609--612, May 2008.
+
+\bibitem{Colas:2009}
+J~F Colas and J~Sharpe.
+\newblock {Live optical projection tomography}.
+\newblock {\em Organogenesis}, 5(4):211--216, 2009.
+
+\bibitem{Birk:2011}
+U~Jochen~Birk, A~Darrell, N~Konstantinides, A~Sarasa-Renedo, and J~Ripoll.
+\newblock {Improved reconstructions and generalized filtered back projection
+  for optical projection tomography}.
+\newblock {\em Applied optics}, 50(4):392--398, 2011.
+
+\bibitem{Oldham:2006dfa}
+Mark Oldham, Harshad Sakhalkar, Tim Oliver, G~Allan~Johnson, and Mark Dewhirst.
+\newblock {Optical clearing of unsectioned specimens for three-dimensional
+  imaging via optical transmission and emission tomography}.
+\newblock {\em Journal of Biomedical Optics}, 13(2):021113, 2006.
+
+\bibitem{Kim:2008eua}
+E~Kim, J~Bowsher, A~S Thomas, H~Sakhalkar, M~Dewhirst, and M~Oldham.
+\newblock {Improving the quantitative accuracy of optical-emission computed
+  tomography by incorporating an attenuation correction: application to HIF1
+  imaging}.
+\newblock {\em Physics in Medicine and Biology}, 53(19):5371--5383, September
+  2008.
+
+\bibitem{McGinty:2008ix}
+James McGinty, Khadija~B Tahir, Romain Laine, Clifford~B Talbot, Christopher
+  Dunsby, Mark A~A Neil, Laura Quintana, James Swoger, James Sharpe, and Paul
+  M~W French.
+\newblock {Fluorescence lifetime optical projection tomography}.
+\newblock {\em Journal of Biophotonics}, 1(5):390--394, October 2008.
+
+\bibitem{McGinty:2011vm}
+J~McGinty, H~B Taylor, L~Chen, L~Bugeon, J~R Lamb, M~J Dallman, and P~M~W
+  French.
+\newblock {In vivo fluorescence lifetime optical projection tomography}.
+\newblock {\em Biomedical optics express}, 2(5):1340--1350, 2011.
+
+\bibitem{Hanahan:2011gua}
+Douglas Hanahan and Robert~A Weinberg.
+\newblock {Hallmarks of Cancer: The Next Generation}.
+\newblock {\em Cell}, 144(5):646--674, March 2011.
+
+\bibitem{Soufan:2003cd}
+A~T Soufan, J~M Ruijter, M~J~B van~den Hoff, P~A~J de~Boer, J~Hagoort, and
+  A~F~M Moorman.
+\newblock {Three-dimensional reconstruction of gene expression patterns during
+  cardiac development}.
+\newblock {\em Physiological genomics}, 13(3):187--195, 2003.
+
+\bibitem{Bassi:2010}
+A~Bassi, D~Brida, C~D'Andrea, G~Valentini, R~Cubeddu, S~De~Silvestri, and
+  G~Cerullo.
+\newblock {Time-gated optical projection tomography}.
+\newblock {\em Optics letters}, 35(16):2732--2734, 2010.
+
+\bibitem{Hornblad:2011fh}
+Andreas H{\"o}rnblad, Abbas Cheddad, and Ulf Ahlgren.
+\newblock {An improved protocol for optical projection tomography imaging
+  reveals lobular heterogeneities in pancreatic islet and β-cell mass
+  distribution}.
+\newblock {\em Islets}, 3(4):204--208, July 2011.
 
 \end{thebibliography}
