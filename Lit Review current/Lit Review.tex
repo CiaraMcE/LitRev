@@ -17,7 +17,7 @@
 \section{Introduction}
 \label{sec:intro}
 
-
+Optical computed tomography reported before, as far back as 1983 (Ray and Semerjian, only 1 projection, sodium-seeded methane flame)\cite{ray1983laser} and again in 1990 (Kawata, algae)\cite{kawata1990laser}. Brown 1992 \cite{Brown:1992} has very similar setup to Gore and Sharpe. Used matching fluid (they call it clearing fluid) and cleared a sample of stained cochlea in 3BB:5MS. 600nm illumination to reduce scatter. 1.92mm radius imaged with resolution 16$\mu$m. But Brown is not referenced by either Gore or Sharpe. :(
 
 \section{Theory}
 \label{sec:theory}
@@ -38,6 +38,20 @@
 %Number of projections acquired affects image noise/blurriness. Don't need more than $180^{\circ}$.check
 
 %Mention alternative, Algebraic Reconstruction Technique and other iterative methods. 
+
+
+ \textit{Imaging with high resolution using this principle requires that the projection data are a direct result of the line integral of   the   parallel   rays   passing   through   the   sample.
+} \cite{Wang:2006hy}
+
+\textit{The optical images captured by the CCD are approximated as parallel projections throughout
+ the specimen. A series of images at different views are then obtained by rotating the specimen.
+ In such a way, the cross sections of the specimen can be independently reconstructed with the
+ data on the corresponding rows of the CCD captured at sufcient different views.}\cite{Wang:2006hy}
+
+\textit{ In fact, two assumptions are made to enable the conventional OPT to use the term of ‘projection’ and the reconstruction algorithm. First, the narrow cones of the light ray projected onto a CCD are assumed to be the strip integrals through the sample. Second, the axes of the light cones are taken to be parallel to each other. The two assumptions place severe constraints on the resolution of OPT imaging. In this paper, we present improved image-forming optics for OPT, with which the axes of the light cones are parallel to the optical axis of the optics. As a result, the parallel integral throughout a sample can be satisfied, and the second assumption mentioned above is relaxed. This method results in an improved spatial resolution, especially for the cross sections far from the optical axis}. \cite{Wang:2006hy}
+
+
+Fourier slice theorem requirements, see Wang 2007 \cite{Wang:2007}
 
 \subsection{Refractive index matching}
 
@@ -184,7 +198,7 @@ Sharpe's system includes a microscope to focus projections of a mouse embryo ont
 To reduce scattering and refraction within the specimen it was immersed in Murray's Clear, also known as BABBs (1:2 mixture of benzyl alcohol and benzyl benzoate). BABBs works as an optical clearing agent (OCA) which reduces refraction by replacing fluid in a specimen. The OCA is chosen with a refractive index close to that of the solid structures in the specimen. See Section~\ref{sec:clearing} for more detail on the clearing mechanism and possible agents. 
 The result of clearing means that the light paths through the specimen can be approximated as parallel line integrals  making high resolution reconstruction through back projection possible.
 
-Sharpe - low NA optics.
+
 
 \begin{figure}[H]
 \centering
@@ -192,40 +206,38 @@ Sharpe - low NA optics.
 \includegraphics[width=0.6\textwidth]{Sharpe_2002_setup.jpg}}
 \subfigure[Mouse images]{\label{subfig:OPTmouse}
 \includegraphics[scale=0.8]{Sharpe_2002_mouse.jpg}}
-\caption{Part (a) shows the optical setup for the first OPT system by Sharpe. CIC indicates the camera imaging chip. A microscope is used to focus. The specimen is set in agarose gel for stability. Part (b) shows some sample images from OPT scanning of a mouse embryo. The iso-surface shows contours linking all regions above a certain intensity. Both figures are adapted from \cite{Sharpe:2002jp}}
+\caption{Part (a) shows the optical setup for the first OPT system by Sharpe. CIC indicates the camera imaging chip. A microscope is used to focus. The specimen is set in agarose gel for stability. Part (b) shows some sample images from OPT scanning of a mouse embryo. The iso-surface shows contours linking all regions above a certain intensity. Both figures are adapted from \cite{Sharpe:2002jp}.}
 \label{fig:SharpeOPT}
 \end{figure}
 
 
 
 
+In 2005 Fauver reported a modified version of OPT capable of imaging single cell nuclei with 0.9$\mu$m resolution (see Figure~\ref{fig:fauver_setup}).\cite{Fauver:2005} The OPT microscope includes a rotation stage and  piezoelectrically driven objective lens. In a technique similar to Hausler \cite{hausler1972method} the objective lens is scanned axially to create an extended depth of field (DOF) image which is also known as a pseudoprojection. The extended DOF means features have the same focus from all angles, allowing high resolution reconstruction. However, this is not a truly quantitative technique, hence pseudo and not true projections are recorded. A high numerical aperture (NA) lens gives high resolution at the expense of low depth of field. If such high resolution is not required, low NA optics such as those used by Sharpe would be a more accurate way to generate  projections than scanning a high NA lens.\textbf{CHECK} 
+
+%$180^{\circ}$ of data taken. Microcapillary, some cells injected into it. Rotation to sub-micron precision. Refractive index matching to 0.02.
 
 
 
-
-Fauver 2005
-\cite{Fauver:2005}
-Single cell, $0.9\mu m$ resolution. Extended DOF, pseudoprojection. High NA lens scanned axially. $180^{\circ}$ of data taken. Microcapillary, some cells injected into it. Rotation to sub-micron precision. Refractive index matching to 0.02.
-\textit{Focal plane of high NA objective lens was  scanned axially through the cell to create an extended depth of field image or pseudoprojection through incoherent superposition.} \cite{hausler1972method, Fauver:2005} Not truly quantitative.
-
-They modified a conventional bright-field microscope with rotation stage and piezoelectric lens. See Figure~\ref{fig:fauver_setup} Extended DOF means all features have same focus from all viewing angles which is necessary for reconstruction.
-
-
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{Fauver_2005_setup.jpg}
-\caption{OPT microscope from \cite{Fauver:2005}}
+\caption{OPT microscope for imaging single cell nuclei. A microcapillary tube injected with cells is rotated to sub-micron precision with refractive index matching  to 0.02. The piezoelectric objective lens is scanned axially to create extended depth of field images (figure from \cite{Fauver:2005}).}
 \label{fig:fauver_setup}
 \end{figure}
 
 
 
 
-Optimisation of optics for OPT by Wang in 2006 + 2007 \cite{Wang:2006hy, Wang:2007} 
-\textit{Place an iris at the back focus of the objective lens to reduce divergence of projection from true parallel projection.} Resolution $40\mu m$
-Fourier slice theorem requirements.
-2007 is comparison of new iris system (described in 2006) with conventional system.
 
+
+
+Wang and Wang report an improvement to OPT giving higher axial and lateral resolution even for slices far from the optical axis. \cite{Wang:2006hy, Wang:2007} As previously mentioned, to obtain high quality reconstructions the projections should closely approximate a line integral of parallel rays passing through the sample. \cite{Wang:2006hy} This is not exactly the case for  OPT which limits the resolution possible. Wang proposed placing an iris at the back focus of the objective lens. This reduces divergence of the projection rays from paths parallel to the optical axis.
+Resolution 40$\mu$m in 2006. For 2007 system with NA of 0.014 resolution of 25$\mu$m is achieved.
+(Also covers technique for placing iris in eOPT, mention and discuss in Section~\ref{subsec:eOPT}.)\textbf{Finish}
+
+
+%\section{here}
 Live specimen OPT not a topic taken up by many other groups due to difficulties in keeping specimen alive, problems with OCA, can only image very small specimen anyway. \cite{Boot:2008dt} Boot and Sharpe 2008.
 Colas and Sharpe do live, time-lapse OPT in 2009, not particularly useful. Poor resolution due to lack of clearing \cite{Colas:2009}  
 
@@ -238,6 +250,13 @@ Computational methods for improving reconstructions in OPT by Birk in 2011 \cite
 
 
 \subsection{Fluorescent OPT/emission OptCT}
+\label{subsec:eOPT}
+
+There are many optical stains which are fluorescent which meant the development of fluorescent or emission OptCT/OPT very useful for the study of biological specimen. REF
+
+
+Walls 2005 - first mention of eOPT? Correction of artefacts. \cite{Walls:2005ja}
+
 Oldham has dual set-up. However, it was not originally quantitative. Just pretty pictures. Steps by various groups to get quantitative information out of emission. What is the change to the set-up? \cite{Oldham:2006dfa}
 quantitative: \cite{Kim:2008eua}
 
@@ -245,12 +264,17 @@ quantitative: \cite{Kim:2008eua}
 Imperial group investigating Opt combined with FRET and FLIM. Define these and some uses for the combined modality. What physical/software changes needed for this imaging.
 FLIM OPT: \cite{McGinty:2008ix}, In vivo FLIM OPT \cite{McGinty:2011vm}.
 
-%Lorbeer - SLOT
+
+Resolution improvement to eOPT in 2007 by Walls \cite{Walls:2007jl} is this quantitative?
+
+
+Lorbeer - SLOT \cite{Lorbeer:2011}
+
 \newpage
 \section{Optical Clearing}
 \label{sec:clearing}
 
-%Need for refractive index matching to ensure parallel beam assumption is true enough that we can emloy traditional reconstrion techniques. 
+%Need for refractive index matching to ensure parallel beam assumption is true enough that we can emloy traditional reconstruction techniques. 
 
 
 
