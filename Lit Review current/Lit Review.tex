@@ -19,6 +19,23 @@
 
 Optical computed tomography reported before, as far back as 1983 (Ray and Semerjian, only 1 projection, sodium-seeded methane flame)\cite{ray1983laser} and again in 1990 (Kawata, algae)\cite{kawata1990laser}. Brown 1992 \cite{Brown:1992} has very similar setup to Gore and Sharpe. Used matching fluid (they call it clearing fluid) and cleared a sample of stained cochlea in 3BB:5MS. 600nm illumination to reduce scatter. 1.92mm radius imaged with resolution 16$\mu$m. But Brown is not referenced by either Gore or Sharpe. :(
 
+Important advantage for OptCT is high resolution and high contrast possible which is different to $\mu$MRI etc as there are more sources of contrast from well documented optical stains and dyes commonly used in histology. \cite{Oldham:2007ku}
+
+
+Walls 2007: difference between OptCT and OPT is the use of image forming optics to create projections through the sample in OPT. They use microscope system.
+
+ \textit{The ability to image 3D microvasculature in high resolution and in unsectioned samples is of significant
+ present interest in cancer research. Anti-angiogenic agents are known to enhance the
+ therapeutic effect of ionizing radiation. However, recent research suggests that complex
+ relationships exist15 between radiation and the actions of the therapeutic agents,16,17 the
+ fractionation of application,18,19 the restructuring of vascular networks,20 and the distribution
+ of hypoxic regions.21,22 The high-contrast, high-resolution 3D optical-CT/optical-ECT
+ imaging demonstrated here indicates a powerful new technique for efficient investigation of
+ these relationships. The principle advantage over conventional histological techniques is that
+ tissue sectioning is not required, and hence undistorted 3D information can be obtained of the
+ structure and function of the sample.} \cite{Oldham:2006}
+
+
 \section{Theory}
 \label{sec:theory}
 
@@ -51,13 +68,53 @@ Optical computed tomography reported before, as far back as 1983 (Ray and Semerj
 \textit{ In fact, two assumptions are made to enable the conventional OPT to use the term of ‘projection’ and the reconstruction algorithm. First, the narrow cones of the light ray projected onto a CCD are assumed to be the strip integrals through the sample. Second, the axes of the light cones are taken to be parallel to each other. The two assumptions place severe constraints on the resolution of OPT imaging. In this paper, we present improved image-forming optics for OPT, with which the axes of the light cones are parallel to the optical axis of the optics. As a result, the parallel integral throughout a sample can be satisfied, and the second assumption mentioned above is relaxed. This method results in an improved spatial resolution, especially for the cross sections far from the optical axis}. \cite{Wang:2006hy}
 
 
+Walls 2005 \cite{Walls:2005ja} : \textit{the tOPT views must be transformed according to Beer’s law, standard in x-ray CT, in order to obtain sums of attenuation coefficients along the projection cones, necessitating sample removal and capture of brightfield images. Each view is divided by a low noise estimate of the illumination that is obtained by averaging several brightfield images.}
+
 Fourier slice theorem requirements, see Wang 2007 \cite{Wang:2007}
 
+Nyquist sampling theory dictates minimum number of projection/views required.
+
+Computational methods for improving reconstructions in OPT by Birk in 2011 \cite{Birk:2011}
+
 \subsection{Refractive index matching}
+
+
+\subsection{Optics}
+
+(See Walls 2007) Resolution given by Rayleigh criterion.
+
+\begin{equation}
+r_{Airy} = \dfrac{0.61n\lambda}{NA}
+\end{equation}
+where $r_{Airy}$ is the radius of the Airy function which is a measure of resolution in the focal plane. $n$ is the refractive index of the medium around the lens, $\lambda$ is the wavelength of light and NA is the numerical aperture of the lens. 
+
+Depth of field (DOF) is given by [REF]
+ 
+\begin{equation}
+DOF = n_{bath}(\dfrac{n\lambda}{NA^{2}} + \dfrac{n}{M NA}e)
+\end{equation}
+
+where e is the pixel size of the CCD, $n_{bath}$ is the refractive index of the medium surrounding the specimen and M is the lateral magnification.
+
+According to Nyquist the Airy disc must be sampled more than twice per DOF distance to avoid aliasing. This constrains the detector spacing to
+
+\begin{equation}
+e \leq M \dfrac{r_{Airy}}{2}
+\end{equation}
+
+so the maximum possible DOF is given by
+
+\begin{equation}
+DOF_{max} = n_{bath}(\dfrac{1.305\lambda}{NA^{2}})
+\end{equation}
+
+Shows trade-off between high resolution with high NA and high DOF with low NA. Generally choose NA based on size of sample.
 
 \subsection{Common artefacts}
 
 Axis of rotation problems. Corrections suggested by many groups. Recently by Dong in 2012 \cite{Dong:2012}  discuss method.
+
+Walls 2005 \textit{Noise is Poisson distributed below 2\% on an averaged signal. Therefore artefactual effects must be kept below 1\%}
 
 %Ring artefacts are generated when a feature not associated with the dosimeter sample is present in the same place in all projections. A typical cause might be a bubble or scratch on the wall of the tank containing the matching liquid. (Directly from Doran 2008)
 
@@ -125,6 +182,7 @@ Advances in technology have meant that  high quality detectors are much more aff
 \paragraph{Parallel beam configuration:} One method to reconstruct 3-D images with a CCD or CMOS detector is to create a broad parallel beam. This allows the use of parallel reconstruction algorithms, very similar to those used for x-ray CT. Each 2-D projection image recorded corresponds to one row for every slice in the 3-D reconstruction sinogram. \cite{Doran:2008kh}
 Telecentric optics, in which the chief rays are parallel to the optical axis, are key in the design of this configuration. \cite{Walls:2005ja} Telecentric optics can be achieved either through a careful arrangement  of  a large converging lens before the sample and standard camera lens  \cite{Doran:2001ee} (see Figure~\ref{fig:doran_ccd_setup}) or through an expensive telecentric lens \cite{Sakhalkar:2008exa}. The process of forming a parallel beam results in non-uniformities in the lightfield. This is compensated for by subtracting a `correction' or `open lightfield', image which is a projection taken with no sample in the tank. \cite{Doran:2001ee}
 
+\textit{Telecentric lenses have two advantages for the purpose of parallel ray computed tomograhy: they provide a near constant perspective across the field of view, and the image magnification is constant with sample depth.} \cite{Oldham:2007ku}
 
 \begin{figure}[H]
 \centering
@@ -191,11 +249,11 @@ When pixelated detectors are used, there appears to be more literature based on 
 
 Another version of OptCT was  developed by Sharpe \textit{et al.} in the area of 3-D microscopy for gene expression studies. \cite{Sharpe:2002jp} Although this set-up in 2002 came after Gore's they are apparently independent and Sharpe named his technique Optical Projection Tomography (OPT).
 
-Other techniques for 3-D microscopy include confocal microscopy which can image to a depth of about 1mm. \cite{Webb:1996} However, this is limited to fluorescent signals meaning many optical stains used routinely in histology would not work. Optical coherence tomography is another technique capable of micrometer-scale resolution. \cite{huang1993optical} However, its depth is limited to 2-3mm in tisse. Sharpe's OPT set-up could image much larger specimen, up to 15mm thick.  \cite{Sharpe:2002jp} OPT is a projection based tomography technique, as the name implies, which means mathematical reconstruction is required. The other techniques mentioned give tomographic images by sectioning. \cite{Sharpe:2003cm} \textbf{Discuss}
+Confocal microscopy is another technique for 3-D microscopy with  imaging depth of about 1mm. \cite{Webb:1996} However, it is limited to fluorescent signals meaning many optical stains used routinely in histology would not work. Optical coherence tomography (OCT), which is commonly used in ophthalmology, is capable of micrometer-scale resolution with  depth limited to 2-3mm in tissue. \cite{huang1993optical} Both of these techniques generate tomographic images through sectioning while OPT is a projection based tomography technique, as the name implies, which means mathematical reconstruction is required. \cite{Sharpe:2003cm} Avoiding sectioning is important in producing truly 3-D images. \cite{Oldham:2007ku} Another advantage of  OPT is its ability to  image much larger specimen, up to 15mm thick.  \cite{Sharpe:2002jp} 
 
-Sharpe's system includes a microscope to focus projections of a mouse embryo onto a camera imaging chip (CIC). Image-focusing optics are one difference between OPT and x-ray CT, which records shadows of the sample. Sharpe reports some impressive images (see Figure~\ref{fig:SharpeOPT}). Use of the microscope gives resolution of about 5-10$\mu$m meaning single-cell membranes, around 10$\mu$m thick, can be seen.\cite{Sharpe:2002jp} The axis of rotation is chosen so only half of the specimen is in focus at once which compensates for poor depth of focus. 
+Sharpe's system includes a microscope to focus projections of a mouse embryo onto a camera imaging chip (CIC). Image-focusing optics are one difference between OPT and x-ray CT, which records shadows of the sample. \cite{Sharpe:2002jp} Sharpe reports some impressive images (see Figure~\ref{fig:SharpeOPT}). Use of the microscope gives resolution of about 5-10$\mu$m meaning single-cell membranes, around 10$\mu$m thick, can be seen.\cite{Sharpe:2002jp} The axis of rotation is chosen so only half of the specimen is in focus at once which compensates for poor depth of focus. \textit{each OPT view thus superimposes in-focus data from the proximal half of the specimen, and out-of-focus data from the distal half of the specimen} \cite{Walls:2005ja}
 
-To reduce scattering and refraction within the specimen it was immersed in Murray's Clear, also known as BABBs (1:2 mixture of benzyl alcohol and benzyl benzoate). BABBs works as an optical clearing agent (OCA) which reduces refraction by replacing fluid in a specimen. The OCA is chosen with a refractive index close to that of the solid structures in the specimen. See Section~\ref{sec:clearing} for more detail on the clearing mechanism and possible agents. 
+To reduce scattering and refraction within the specimen it was immersed in Murray's Clear, also known as BABBs (1:2 mixture of benzyl alcohol and benzyl benzoate) prior to imaging. BABBs works as an optical clearing agent (OCA) which reduces refraction within a sample by acting to match the refractive indices of solids and fluid within a specimen by replacing water. BABB has n=1.56 while water is n=1.33, what is n for tissue? \cite{Walls:2005ja} The mechanism for this differs between agents, see Section~\ref{sec:clearing} for more detail. 
 The result of clearing means that the light paths through the specimen can be approximated as parallel line integrals  making high resolution reconstruction through back projection possible.
 
 
@@ -230,54 +288,93 @@ In 2005 Fauver reported a modified version of OPT capable of imaging single cell
 
 
 
-
-
-Wang and Wang report an improvement to OPT giving higher axial and lateral resolution even for slices far from the optical axis. \cite{Wang:2006hy, Wang:2007} As previously mentioned, to obtain high quality reconstructions the projections should closely approximate a line integral of parallel rays passing through the sample. \cite{Wang:2006hy} This is not exactly the case for  OPT which limits the resolution possible. Wang proposed placing an iris at the back focus of the objective lens. This reduces divergence of the projection rays from paths parallel to the optical axis.
-Resolution 40$\mu$m in 2006. For 2007 system with NA of 0.014 resolution of 25$\mu$m is achieved.
-(Also covers technique for placing iris in eOPT, mention and discuss in Section~\ref{subsec:eOPT}.)\textbf{Finish}
-
-
-%\section{here}
-Live specimen OPT not a topic taken up by many other groups due to difficulties in keeping specimen alive, problems with OCA, can only image very small specimen anyway. \cite{Boot:2008dt} Boot and Sharpe 2008.
-Colas and Sharpe do live, time-lapse OPT in 2009, not particularly useful. Poor resolution due to lack of clearing \cite{Colas:2009}  
-
-
-Computational methods for improving reconstructions in OPT by Birk in 2011 \cite{Birk:2011}
-
-
-
-
-
-
-\subsection{Fluorescent OPT/emission OptCT}
+\subsection{Fluorescent/emission  OptCT}
 \label{subsec:eOPT}
 
-There are many optical stains which are fluorescent which meant the development of fluorescent or emission OptCT/OPT very useful for the study of biological specimen. REF
+Sharpe first identified the possibility of using OPT to image fluorescent stains in biological specimen. \cite{Sharpe:2002jp} The wide range of fluorescent optical stains makes this development particularly useful for biological imaging and offers the advantage of being able to record multiple signals independently unlike  transmission OPT (tOPT). \cite{Sharpe:2002jp} 
+
+%Include a paragraph on terminology? OPT and OptCT seem to be able to be used almost interchangeably in later tissue imaging papers. Need to pick one name and explain other groups use other terminology.
+
+Optical emission CT (OptECT) also known as emission OPT (eOPT) is the optical equivalent of SPECT (single photon emission computed tomography). \cite{Oldham:2007ku}  Instead of measuring the attenuation of photons through a sample (tOPT), eOPT signal comprises of fluorescence photons emitted along a ray path. \cite{Walls:2005ja}
+
+Some changes from the set-up (see Figure~\ref{fig:eOPTsetup}) from tOPT  include the addition of an excitation filter before the sample. This selects for the excitation wavelength of the fluorescent marker being used in the sample. The illumination is perpendicular to the detector to avoid detection of the illumination light rather than fluorescence. An emission filter before detector selects for the emission wavelength of the fluorophores, again to avoid contamination from auto-fluorescent and ambient photons being picked up by the CCD. To avoid photo-bleaching systems often include a shutter to turn off the lamp when not imaging.  Otherwise the image forming optics is the same as for tOPT although the reconstruction and artefacts are different. \cite{Walls:2005ja}
 
 
-Walls 2005 - first mention of eOPT? Correction of artefacts. \cite{Walls:2005ja}
-
-Oldham has dual set-up. However, it was not originally quantitative. Just pretty pictures. Steps by various groups to get quantitative information out of emission. What is the change to the set-up? \cite{Oldham:2006dfa}
-quantitative: \cite{Kim:2008eua}
+Oldham \textit{et al.} have made several improvements  on Sharpe's eOPT set-up by changing from microscope to bench-top apparatus.\cite{Oldham:2006, Oldham:2007ku} Microscope based systems suffer from poor depth of field (DoF) as the optics are designed to image flat samples.  Oldham's custom made set-up, which is closer to the dosimetry systems previously seen, employs telecentric optics giving much improved DoF capable of imaging samples up to 3cm. \cite{Oldham:2007ku} However, better DoF is achieved at the cost of worse lateral spatial resolution, meaning system design has to account for this trade-off depending on the imaging requirements. \cite{Krstajic:2006kna}    
 
 
-Imperial group investigating Opt combined with FRET and FLIM. Define these and some uses for the combined modality. What physical/software changes needed for this imaging.
-FLIM OPT: \cite{McGinty:2008ix}, In vivo FLIM OPT \cite{McGinty:2011vm}.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{Oldham_2007ku_eCTsetup.jpg}
+\caption{Example of setup for OptECT/eOPT imaging. Filters are used to select for the excitation and emission wavelengths of the fluorescent stain. This set-up would give an image but no quantitative information. Figure adapted from \cite{Oldham:2007ku}.}
+\label{fig:eOPTsetup}
+\end{figure}
 
 
-Resolution improvement to eOPT in 2007 by Walls \cite{Walls:2007jl} is this quantitative?
+\subparagraph{Resolution improvements:}
+For some applications where high resolution is required the microscope set-up  such as Sharpe's system in 2002 is preferable to a telecentric lens system. The high NA optics which give high resolution limit the depth of field (DoF). Sharpe decided to circumvent the problem of a low DoF by positioning the rotational axis so only half the specimen was in focus at once and the specimen was scanned $360^{\circ}$ to collect in focus data from all points. 
+The problem with only having half of specimen in focus at once is that unfocused light is superimposed upon the focused data and included in the reconstruction. This leads to blurring which is worse with distance from the axis of rotation. Walls proposed a method of correcting this defocusing effect using a frequency-distance filter, as described by Xia for SPECT. \cite{xia1995fourier,Walls:2007jl} The filter narrows the PSF to in-focus data allowing in-focus, high resolution images to be reconstructed. \cite{Walls:2007jl}
+
+Wang and Wang report an improvement to OPT giving higher axial and lateral resolution, even for slices far from the optical axis. \cite{Wang:2006hy, Wang:2007} As previously mentioned, to obtain high quality reconstructions the projections should closely approximate a line integral of parallel rays passing through the sample. \cite{Wang:2006hy} This is not exactly the case for  OPT, limiting the best resolution possible. Wang proposed placing an iris at the back focus of the objective lens. This reduces divergence of the projection rays from paths parallel to the optical axis giving qualitatively better resolution in both tOPT and eOPT systems. 
 
 
-Lorbeer - SLOT \cite{Lorbeer:2011}
+\subparagraph{Quantitative eOPT:} 
+There are two main reasons why eOPT data is not quantitative. The first problem is that an unknown number of emitted photons are attenuated within the sample. The second is that some incident photons are attenuated before they can cause excitation. \cite{Kim:2008eua} This can be compensated for with simultaneous illumination from multiple angles. The first problem, which is more significant, requires the use of a mathematical model of attenuation for correction. Kim \textit{et al.} have published one method for correction of self-absorbed attenuation (emitted photons attenuated). \cite{Kim:2008eua} This method is similar to those used for attenuation correction in SPECT. A co-registered image from tOPT is used to construct an attenuation map and calculate attenuation-survival probabilities for the sample. The probabilities are then used in an iterative OSEM (ordered-subsets expectation-maximisation) reconstruction. \cite{Kim:2008eua, hudson1994accelerated} This attenuation correction method was tested using a  phantom with known fluorescent fibres and corrected images showed more uniform intensity across the three fibres, differing by 4\% in the corrected images but as much as 24\% in uncorrected data. \cite{Kim:2008eua}
+
+
+Another group have attempted to quantify eOPT data using weighted filtered back-projection. \cite{Darrell:2008gd} Their model takes into account isotropic emission and the lower intensity recorded by CCD of fluorophores positioned out of the focal plane (compared to identical fluorophore in the focal plane due to blurring defocusing effect). The defocus and isotropic emission effects were modelled using Fourier optics and a weighting function calculated which acts as a window function and spreads the projection information unevenly over the reconstruction image plane. The group have indicated that an improved protocol accounting for both qualitative and quantitative effects would be preferable and is being studied.
+
+
+The methods described above attempt to quantify eOPT data by correcting for emission attenuation and then later, also including defocusing corrections. Thomas \textit{et al.} were the first to report a comprehensive correction for giving truly quantitative data with eOPT.\cite{Thomas:2010gt} Their iterative method, which is an extension of Kim's \cite{Kim:2008eua}, corrects for both emission and excitation attenuation and non-uniformities in the light source. 
+Tests of their technique using phantoms show that it can give quantitative information of 3-D fluorophore concentration. This is could be very biologically useful, for example looking at uptake of drugs in tumour treatment. \textbf{[REF]}
+
+  
+
+
+
+
+\subparagraph{Live eOPT:} 
+There have been attempts at performing OPT  on live specimen. \cite{Boot:2008dt, Vinegoni:2008ix, Colas:2009} The chief difficulties in this are developing a method limiting scatter and refraction  whilst also keeping the specimen alive. Boot and Sharpe reported their efforts for \textit{in vitro} time-lapse quantitative eOPT  imaging through tracking GFP expression of a growing mouse embryo limb bud, about 1mm in size. \cite{Boot:2008dt} 
+Live OPT has also been used in molecular imaging tracking a changing 3-D gene expression pattern. \cite{Colas:2009}
+Vinegoni \textit{et al.} reported \textit{in vivo} imaging of Drosophila melanogaster pupae without clearing or matching fluids. \cite{Vinegoni:2008ix}  As there is no clearing involved and a mathematical model is required for reconstruction Vinegoni called this `mesoscopic' imaging rather than OPT/OptCT.  
+%A polarisation analyser in front of the CCD rejects highly scattered photons which lose their polarisation state. 
+Although gathering some biologically interesting information, the resolution was much worse than conventional OPT limiting the applications for this technique. 
+
+
+
+
+%Walls: Have to be careful with eOPT systems using mercury arc lamp as it suffers from fluctuations which get worse with age, as bad as 10\%. This can introduce a smearing artefact due to the high-frequency component of the fluctuations. Walls ran simulations to calculate the best way to compensate for the fluctuations using intensity measurements from the lamp itself and a Gaussian distribution for noise with sd of 1.2\% and 5\% for an older lamp. Computational method explained on page 7. Relevant?
+
+
+
+
+
 
 \newpage
 \section{Optical Clearing}
 \label{sec:clearing}
 
 %Need for refractive index matching to ensure parallel beam assumption is true enough that we can emloy traditional reconstruction techniques. 
+Optical clearing or clarification is a very important step in OptCT imaging of tissue. Tissue are made up of many components of different refractive indices meaning there are many optical boundaries for scatter and refraction to occur at. This is the reason why visible wavelength light does not penetrate very far in tissue. In order for the parallel ray assumption used in CT reconstruction to be true, refraction and scatter at cell membrane interfaces within the sample must be minimised. \cite{Oldham:2006} This is accomplished with clearing.
+
+During clearing, intracellular  fluid is replaced with a optical clearing agent (OCA). There are many choices of OCA but they should all have refractive indices matching the tissue to be imaged and be hyperosmolar (i.e. have a very high solute concentration).
+ 
+ 
+A very popular technique for clearing is the Optical Immersion technique. The sample is set in agarose gel for stability. The gel contains pores which allows diffusion of the OCA. The most commonly used OCAs for OPT are benzyl-alcohol-benzyl-benzoate (BABB, refractive index 1.55) or methyl salicylate (MetSal, refractive index 1.53). These are both aromatic organic solvents and are not miscible in water. Therefore a graded sequence of ethanol and OCA solutions is required to replace the intracellular water with the OCA. \cite{Oldham:2006} 
+
+Some OCAs including glycerol and DMSO (dimethyl sulfoxide) can be directly applied to the tissue without need for graded ethanol solutions. However, they have been shown to be less effective than BABBs and MetSal and cannot penetrate deeper than 1cm. \cite{Oldham:2006} [MORE REFS?] They may be more suitable for \textit{in vivo} or live studies.
 
 
 
+\subparagraph{Clearing for OptECT:}
+\cite{Oldham:2008dfa}
+\cite{Sakhalkar:2007hp} 
+
+
+
+
+
+\newpage
 \section{Optical Staining}
 Sharpe 2002 stains for gene expression and limb bud growth. 
 
@@ -288,12 +385,40 @@ Being able to use optical stains is extremely useful for computer recognition of
 Soufan 2003 \cite{Soufan:2003cd} gene expression during cardiac development. 
 Highlights problem of whole-mount staining not working for all stains. Depends on size of specimen. Therefore, they took slices of embryo heart.
 
+Oldham 2007ku: \textit{Optical labeling of organ microvasculature was achieved using two stains deposited via natural in vivo circulatory processes: a passive absorbing ink-based stain and an active fluorescin FITC-lectin conjugate. The lectin protein binds to the endothelial lining, and FITC fluorescense enables optical-ECT imaging.}
+\textit{first “staining” step was achieved by administering a contrast or labeling agent to the live animal e.g. by tail vein or carotid artery cannulation such that the stain is deposited by natural   circulation of the blood...... Two   stains   have   been   evaluated:   a   passive   light-absorbing stain based on an isotonic ink solution and an active FITC-lectin conjugate, where the lectin actively binds to endothelial cells and the FITC protein can be stimulated to emit fluorescent   light.   The   agents   were   allowed   to   circulate   for about 4 to 5 min prior to sacrificing the animal. The tissue of interest was then removed for the second preparation step of optical clearing.
+}
+
+
+Sharpe demonstrated the possiblilty of using fluorescent markers in combination with a fluorescent microscope to image \textit{E10.5 embryo stained for HNF3 and neuro- filament   proteins.   Filter   sets   were   chosen   to selectively image the two fluorochromes used (Alexa 488 and Cy3), and a third set was used to record the autofluorescence emitted by all the
+ tissue.}
+
+Kim 2008 \textit{GFP and RFP filters used to see HIF1 and necrotic regions respectively.
+tumour cell line had been genetically labelled (pre-implantation) with fluorescent reporter genes such that all viable tumour cells expressed constitutive red fluorescent protein and hypoxia-inducible factor 1   transcription-produced   green   fluorescent   protein.   In   addition   to   the fluorescent reporter labelling of gene expression, the tumour microvasculature was labelled by a light-absorbing vasculature contrast agent delivered in vivo by tail-vein injection.
+}
+
+Oldham xenograph 2006 - more details on staining in paper.
+optically cleared in a key process to make
+ the samples amenable to light transmission. The cleared tumors were imaged in three modes (i)
+ optical-CT to image the 3D distribution of microvasculature as indicated by absorbing dye, (ii)
+ optical-ECT using the FITC excitation and emission filter set, to determine microvasculature as
+ indicated by lectin-endothelial binding, and (iii) optical-ECT using the DSRed2 filter set to determine
+ the 3D distribution of viable tumor as indicated by RFP emission. 
+
+
 
 \section{Recent Research}
+
+Imperial group investigating Opt combined with FRET and FLIM. Define these and some uses for the combined modality. What physical/software changes needed for this imaging.
+FLIM OPT: \cite{McGinty:2008ix}, In vivo FLIM OPT \cite{McGinty:2011vm}.
+
  Time gated OPT Bassi 2010 \cite{Bassi:2010}
  
  CLAHE Hornblad 2011 \cite{Hornblad:2011fh}
 
+Lorbeer - SLOT \cite{Lorbeer:2011}
+
+\section{Conclusions}
 
 \bibliography{bibliography2}
 
