@@ -25,6 +25,19 @@ M~Oldham, H~Sakhalkar, Y~M Wang, P~Guo, T~Oliver, R~Bentley, Z~Vujaskovic, and
   computed and emission tomography}.
 \newblock {\em Journal of Biomedical Optics}, 12(1):014009, 2007.
 
+\bibitem{Oldham:2006}
+M~Oldham, H~Sakhalkar, T~Oliver, Y~M Wang, J~Kirkpatrick, Y~Cao, C~Badea, G~A
+  Johnson, and M~Dewhirst.
+\newblock {Three-dimensional imaging of xenograft tumors using optical computed
+  and emission tomography}.
+\newblock {\em Medical Physics}, 33(9):3193, 2006.
+
+\bibitem{natterer2001mathematics}
+F.~Natterer.
+\newblock {\em The Mathematics of Computerized Tomography}.
+\newblock Classics in Applied Mathematics. Society for Industrial and Applied
+  Mathematics, 2001.
+
 \bibitem{Wang:2006hy}
 Y~Wang and R~Wang.
 \newblock {Imaging using parallel integrals in optical projection tomography}.
@@ -42,6 +55,12 @@ Y~Wang and R~K Wang.
 \newblock {Optimization of image-forming optics for transmission optical
   projection tomography}.
 \newblock {\em Applied optics}, 46(27):6815--6820, 2007.
+
+\bibitem{Birk:2011}
+U~Jochen~Birk, A~Darrell, N~Konstantinides, A~Sarasa-Renedo, and J~Ripoll.
+\newblock {Improved reconstructions and generalized filtered back projection
+  for optical projection tomography}.
+\newblock {\em Applied optics}, 50(4):392--398, 2011.
 
 \bibitem{Dong:2012}
 D~Dong, S~Zhu, C~Qin, V~Kumar, J~V~Stein, S~Oehler, C~Savakis, J~Tian, and
@@ -201,6 +220,17 @@ J~Sharpe.
   anatomy}.
 \newblock {\em Journal of Anatomy}, 202(2):175--181, February 2003.
 
+\bibitem{xia1995fourier}
+W.~Xia, R.M. Lewitt, and P.R. Edholm.
+\newblock Fourier correction for spatially variant collimator blurring in
+  spect.
+\newblock {\em Medical Imaging, IEEE Transactions on}, 14(1):100--115, 1995.
+
+\bibitem{Walls:2007jl}
+J~R Walls, J~G Sled, J~Sharpe, and R~M Henkelman.
+\newblock {Resolution improvement in emission optical projection tomography}.
+\newblock {\em Physics in Medicine and Biology}, 52(10):2775--2790, April 2007.
+
 \bibitem{Fauver:2005}
 M~Fauver, E~J Seibel, J~R Rahn, M~G Meyer, F~W Patten, T~Neumann, and A~C
   Nelson.
@@ -213,13 +243,6 @@ G~H{\"a}usler.
 \newblock A method to increase the depth of focus by two step image processing.
 \newblock {\em Optics Communications}, 6(1):38--42, 1972.
 
-\bibitem{Oldham:2006}
-M~Oldham, H~Sakhalkar, T~Oliver, Y~M Wang, J~Kirkpatrick, Y~Cao, C~Badea, G~A
-  Johnson, and M~Dewhirst.
-\newblock {Three-dimensional imaging of xenograft tumors using optical computed
-  and emission tomography}.
-\newblock {\em Medical Physics}, 33(9):3193, 2006.
-
 \bibitem{Kim:2008eua}
 E~Kim, J~Bowsher, A~S Thomas, H~Sakhalkar, M~Dewhirst, and M~Oldham.
 \newblock {Improving the quantitative accuracy of optical-emission computed
@@ -228,33 +251,22 @@ E~Kim, J~Bowsher, A~S Thomas, H~Sakhalkar, M~Dewhirst, and M~Oldham.
 \newblock {\em Physics in Medicine and Biology}, 53(19):5371--5383, September
   2008.
 
-\bibitem{hudson1994accelerated}
-H.M. Hudson and R.S. Larkin.
-\newblock Accelerated image reconstruction using ordered subsets of projection
-  data.
-\newblock {\em Medical Imaging, IEEE Transactions on}, 13(4):601--609, 1994.
-
 \bibitem{Darrell:2008gd}
 A~Darrell, H~Meyer, K~Marias, M~Brady, and J~Ripoll.
 \newblock {Weighted filtered backprojection for quantitative fluorescence
   optical projection tomography}.
 \newblock {\em Physics in Medicine and Biology}, 53(14):3863--3881, June 2008.
 
+\bibitem{hudson1994accelerated}
+H.M. Hudson and R.S. Larkin.
+\newblock Accelerated image reconstruction using ordered subsets of projection
+  data.
+\newblock {\em Medical Imaging, IEEE Transactions on}, 13(4):601--609, 1994.
+
 \bibitem{Thomas:2010gt}
 A~Thomas, J~Bowsher, J~Roper, T~Oliver, M~Dewhirst, and M~Oldham.
 \newblock {A comprehensive method for optical-emission computed tomography}.
 \newblock {\em Physics in Medicine and Biology}, 55(14):3947--3957, June 2010.
-
-\bibitem{xia1995fourier}
-W.~Xia, R.M. Lewitt, and P.R. Edholm.
-\newblock Fourier correction for spatially variant collimator blurring in
-  spect.
-\newblock {\em Medical Imaging, IEEE Transactions on}, 14(1):100--115, 1995.
-
-\bibitem{Walls:2007jl}
-J~R Walls, J~G Sled, J~Sharpe, and R~M Henkelman.
-\newblock {Resolution improvement in emission optical projection tomography}.
-\newblock {\em Physics in Medicine and Biology}, 52(10):2775--2790, April 2007.
 
 \bibitem{Boot:2008dt}
 M~J Boot, C~H Westerberg, J~Sanz-Ezquerro, J~Cotterell, R~Schweitzer, M~Torres,
@@ -263,22 +275,16 @@ M~J Boot, C~H Westerberg, J~Sanz-Ezquerro, J~Cotterell, R~Schweitzer, M~Torres,
   limb buds}.
 \newblock {\em Nature Methods}, 5(7):609--612, May 2008.
 
-\bibitem{Colas:2009}
-J~F Colas and J~Sharpe.
-\newblock {Live optical projection tomography}.
-\newblock {\em Organogenesis}, 5(4):211--216, 2009.
-
 \bibitem{Vinegoni:2008ix}
 C~Vinegoni, C~Pitsouli, D~Razansky, N~Perrimon, and V~Ntziachristos.
 \newblock {In vivo imaging of Drosophila melanogaster pupae with mesoscopic
   fluorescence tomography}.
 \newblock {\em Nature Methods}, 5(1):45--47, December 2008.
 
-\bibitem{Birk:2011}
-U~Jochen~Birk, A~Darrell, N~Konstantinides, A~Sarasa-Renedo, and J~Ripoll.
-\newblock {Improved reconstructions and generalized filtered back projection
-  for optical projection tomography}.
-\newblock {\em Applied optics}, 50(4):392--398, 2011.
+\bibitem{Colas:2009}
+J~F Colas and J~Sharpe.
+\newblock {Live optical projection tomography}.
+\newblock {\em Organogenesis}, 5(4):211--216, 2009.
 
 \bibitem{Oldham:2008dfa}
 M~Oldham, H~Sakhalkar, T~Oliver, G~Allan~Johnson, and M~Dewhirst.
