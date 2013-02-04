@@ -28,6 +28,10 @@
 
 % \textit{The ability to image 3D microvasculature in high resolution and in unsectioned samples is of significant present interest in cancer research. Anti-angiogenic agents are known to enhance the therapeutic effect of ionizing radiation. However, recent research suggests that complex relationships exist15 between radiation and the actions of the therapeutic agents,16,17 the fractionation of application,18,19 the restructuring of vascular networks,20 and the distribution of hypoxic regions.21,22 The high-contrast, high-resolution 3D optical-CT/optical-ECT imaging demonstrated here indicates a powerful new technique for efficient investigation of these relationships. The principle advantage over conventional histological techniques is that tissue sectioning is not required, and hence undistorted 3D information can be obtained of the structure and function of the sample.} \cite{Oldham:2006}
 
+%From meeting 13/12/12: mention problem with MR, fundamental limit on resolution, diffusion limit on protons. SNR. See papers by Paul Glover, Nottingham (micropscopy + limits of MR)
+
+Multiparametric imaging is very important in cancer imaging. It allows the cross-correlation of observations at tumour level and allows validation of new biomarkers against an established standard. \cite{Padhani:2010hfa} This is the goal for combined MRI and OptCT imaging of tumours. 
+
 
 \section{Theory}
 \label{sec:theory}
@@ -439,34 +443,91 @@ BABB has n=1.56 while water is n=1.33, what is n for tissue? \cite{Walls:2005ja}
 
 \newpage
 \section{Optical Staining}
-Sharpe 2002 stains for gene expression and limb bud growth. 
+\subsection{Staining for Cancer Markers}
 
-Discuss which stains are relevant for cancer biomarkers. \cite{Hanahan:2011gua}
-
+The goal of our experiment will be characterising MRI contrast in tumours by comparison with detailed 3-D maps of histological stains given by OptCT. The types of stains used will be useful for tumour recognition and characterisation. This is a well established area for histology and will be briefly reviewed here. We will look at the major markers of cancer and what the most common stains for these markers are. One thing to be investigated is how these stains work in the presence of OCAs. (Find some work on this?) Other groups have combined (list stains) with OCAs very successfully. 
 Being able to use optical stains is extremely useful for computer recognition of organs, can pick better thresholds. \cite{Sharpe:2003cm}
 
-Soufan 2003 \cite{Soufan:2003cd} gene expression during cardiac development. 
-Highlights problem of whole-mount staining not working for all stains. Depends on size of specimen. Therefore, they took slices of embryo heart.
-
-Oldham 2007ku: \textit{Optical labeling of organ microvasculature was achieved using two stains deposited via natural in vivo circulatory processes: a passive absorbing ink-based stain and an active fluorescin FITC-lectin conjugate. The lectin protein binds to the endothelial lining, and FITC fluorescense enables optical-ECT imaging.}
-\textit{first “staining” step was achieved by administering a contrast or labeling agent to the live animal e.g. by tail vein or carotid artery cannulation such that the stain is deposited by natural   circulation of the blood...... Two   stains   have   been   evaluated:   a   passive   light-absorbing stain based on an isotonic ink solution and an active FITC-lectin conjugate, where the lectin actively binds to endothelial cells and the FITC protein can be stimulated to emit fluorescent   light.   The   agents   were   allowed   to   circulate   for about 4 to 5 min prior to sacrificing the animal. The tissue of interest was then removed for the second preparation step of optical clearing.
-}
+%\includegraphics[scale=0.45]{Hanahan_2000_hallmarks.jpg}
+%\caption{Diagram showing the six hallmarks of cancer. These adaptations are believed to be necessary for  tumours to become macroscopic. The changes can be acquired in many different ways and in different orders chronologically, as illustrated in the diagram. Figure adapted from \cite{Hanahan:2000}}
 
 
-Sharpe demonstrated the possiblilty of using fluorescent markers in combination with a fluorescent microscope to image \textit{E10.5 embryo stained for HNF3 and neuro- filament   proteins.   Filter   sets   were   chosen   to selectively image the two fluorochromes used (Alexa 488 and Cy3), and a third set was used to record the autofluorescence emitted by all the
- tissue.}
 
-Kim 2008 \textit{GFP and RFP filters used to see HIF1 and necrotic regions respectively.
-tumour cell line had been genetically labelled (pre-implantation) with fluorescent reporter genes such that all viable tumour cells expressed constitutive red fluorescent protein and hypoxia-inducible factor 1   transcription-produced   green   fluorescent   protein.   In   addition   to   the fluorescent reporter labelling of gene expression, the tumour microvasculature was labelled by a light-absorbing vasculature contrast agent delivered in vivo by tail-vein injection.
-}
 
-Oldham xenograph 2006 - more details on staining in paper.
-optically cleared in a key process to make
- the samples amenable to light transmission. The cleared tumors were imaged in three modes (i)
- optical-CT to image the 3D distribution of microvasculature as indicated by absorbing dye, (ii)
- optical-ECT using the FITC excitation and emission filter set, to determine microvasculature as
- indicated by lectin-endothelial binding, and (iii) optical-ECT using the DSRed2 filter set to determine
- the 3D distribution of viable tumor as indicated by RFP emission. 
+\begin{figure}[H]
+\centering
+\subfigure[Traditional Hallmarks]{\label{subfig:hallmarks}
+\includegraphics[width=0.45\textwidth]{Hanahan_2011_hallmarks.jpg}}
+\subfigure[New hallmarks]{\label{subfig:newhallmarks}
+\includegraphics[width=0.45\textwidth]{Hanahan_2011_emerginghallmarks.jpg}}
+\caption{Diagram showing the six hallmarks of cancer (\ref{subfig:hallmarks}) and some emerging characteristics that appear to also be necessary for tumours to become macroscopic (\ref{subfig:newhallmarks}). The changes can be acquired in many different ways and in different orders chronologically. Figure adapted from \cite{Hanahan:2011gua}}
+\label{fig:hallmarks2011}
+\end{figure}
+
+
+
+
+There are six primary hallmarks of cancer, shown in Figure~\ref{fig:hallmarks2011}, which are believed to be present in virtually all tumours. \cite{Hanahan:2000} Other possible hallmarks have been identified which include evasion of anoikis (cell death signals caused by loss of cell-ECM contact) and increased glucose consumption through increased glycolysis. \cite{Gatenby:2008} How these acquired capabilities come about changes between individual tumours however, there are some common pathways that can provide targets for therapy. One such common target is the vascular endothelial growth factor (VEGF) which is often overexpressed in tumours and is important for angiogenesis. Blocking VEGF can stop additional blood flow to the tumour and restrict its growth. 
+
+These hallmarks also give some clues for imaging tumours (see Figure~\ref{fig:padhani}). Certain genes have been found to be very common in the route to gaining these capabilities. For example, inactivation of the p53 tumour suppressor gene is found in more than 50\% of  human tumours, giving the tumour cells the ability to evade apoptosis (programmed cell death). This gene can be tracked via reporter genes, such as HSV1-tk(GFP) which can then be imaged with positron emission tomography (PET). \cite{Doubrovin:2001}  
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{Padhani_2010_hallmarks.jpg}
+\caption{Diagram linking functional imaging modalities to the hallmarks of cancer. \textit{DW}:diffusion weighted, \textit{DCE}:dynamic contrast agent, \textit{Bold}: blood oxygenation-level dependent,\textit{US}: Ultrasound, \textit{MRS}: magnetic resonance spectroscopy, \textit{Ang-2}: angiopoietin-2, \textit{FLT}: fluorothymidine, \textit{HK}: hexokinase, \textit{OXPHOS}: oxidative phosphorylation, \textit{PGM}: phosphoglycerate mutase, \textit{PI3K}: phosphatidylinositol 3-kinase, \textit{SCO2}: synthesis of cytochrome c oxidase 2, \textit{VDAC}: voltage-dependent anion channel. Figure adapted from \cite{Padhani:2010hfa}}
+\label{fig:padhani}
+\end{figure}
+
+%\includegraphics[scale=0.65]{Blasberg_2003_gene.jpg}
+%\caption{Diagram showing how the dual reporter gene HSV1-tk/GFP works. Figure adapted from \cite{Blasberg:2003} \textbf{Discuss}}
+
+The area of molecular imaging is relatively new and usually involves the use of a reporter gene and complimentary reporter probe, the accumulation of which gives an indication of gene expression. \cite{Blasberg:2003} Different reporter probes can be imaged with MRI, PET, SPECT and optical techniques. Optical techniques have the advantage of being more cost and time-effective than MRI or nuclear methods. As mentioned before, OptCT has the additional advantage of better depth penetration than other common optical imaging methods such as confocal microscopy.
+
+In particular, fluorescent proteins have revolutionised the area of tumour imaging allowing real-time imaging of tumour angiogenesis, metastases, cell invasion and motility. \cite{Hoffman:2005}
+Disadvantages of using fluorescent markers include the complication of  quantifying the data, high autoflourescence in the blue-green window which limits SNR, fluorophore photobleaching and high levels of scatter and attenuation of photons in tissue. \cite{Gross:2005} However, the advantages include the possibility of real-time imaging and specificity of the markers  allowing imaging of single cell metastases. \cite{Hoffman:2005} 
+%(real time since no substrate is required, uncoupling the read-out from substrate pharmacokinetics, too much detail?). \cite{Gross:2005} 
+
+
+The most common fluorescent marker used is \textit{Aequorea victoria} green fluorescent protein (GFP) and its spectrally shifted variants. 
+GFP markers are a family of fluorescent proteins with emission ranges from 442-645nm. \cite{Hoffman:2005} They are popular markers due to their high extinction coefficient and high quantum yield giving very bright and efficient fluorescence. The different types are spectrally different and so can be used at the same time to mark different aspects of the biology. \cite{Hoffman:2005} 
+
+Other markers include red proteins Red1 and Red2 and mPlum. \cite{Blasberg:2003} With the discovery of red and NIR fluorophores, fluorescent optical molecular imaging is becoming  more widespread. These markers avoid the problem of blue-green autofluorescence that GFP experiences and also have slightly deeper penetration due to the therapeutic window in tissue in the NIR range. [REF]
+
+Other fluorescent stains which may be interesting inlcude HERC (Spelling?), which is a perfusion marker administered \textit{in vivo}, Doxorubicin which is a fluorescent drug  giving a measure of drug delivery \textit{in vivo} and Evan's blue, a permeability marker which is used clinically. 
+Some non-fluorescent stains which would be used for tOPT include Alcian blue which stains cartilage (CHECK), and Pimonidazole which is a clinically used hypoxia marker giving quantitative and qualitative measures of hypoxia in tissue. \cite{Varia:1998} Resins such as Mercox and Microphil.
+\textbf{Ask about Herc and resins}
+
+One issue with choosing stains for use in OptCT finding stains which can diffuse through a whole tumour. Stains administered \textit{in vivo} such as by tail injection may be preferable rather than trying to stain a large volume of tissue after dissection. \textbf{(REF and CHECK)} For example, Soufan \textit{et al.} monitored gene expression during cardiac development in 2003. Their preferred stains  could not penetrate the entire embryo heart and they were forced to take slices, losing valuable 3-D information. \cite{Soufan:2003cd} 
+
+
+\subsection{Optical Staining in OptCT}
+
+One example of fluorescent proteins being used for OptCT imaging is by Kim in 2008. \cite{Kim:2008eua} A tumour cell line was genetically labelled with GFP and RFP which were used to image hypoxia-indcible factor 1 (HIF1) and necrotic regions respectively. Tumour micro-vasculature was labelled by a dilute solution of isotonic India ink, a light-absorbing stain administered \textit{in vivo} by tail injection. The use of multiple stains allows co-registered images to be taken using tOPT for the micro-vasculature, eOPT with two different emission filters to see hypoxic regions (GFP) and tumour cells (RFP). 
+
+
+
+
+%Sharpe used Alexa 488 to image HNF3 expression and Cy3 to mark neurofilament proteins. \cite{Sharpe:2002jp} Sharpe demonstrated the possiblilty of using fluorescent markers in combination with a fluorescent microscope to image \textit{E10.5 embryo stained for HNF3 and neuro- filament   proteins.   Filter   sets   were   chosen   to selectively image the two fluorochromes used (Alexa 488 and Cy3), and a third set was used to record the autofluorescence emitted by all the tissue.}
+
+
+
+Oldham's group have also used a passive isotonic ink dye to image micro-vasculature but have also tested an active  Fluorescein isothiocyanate (FITC)-lectin conjugate. The lectin protein binds to the endothelial lining while FITC fluorescence gives eOPT signal. \cite{Oldham:2007ku} Both agents were administered by tail vein injection before sacrifice of the animal allowing the stains to be circulated in the blood. Using both absorbing and emitting stains gives contrast in both OptCT and ECT set-ups. For imaging tumour cells themselves, HCT116 tumour cells were transfected with a gene coding for RFP and then implanted in the hind leg of a mouse. \cite{Oldham:2006} USing a DSRed2 filter, viable tumour cells were imaged in the OptECT set-up. Oldham demonstrates the superiority of OptCT/ECT for this type of imaging by comparison with $\mu$-CT and $\mu$-MRI (see Figure~\ref{fig:tumourstaining}).
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{Oldham_2006_tumourstaining.jpg}
+\caption{Figure showing the advantage of OptCT imaging over other modalities. Part (A) shows a projection image of a HCT116 tumour after optical clearing. (B) is an \textit{in vivo} micro-Ct image of the same tumour with 50$\mu$m resolution. (C) is \textit{in vivo} T1 weighted contrast enhanced micro-MRI image of a similar tumour. The superior resolution and contrast in the OptCT image is evident. Images  adapted from \cite{Oldham:2006}}
+\label{fig:tumourstaining}
+\end{figure}
+
+
+
+
+
+
 
 
 

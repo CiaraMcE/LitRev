@@ -1,42 +1,26 @@
 \begin{thebibliography}{10}
 
-\bibitem{ray1983laser}
-S~R Ray and H~G Semerjian.
-\newblock Laser tomography for simultaneous concentration and temperature
-  measurement in reacting flows.
-\newblock In {\em American Institute of Aeronautics and Astronautics,
-  Thermophysics Conference, 18 th, Montreal, Canada}, 1983.
-
-\bibitem{kawata1990laser}
-S~Kawata, O~Nakamura, T~Noda, H~Ooki, K~Ogino, Y~Kuroiwa, and S~Minami.
-\newblock Laser computed-tomography microscope.
-\newblock {\em Applied optics}, 29(26):3805--3809, 1990.
-
-\bibitem{Brown:1992}
-C~S Brown, D~H Burns, F~A Spelman, and A~C Nelson.
-\newblock {Computed tomography from optical projections for three-dimensional
-  reconstruction of thick objects}.
-\newblock {\em Applied optics}, 31(29):6247--6254, 1992.
-
-\bibitem{Oldham:2007ku}
-M~Oldham, H~Sakhalkar, Y~M Wang, P~Guo, T~Oliver, R~Bentley, Z~Vujaskovic, and
-  M~Dewhirst.
-\newblock {Three-dimensional imaging of whole rodent organs using optical
-  computed and emission tomography}.
-\newblock {\em Journal of Biomedical Optics}, 12(1):014009, 2007.
-
-\bibitem{Oldham:2006}
-M~Oldham, H~Sakhalkar, T~Oliver, Y~M Wang, J~Kirkpatrick, Y~Cao, C~Badea, G~A
-  Johnson, and M~Dewhirst.
-\newblock {Three-dimensional imaging of xenograft tumors using optical computed
-  and emission tomography}.
-\newblock {\em Medical Physics}, 33(9):3193, 2006.
+\bibitem{Padhani:2010hfa}
+A~R Padhani and K~A Miles.
+\newblock {Multiparametric Imaging of Tumor Response to Therapy}.
+\newblock {\em Radiology}, 256(2):348--364, July 2010.
 
 \bibitem{natterer2001mathematics}
 F.~Natterer.
 \newblock {\em The Mathematics of Computerized Tomography}.
 \newblock Classics in Applied Mathematics. Society for Industrial and Applied
   Mathematics, 2001.
+
+\bibitem{russ2002image}
+J~C Russ.
+\newblock {\em The Image Processing Handbook}.
+\newblock Image Processing Handbook. Crc Press, 2002.
+
+\bibitem{Doran:2008kh}
+S~J Doran.
+\newblock {The history and principles of optical computed tomography for
+  scanning 3-D radiation dosimeters: 2008 update}.
+\newblock {\em Journal of Physics: Conference Series}, 164:012020, June 2009.
 
 \bibitem{Wang:2006hy}
 Y~Wang and R~Wang.
@@ -87,11 +71,6 @@ J~C Gore, M~Ranade, and M~J Maryanski.
 M~Oldham, J~H Siewerdsen, A~Shetty, and D~A Jaffray.
 \newblock {High resolution gel-dosimetry by optical-CT and MR scanning}.
 \newblock {\em Medical Physics}, 28(7):1436, 2001.
-
-\bibitem{russ2002image}
-J~C Russ.
-\newblock {\em The Image Processing Handbook}.
-\newblock Image Processing Handbook. Crc Press, 2002.
 
 \bibitem{Tarte:2006}
 B~J Tarte, P~A Jardine, and T~van Doorn.
@@ -154,17 +133,18 @@ B~J Tarte, P~A Jardine, T~van Doorn, K~N Nitschke, and M~G Poulsen.
   distributions in doped agarose gels}.
 \newblock {\em Medical Physics}, 24:1521, 1997.
 
-\bibitem{Doran:2008kh}
-S~J Doran.
-\newblock {The history and principles of optical computed tomography for
-  scanning 3-D radiation dosimeters: 2008 update}.
-\newblock {\em Journal of Physics: Conference Series}, 164:012020, June 2009.
-
 \bibitem{Sakhalkar:2008exa}
 H~S Sakhalkar and M~Oldham.
 \newblock {Fast, high-resolution 3D dosimetry utilizing a novel optical-CT
   scanner incorporating tertiary telecentric collimation}.
 \newblock {\em Medical Physics}, 35(1):101, 2008.
+
+\bibitem{Oldham:2007ku}
+M~Oldham, H~Sakhalkar, Y~M Wang, P~Guo, T~Oliver, R~Bentley, Z~Vujaskovic, and
+  M~Dewhirst.
+\newblock {Three-dimensional imaging of whole rodent organs using optical
+  computed and emission tomography}.
+\newblock {\em Journal of Biomedical Optics}, 12(1):014009, 2007.
 
 \bibitem{Krstajic:2007hk}
 N~Krstaji{\'c} and S~J Doran.
@@ -243,6 +223,13 @@ G~H{\"a}usler.
 \newblock A method to increase the depth of focus by two step image processing.
 \newblock {\em Optics Communications}, 6(1):38--42, 1972.
 
+\bibitem{Oldham:2006}
+M~Oldham, H~Sakhalkar, T~Oliver, Y~M Wang, J~Kirkpatrick, Y~Cao, C~Badea, G~A
+  Johnson, and M~Dewhirst.
+\newblock {Three-dimensional imaging of xenograft tumors using optical computed
+  and emission tomography}.
+\newblock {\em Medical Physics}, 33(9):3193, 2006.
+
 \bibitem{Kim:2008eua}
 E~Kim, J~Bowsher, A~S Thomas, H~Sakhalkar, M~Dewhirst, and M~Oldham.
 \newblock {Improving the quantitative accuracy of optical-emission computed
@@ -302,6 +289,48 @@ H~S Sakhalkar, M~Dewhirst, T~Oliver, Y~Cao, and M~Oldham.
 D~Hanahan and R~A Weinberg.
 \newblock {Hallmarks of Cancer: The Next Generation}.
 \newblock {\em Cell}, 144(5):646--674, March 2011.
+
+\bibitem{Hanahan:2000}
+D~Hanahan and R~A Weinberg.
+\newblock {The hallmarks of cancer}.
+\newblock {\em Cell}, 100(1):57--70, 2000.
+
+\bibitem{Gatenby:2008}
+R~Gatenby and R~Gillies.
+\newblock A microenvironmental model of carcinogenesis.
+\newblock {\em Nature reviews. Cancer}, 8(1):56--61, 2008.
+
+\bibitem{Doubrovin:2001}
+M~Doubrovin, V~Ponomarev, T~Beresten, J~Balatoni, W~Bornmann, R~Finn, J~Humm,
+  S~Larson, M~Sadelain, R~Blasberg, and et~al.
+\newblock Imaging transcriptional regulation of p53-dependent genes with
+  positron emission tomography in vivo.
+\newblock {\em Proceedings of the National Academy of Sciences of the United
+  States of America}, 98(16):9300–5, 2001.
+
+\bibitem{Blasberg:2003}
+R~Blasberg.
+\newblock Molecular imaging and cancer.
+\newblock {\em Molecular cancer therapeutics}, 2(3):335–--43, 2003.
+
+\bibitem{Hoffman:2005}
+R~Hoffman.
+\newblock The multiple uses of fluorescent proteins to visualize cancer in
+  vivo.
+\newblock {\em Nature reviews. Cancer}, 5(10):796–--806, 2005.
+
+\bibitem{Gross:2005}
+S~Gross and D~Piwnica-Worms.
+\newblock Spying on cancer: molecular imaging in vivo with genetically encoded
+  reporters.
+\newblock {\em Cancer cell}, 7(1):5–--15, 2005.
+
+\bibitem{Varia:1998}
+M~Varia, D~Calkins-Adams, L~Rinker, A~Kennedy, D~Novotny, W~Fowler, and
+  J~Raleigh.
+\newblock Pimonidazole: a novel hypoxia marker for complementary study of tumor
+  hypoxia and cell proliferation in cervical carcinoma.
+\newblock {\em Gynecologic oncology}, 71(2):270--277, 1998.
 
 \bibitem{Soufan:2003cd}
 A~T Soufan, J~M Ruijter, M~J~B van~den Hoff, P~A~J de~Boer, J~Hagoort, and
