@@ -273,6 +273,42 @@ J~F Colas and J~Sharpe.
 \newblock {Live optical projection tomography}.
 \newblock {\em Organogenesis}, 5(4):211--216, 2009.
 
+\bibitem{tuchin2007tissue}
+V~V Tuchin and Society Of Photo-Optical~Instrumentation Engineers.
+\newblock {\em Tissue Optics: Light Scattering Methods and Instruments for
+  Medical Diagnosis}.
+\newblock Press Monographs. SPIE/International Society for Optical Engineering,
+  2007.
+
+\bibitem{Wen:2009is}
+X~Wen, V~V Tuchin, Q~Luo, and D~Zhu.
+\newblock {Controling the scattering of Intralipid by using optical clearing
+  agents}.
+\newblock {\em Physics in Medicine and Biology}, 54(22):6917--6930, November
+  2009.
+
+\bibitem{Vargas:1999}
+G~Vargas, E~K Chan, J~K Barton, H~G Rylander, and A~J Welch.
+\newblock {Use of an Agent to Reduce Scattering}.
+\newblock {\em Lasers in Surgery and Medicine}, 24(2):133--41, 1999.
+
+\bibitem{Choi:2005}
+B~Choi, L~Tsu, E~Chen, T~S Ishak, S~M Iskandar, S~Chess, and J~S Nelson.
+\newblock Determination of chemical agent optical clearing potential using in
+  vitro human skin.
+\newblock {\em Lasers in Surgery and Medicine}, 36(2):72--75, 2005.
+
+\bibitem{Mao:2008}
+Z~Mao, D~Zhu, Y~Hu, X~Wen, and Z~Han.
+\newblock Influence of alcohols on the optical clearing effect of skin in
+  vitro.
+\newblock {\em Journal of Biomedical Optics}, 13(2):021104--021104, 2008.
+
+\bibitem{Yeh:2003}
+A~T Yeh, B~Choi, J~S Nelson, and B~J Tromberg.
+\newblock {Reversible Dissociation of Collagen in Tissues}.
+\newblock {\em The Journal of Investigative Dermatology}, 121(6):1332--5, 2003.
+
 \bibitem{Oldham:2008dfa}
 M~Oldham, H~Sakhalkar, T~Oliver, G~Allan~Johnson, and M~Dewhirst.
 \newblock {Optical clearing of unsectioned specimens for three-dimensional
@@ -285,20 +321,10 @@ H~S Sakhalkar, M~Dewhirst, T~Oliver, Y~Cao, and M~Oldham.
   tomography: fluorescence preservation during optical clearing}.
 \newblock {\em Physics in Medicine and Biology}, 52(8):2035--2054, March 2007.
 
-\bibitem{Hanahan:2011gua}
-D~Hanahan and R~A Weinberg.
-\newblock {Hallmarks of Cancer: The Next Generation}.
-\newblock {\em Cell}, 144(5):646--674, March 2011.
-
 \bibitem{Hanahan:2000}
 D~Hanahan and R~A Weinberg.
 \newblock {The hallmarks of cancer}.
 \newblock {\em Cell}, 100(1):57--70, 2000.
-
-\bibitem{Gatenby:2008}
-R~Gatenby and R~Gillies.
-\newblock A microenvironmental model of carcinogenesis.
-\newblock {\em Nature reviews. Cancer}, 8(1):56--61, 2008.
 
 \bibitem{Doubrovin:2001}
 M~Doubrovin, V~Ponomarev, T~Beresten, J~Balatoni, W~Bornmann, R~Finn, J~Humm,
@@ -319,11 +345,23 @@ R~Hoffman.
   vivo.
 \newblock {\em Nature reviews. Cancer}, 5(10):796–--806, 2005.
 
+\bibitem{Hoffman:2009}
+R~M Hoffman.
+\newblock Imaging cancer dynamics in vivo at the tumor and cellular level with
+  fluorescent proteins.
+\newblock {\em Clinical and Experimental Metastasis}, 26:345--355, 2009.
+
 \bibitem{Gross:2005}
 S~Gross and D~Piwnica-Worms.
 \newblock Spying on cancer: molecular imaging in vivo with genetically encoded
   reporters.
 \newblock {\em Cancer cell}, 7(1):5–--15, 2005.
+
+\bibitem{Shcherbo:2007}
+D~Shcherbo, E~Merzlyak, T~Chepurnykh, A~Fradkov, G~Ermakova, El~Solovieva,
+  K~Lukyanov, E~Bogdanova, A~Zaraisky, S~Lukyanov, and et~al.
+\newblock Bright far-red fluorescent protein for whole-body imaging.
+\newblock {\em Nature methods}, 4(9):741--6, 2007.
 
 \bibitem{Varia:1998}
 M~Varia, D~Calkins-Adams, L~Rinker, A~Kennedy, D~Novotny, W~Fowler, and

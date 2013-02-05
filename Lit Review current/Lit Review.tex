@@ -30,13 +30,13 @@
 
 %From meeting 13/12/12: mention problem with MR, fundamental limit on resolution, diffusion limit on protons. SNR. See papers by Paul Glover, Nottingham (micropscopy + limits of MR)
 
-Multiparametric imaging is very important in cancer imaging. It allows the cross-correlation of observations at tumour level and allows validation of new biomarkers against an established standard. \cite{Padhani:2010hfa} This is the goal for combined MRI and OptCT imaging of tumours. 
+Multiparametric imaging is very important in cancer imaging. It allows the cross-correlation of observations at tumour level and allows validation of new biomarkers against an established standard \cite{Padhani:2010hfa}. This is the goal for combined MRI and OptCT imaging of tumours. 
 
-
+\newpage
 \section{Theory}
 \label{sec:theory}
 
-The theory behind CT reconstruction broadly the same between x-ray CT and OptCT. One minor difference is that it is common in x-ray CT for the detectors to rotate around the sample whereas in OptCT the sample rotates and the detectors are stationary. This introduces a minus sign at one stage of the reconstruction algorithm.
+The theory behind CT reconstruction is broadly the same between x-ray CT and OptCT. One minor difference is that it is common in x-ray CT for the detectors to rotate around the sample whereas in OptCT the sample rotates and the detectors are stationary. This introduces a minus sign at one stage of the reconstruction algorithm. [WHY IS THIS?]
 
 
 
@@ -45,7 +45,7 @@ The theory behind CT reconstruction broadly the same between x-ray CT and OptCT.
 When light passes through a substance, it is assumed to be attenuated by some small amount of intensity $\Delta I$ over a small distance $\Delta y$ 
 
 \begin{equation}
-\dfrac{\Delta I}{I} = \mu(y)\Delta y
+\dfrac{\Delta I}{I} = -\mu(y)\Delta y
 \end{equation}
 where $\mu(y)$ is the linear attenuation coefficient.
 Taking the infinitesimal limit and integrating, 
@@ -53,28 +53,19 @@ Taking the infinitesimal limit and integrating,
 \begin{equation}
 \int_{I_0}^{I} \frac{1}{I}\, \mathrm{d}I = - \int_L \mu(y)\, \mathrm{d}y
 \end{equation}
-this leads to Beers Law 
+this leads to Beer's Law 
 \begin{equation}
 I(y) = I_{o}(y)\mathrm{e}^{-\int_L \mu(y)\, \mathrm{d}y}
 \label{eq:Beer}
 \end{equation}
-where $I_0$ is the intensity with no attenuation and $I(y)$ is the intensity at depth y. $L$ is the path the light ray has followed, the integral in the exponential term of Beer's Law takes into account the differences in attenuation coefficient along the path L. 
+where $I_0$ is the intensity with no attenuation and $I(y)$ is the intensity at depth $y$. $L$ is the path the light ray has followed. The integral in the exponential term of Beer's Law takes into account the differences in attenuation coefficient along the path $L$. 
 
-From equation~\ref{eq:Beer} it is apparent that  the  intensity of a light beam after passing through a sample gives information about the line integral of the function $\mu$  along the line L. The CT scanning process records this information for many lines L at different lateral positions and it is from this information that we reconstruct a map of $\mu$. \cite{natterer2001mathematics}
+From equation~\ref{eq:Beer} it is apparent that  the  intensity of a light beam after passing through a sample gives information about the line integral of the function $\mu$  along the line $L$. The CT scanning process records this information for many lines $L$ at different lateral positions and it is from this information that we reconstruct a map of $\mu$ \cite{natterer2001mathematics}.
 The Radon transform maps a function into a set of its line integrals. Therefore, CT reconstruction involves an inverse Radon transform.
 
 
 
-In order to build up a map of attenuation coefficients, line integrals must be measured from multiple angles (see Figure~\ref{fig:projection}). If the sample rotates by some angle $\phi$ then the attenuation seen at position $(x, y)$  changes.
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.8]{Russ_projection.jpg}
-\caption{Parallel ray geometry showing how a projection/view, $P_{\phi}(x)$, is taken at angle $\phi$. The attenuation $\mu(x,y)$ within the sample is not uniform and projections must be taken from many angles to reconstruct a map of $\mu(x,y)$.  Here x represents lateral position  and y represents  depth. Figure adapted from \cite{russ2002image}.}
-\label{fig:projection}
-\end{figure}
-
-
+To build  a 2-D map of attenuation coefficients, line integrals must be measured from multiple angles (see Figure~\ref{fig:projection}). If the sample rotates by some angle $\phi$ then the attenuation seen at position $(x, y)$  changes.
 The Radon transform, often called a projection or a view, is defined as
 \begin{equation}
 P_{\phi}(x) = \int\limits_{sample} \mu(x',y')\, \mathrm{d}y = -\ln\left(\frac{I_{\phi}(x)}{I_0}\right)
@@ -91,16 +82,22 @@ y' = -x\sin\phi + y\cos\phi
 
 The projection information is stored in what is known as `Radon space' with dimensions $(x, \phi)$. Radon space is filled by measuring the projection value for all combinations of $x$ and $\phi$. A filled Radon space diagram is often referred to as a sinogram (see Figure~\ref{fig:sinogram}).
 
-In practice, the finite number of lines L limits the resolution of reconstructions. There are two geometries for 2-D reconstructions; parallel beam and fan beam. The choice of scanning geometry also affects the resolution. \cite{natterer2001mathematics}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{Russ_projection.jpg}
+\caption{Parallel ray geometry showing how a projection/view, $P_{\phi}(x)$, is recorded at angle $\phi$. The attenuation $\mu(x,y)$ within the sample is not uniform and projections must be taken from many angles to reconstruct a map of $\mu(x,y)$.  Here $x$ represents lateral position  and $y$ represents  depth. Figure adapted from \cite{russ2002image}.}
+\label{fig:projection}
+\end{figure}
+
+
+In practice, the finite number of lines $L$ limits the resolution of reconstructions. There are two geometries for 2-D reconstructions; parallel beam and fan beam. The choice of scanning geometry also affects the resolution \cite{natterer2001mathematics}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Doran_2008_sinogram.jpg}
-\caption{Transformation from image space to Radon space demonstrated. Projection information is stored in Radon space. A 2-D image of Radon space is often called a sinogram. Different shapes produce characteristic tracks on the sinogram according to how they look when rotated. Figure adapted from \cite{Doran:2008kh}}
+\caption{Transformation from image space to Radon space demonstrated. Projection information is stored in Radon space. A 2-D image of Radon space is often called a sinogram. Different shapes produce characteristic tracks on the sinogram according to their symmetry upon rotation. Figure adapted from \cite{Doran:2008kh}.}
 \label{fig:sinogram}
 \end{figure}
-
-
 
 
 
@@ -113,7 +110,7 @@ In practice, the finite number of lines L limits the resolution of reconstructio
 
 The information stored in a sinogram is used to reconstruct a map of attenuation within the sample. This is done through the process of back-projection.
 
-Simple back-projection involves simply taking each projection point $P_{\phi}(x)$ and working back along the line integral which created that projection in real space,  attributing each depth with the value $P_{\phi}(x)$. Doing this for all projection points certain areas in real space are shaded darker as projections from different angles cross over. This builds up a picture of the shapes inside the sample. However, this form of back-projection is flawed, producing blurred images. In order to reconstruct more accurate images a mathematical trick called Filtered Back-projection (FBP) is used.
+Simple back-projection involves  taking each projection point $P_{\phi}(x)$ and working back along the line integral, $L$, which created that projection in real space. Each point along $L$ is  attributed with the value $P_{\phi}(x)$. After doing this for all projection points, certain areas in real space are shaded darker as projections from different angles cross over. This builds up a picture of the shapes inside the sample. However, simple back-projection is flawed, producing blurred images. In order to reconstruct more accurate images a mathematical trick called Filtered Back-projection (FBP) is used.
 
 FBP
 
@@ -127,13 +124,6 @@ FBP
 %Mention alternative, Algebraic Reconstruction Technique and other iterative methods. 
 
 
- %\textit{Imaging with high resolution using this principle requires that the projection data are a direct result of the line integral of   the   parallel   rays   passing   through   the   sample.} \cite{Wang:2006hy}
-
-%\textit{The optical images captured by the CCD are approximated as parallel projections throughout the specimen. A series of images at different views are then obtained by rotating the specimen. In such a way, the cross sections of the specimen can be independently reconstructed with the data on the corresponding rows of the CCD captured at sufficient different views.}\cite{Wang:2006hy}
-
-\textit{ In fact, two assumptions are made to enable the conventional OPT to use the term of ‘projection’ and the reconstruction algorithm. First, the narrow cones of the light ray projected onto a CCD are assumed to be the strip integrals through the sample. Second, the axes of the light cones are taken to be parallel to each other. The two assumptions place severe constraints on the resolution of OPT imaging. In this paper, we present improved image-forming optics for OPT, with which the axes of the light cones are parallel to the optical axis of the optics. As a result, the parallel integral throughout a sample can be satisfied, and the second assumption mentioned above is relaxed. This method results in an improved spatial resolution, especially for the cross sections far from the optical axis}. \cite{Wang:2006hy}
-
-
 Walls 2005 \cite{Walls:2005ja} : \textit{the tOPT views must be transformed according to Beer’s law, standard in x-ray CT, in order to obtain sums of attenuation coefficients along the projection cones, necessitating sample removal and capture of brightfield images. Each view is divided by a low noise estimate of the illumination that is obtained by averaging several brightfield images.}
 
 Fourier slice theorem requirements, see Wang 2007 \cite{Wang:2007}
@@ -141,6 +131,11 @@ Fourier slice theorem requirements, see Wang 2007 \cite{Wang:2007}
 Nyquist sampling theory dictates minimum number of projection/views required.
 
 Computational methods for improving reconstructions in OPT by Birk in 2011 \cite{Birk:2011}
+
+
+%\textit{Imaging with high resolution using this principle requires that the projection data are a direct result of the line integral of   the   parallel   rays   passing   through   the   sample.} \cite{Wang:2006hy}
+%\textit{The optical images captured by the CCD are approximated as parallel projections throughout the specimen. A series of images at different views are then obtained by rotating the specimen. In such a way, the cross sections of the specimen can be independently reconstructed with the data on the corresponding rows of the CCD captured at sufficient different views.}\cite{Wang:2006hy}
+%\textit{ In fact, two assumptions are made to enable the conventional OPT to use the term of ‘projection’ and the reconstruction algorithm. First, the narrow cones of the light ray projected onto a CCD are assumed to be the strip integrals through the sample. Second, the axes of the light cones are taken to be parallel to each other. The two assumptions place severe constraints on the resolution of OPT imaging. In this paper, we present improved image-forming optics for OPT, with which the axes of the light cones are parallel to the optical axis of the optics. As a result, the parallel integral throughout a sample can be satisfied, and the second assumption mentioned above is relaxed. This method results in an improved spatial resolution, especially for the cross sections far from the optical axis}. \cite{Wang:2006hy}
 
 \subsection{Refractive index matching}
 
@@ -150,17 +145,17 @@ Computational methods for improving reconstructions in OPT by Birk in 2011 \cite
 (See Walls 2007) Resolution given by Rayleigh criterion.
 
 \begin{equation}
-r_{Airy} = \dfrac{0.61n\lambda}{NA}
+r_{Airy} = \dfrac{0.61n\lambda}{\rm{NA}}
 \end{equation}
 where $r_{Airy}$ is the radius of the Airy function which is a measure of resolution in the focal plane. $n$ is the refractive index of the medium around the lens, $\lambda$ is the wavelength of light and NA is the numerical aperture of the lens. 
 
 Depth of field (DOF) is given by [REF]
  
 \begin{equation}
-DOF = n_{bath}(\dfrac{n\lambda}{NA^{2}} + \dfrac{n}{M NA}e)
+DOF = n_{bath}(\dfrac{n\lambda}{\rm{NA}^{2}} + \dfrac{n}{M\rm{NA}}e)
 \end{equation}
 
-where e is the pixel size of the CCD, $n_{bath}$ is the refractive index of the medium surrounding the specimen and M is the lateral magnification.
+where e is the pixel size of the CCD, $n_{bath}$ is the refractive index of the medium surrounding the specimen and $M$ is the lateral magnification.
 
 According to Nyquist the Airy disc must be sampled more than twice per DOF distance to avoid aliasing. This constrains the detector spacing to
 
@@ -175,6 +170,7 @@ DOF_{max} = n_{bath}(\dfrac{1.305\lambda}{NA^{2}})
 \end{equation}
 
 Shows trade-off between high resolution with high NA and high DOF with low NA. Generally choose NA based on size of sample.
+[Say how this impacts on scanning process, include sinogram from Doran 2010 PMB. Refer to discussion of Sharpe's set-up and DOF]
 
 \subsection{Common artefacts}
 
@@ -191,9 +187,9 @@ Walls 2005 \textit{Noise is Poisson distributed below 2\% on an averaged signal.
 %\label{subsec:doshist}
 
 
-One of the first reported optical computed tomography (OptCT) systems was developed in the area of gel dosimetry. Accurate 3-D measurement of dose delivery in radiotherapy is extremely important in developing safe treatment plans. Specialist polymer gels, such as BANG\textsuperscript{\textregistered} \cite{Maryanski:1996}, respond to irradiation with changes in optical attenuation and scattering properties.  This makes them ideal for measuring 3-D dose distributions. Previously the irradiated gels were measured by MRI and x-ray CT however, these are expensive imaging modalities. In 1996, Gore and Maryanski published the first system for scanning polymer gels using optical computed tomography. \cite{Gore:1999tg} In later comparisons, OptCT has been found to be more precise, have reduced noise and smoother line profiles than MRI for gel dosimetry. \cite{Oldham:2001gs}
+One of the first reported optical computed tomography (OptCT) systems was developed in the area of gel dosimetry. Accurate 3-D measurement of dose delivery in radiotherapy is extremely important in developing safe treatment plans. Specialist polymer gels, such as BANG\textsuperscript{\textregistered} \cite{Maryanski:1996}, respond to irradiation with changes in optical attenuation and scattering properties.  This makes them ideal for measuring 3-D dose distributions. Previously the irradiated gels were measured by MRI and x-ray CT. However, these are expensive imaging modalities. In 1996, Gore and Maryanski published the first system for scanning polymer gels using optical computed tomography. \cite{Gore:1999tg} In later comparisons, OptCT has been found to be more precise, have reduced noise and smoother line profiles than MRI for gel dosimetry. \cite{Oldham:2001gs} [DISPUTED PAPER]
 
-Gore's system consisted of a  He-Ne laser source and large area photodiode detector (see Figure~\ref{fig:gore_setup}). Translate-rotate acquisition was employed whereby the sample was rotated and projection data  acquired  by the photodiode over $360^{\circ}$. The smaller the angular steps between projections, the more accurate the reconstruction. \cite{russ2002image} For a 2-D reconstruction, projections are acquired for multiple spots across a slice of the sample by translating the laser beam using mirrors. For 3-D information, the sample height  had to be manually adjusted and many 2-D slices acquired. This meant scanning an entire sample took  hours and lengthy scanning times are the chief disadvantage of the laser scanning method.  Accuracy of 5\% is reported and spatial resolution of 2mm, which is roughly the same as the laser beam width. \cite{Gore:1999tg}
+Gore's system consisted of a  He-Ne laser source and large area photodiode detector (see Figure~\ref{fig:gore_setup}). Translate-rotate acquisition was employed whereby the sample was rotated and projection data  acquired  by the photodiode over $360^{\circ}$. Small angular steps between projections are necessary for high quality reconstruction \cite{russ2002image}. For a 2-D reconstruction, projections are acquired for multiple spots across a slice of the sample by translating the laser beam using mirrors. For 3-D information, the sample height  had to be manually adjusted and many 2-D slices acquired. This meant scanning an entire sample took  hours and lengthy scanning times are the chief disadvantage of the laser scanning method.  Accuracy of 5\% is reported and spatial resolution of 2mm, which is roughly the same as the laser beam width. \cite{Gore:1999tg}
 
 The idea of OptCT scanning in dosimetry was quickly developed by other groups. Laser scanning set-ups were published in 1996 by Tarte \textit{et al.},  \cite{Tarte:2006} and Kelly \textit{et al.} [REF]
 \textit{Can't find the paper 1996 Kelly references in 1998 \cite{Kelly:1998} Med Phys says it doesn't exist.}
@@ -218,15 +214,15 @@ A commercial laser scanning OptCT system, OCTOPUS\texttrademark by MGS Research,
 
 Laser scanning systems include a  beam splitter before the sample to create a reference beam. Dividing projections by the reference intensity  corrects for laser beam intensity fluctuations. \cite{Gore:1999tg}
 
-Refraction and reflection at container walls are significant concerns for all configurations of dosimetry with OptCT. Generally, laser beams are incident on the gel container at a small angle, such as $5^{\circ}$, to avoid large reflection at the interface. In addition, the gel container is usually placed in a tank containing `matching fluid' with a refractive index close to that of the gel. This prevents significant refraction as the light passes into the gel. Doran found through ray tracing simulations that the refractive index of the walls of the matching tank and  gel container are not important compared to the gel and matching fluid. The optimum difference in refractive index between these two was calculated to be 0.0025 and not zero as originally thought.\cite{Doran:2001ee}
+Refraction and reflection at container walls are significant concerns for all configurations of dosimetry with OptCT. Generally, laser beams are incident on the gel container at a small angle, such as $5^{\circ}$, to avoid large reflection at the interface. In addition, the gel container is usually placed in a tank containing `matching fluid' with a refractive index close to that of the gel. This prevents significant refraction as the light passes into the gel. Doran found through ray tracing simulations that the refractive index of the walls of the matching tank and  gel container are not important compared to the gel and matching fluid. The optimum difference in refractive index between these two was interestingly found to be non-zero \cite{Doran:2001ee}. \textbf{[COMMENT?]}
 
-To maximise the dynamic range of the system, food dye is commonly added to the matching fluid so both the refractive index and optical density of the matching fluid and gel are very similar.\cite{Krstajic:2006kna} 
+To maximise the dynamic range of the system, coloured dye is commonly added to the matching fluid so both the refractive index and optical density of the matching fluid and gel are very similar \cite{Krstajic:2006kna}. 
 
 
 
 
 \subsection{Pixelated detector based systems}
-
+\textbf{[MENTION WINFREE]}
 In 1997 the first charge coupled device (CCD) camera based OptCT system was published by Tarte \textit{et al.} which employed an incoherent white light source and CCD camera detection. \cite{Tarte:2007} The advantage  of a pixelated detector based system  is that an entire 2-D projection can be imaged at once, potentially increasing the scanning speed by several  orders of magnitude depending on the data through-put rate. Tarte's system used a divergent light source and diffusing screen to measure optical density in a thin gel section (see Figure~\ref{fig:tarte_ccd_setup}). 
 %For a very thin sample this adequate however, more sophisticated optics are required for bigger samples. \textbf{Does tarte reconstruct at all?}
 
@@ -246,14 +242,14 @@ Advances in technology have meant that  high quality detectors are much more aff
 
 
 \paragraph{Parallel beam configuration:} One method to reconstruct 3-D images with a CCD or CMOS detector is to create a broad parallel beam. This allows the use of parallel reconstruction algorithms, very similar to those used for x-ray CT. Each 2-D projection image recorded corresponds to one row for every slice in the 3-D reconstruction sinogram. \cite{Doran:2008kh}
-Telecentric optics, in which the chief rays are parallel to the optical axis, are key in the design of this configuration. \cite{Walls:2005ja} Telecentric optics can be achieved either through a careful arrangement  of  a large converging lens before the sample and standard camera lens  \cite{Doran:2001ee} (see Figure~\ref{fig:doran_ccd_setup}) or through an expensive telecentric lens \cite{Sakhalkar:2008exa}. The process of forming a parallel beam results in non-uniformities in the lightfield. This is compensated for by subtracting a `correction' or `open lightfield', image which is a projection taken with no sample in the tank. \cite{Doran:2001ee}
+Telecentric optics, in which the chief rays are parallel to the optical axis, are key in the design of this configuration. \cite{Walls:2005ja} Telecentric optics can be achieved either through a careful arrangement  of  a large converging lens before the sample and standard camera lens  \cite{Doran:2001ee} (see Figure~\ref{fig:doran_ccd_setup}) or through an expensive telecentric lens \cite{Sakhalkar:2008exa}. The process of forming a parallel beam results in non-uniformities in the lightfield. This is compensated for by dividing by a `correction' or `open lightfield', image which is a projection taken with no sample in the tank. \cite{Doran:2001ee}
 
-\textit{Telecentric lenses have two advantages for the purpose of parallel ray computed tomograhy: they provide a near constant perspective across the field of view, and the image magnification is constant with sample depth.} \cite{Oldham:2007ku}
+\textbf{\textit{Telecentric lenses have two advantages for the purpose of parallel ray computed tomograhy: they provide a near constant perspective across the field of view, and the image magnification is constant with sample depth.}} \cite{Oldham:2007ku}
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{Doran_2001_ccdsetup.jpg}
-\caption{Diagram of a parallel beam  OptCT system, developed by Doran \textit{et al.} Telecentric optics create a parallel beam  (figure from \cite{Doran:2001ee}). }
+\caption{Diagram of a parallel beam  OptCT system, developed by Doran \textit{et al.} Telecentric optics create a parallel beam.  Figure adapted from \cite{Doran:2001ee}. }
 \label{fig:doran_ccd_setup}
 \end{figure}
 
@@ -264,7 +260,7 @@ Initial systems  suffered from `graininess' due to the unstable gain of cheap CC
  \cite{Doran:2001ee}
  The parallel configuration appears to be more susceptible to schlieren artefacts caused by refractive index inhomogeneities in the sample. \cite{Krstajic:2007hk}
 
-
+\textbf{[Take this out, mention that CCDs have improved so don't have to do this. Diffuser screens have been replaced by lenses to get light directly onto CCD.]}
 
 
 
@@ -279,7 +275,8 @@ Wolodzko \textit{et al.} published the first cone beam OptCT system with CCD det
 \caption{Cone-beam CCD configuration (figure from \cite{Wolodzko:1999}).}
 \end{figure}
 
-When pixelated detectors are used, there appears to be more literature based on the parallel beam configuration than cone-beam. Although there has not been experimental comparison of the two Doran suggests that while cone-beam is usually somewhat cheaper due to simplified optics, modern parallel-beam systems have better scatter-rejection and may have fewer stray light problems. \cite{Doran:2008kh, Olding:2011eta, Thomas:2011eja}
+When pixelated detectors are used, there appears to be more literature based on the parallel beam configuration than cone-beam. \textbf{[Could just be due to Oldham, not based on difference of set-ups]}
+Although there has not been experimental comparison of the two Doran suggests that while cone-beam is usually somewhat cheaper due to simplified optics, modern parallel-beam systems have better scatter-rejection and may have fewer stray light problems. \cite{Doran:2008kh, Olding:2011eta, Thomas:2011eja}
 
 
 
@@ -318,10 +315,12 @@ Another version of OptCT was  developed by Sharpe \textit{et al.} in the area of
 Other techniques for 3-D microscopy are well established however, OPT offers some unique advantages. 
 Confocal microscopy is offers high resolution images up to a depth of about 1mm. \cite{Webb:1996} However, it is limited to fluorescent signals meaning many optical stains used routinely in histology would not work. Optical coherence tomography (OCT), which is commonly used in ophthalmology, is capable of micrometer-scale resolution with  depth limited to 2-3mm in tissue. \cite{huang1993optical} Both of these techniques generate tomographic images through sectioning whereas OPT is a projection based tomography technique. \cite{Sharpe:2003cm} Avoiding sectioning is important in producing truly representative 3-D images. \cite{Oldham:2007ku} Another advantage of  OPT is its ability to  image much larger specimen, with depth of around 3cm being reported. \cite{Oldham:2007ku} 
 
-Sharpe's original system uses a microscope to focus projections of a mouse embryo onto a camera imaging chip (CIC). Image-focusing optics are one difference between OPT and x-ray CT, which records shadows of the sample. \cite{Sharpe:2002jp} Sharpe reports some impressive images seen in Figure~\ref{fig:SharpeOPT}. Use of the microscope gives resolution of about 5-10$\mu$m meaning single-cell membranes, around 10$\mu$m thick, can be seen.\cite{Sharpe:2002jp} However, the high NA  optics which give high resolution limit the depth of field (DOF). Sharpe decided to circumvent the problem of a low DOF by positioning the rotational axis so only half the specimen was in focus at once and the specimen was scanned $360^{\circ}$ to collect in-focus data from all points. 
-The problem with only having half of specimen in focus at once is that unfocused light is superimposed upon the focused data and included in the reconstruction. This leads to blurring which is worse with distance from the axis of rotation. Walls proposed a method of correcting this defocusing effect using a frequency-distance filter, as described by Xia for SPECT. \cite{xia1995fourier,Walls:2007jl} The filter narrows the PSF to in-focus data allowing in-focus, high resolution images to be reconstructed. \cite{Walls:2007jl}
+\textbf{[DISCUSS: how much of OPT depth superiority is derived from clearing? Would OCT signal be degraded from clearing? (Due to scatter being origin of contrast) and can confocal be cleared?]}
 
+Sharpe's original system uses a microscope to focus projections of a mouse embryo onto a camera imaging chip. Image-focusing optics are one difference between OPT and x-ray CT, which records shadows of the sample. \cite{Sharpe:2002jp} Sharpe reports some impressive images as reproduced in Figure~\ref{fig:SharpeOPT}. Use of the microscope gives resolution of about 5-10$\mu$m meaning single-cell membranes, around 10$\mu$m thick, can be seen.\cite{Sharpe:2002jp} However, the high NA  optics which give high resolution limit the depth of field (DOF). Sharpe decided to circumvent the problem of a low DOF by positioning the rotational axis so only half the specimen was in focus at once and the specimen was scanned $360^{\circ}$ to collect in-focus data from all points. The problem with only having half of specimen in focus at once is that unfocused light is superimposed upon the focused data and included in the reconstruction. This leads to blurring which is worse with distance from the axis of rotation. Walls proposed a method of correcting this defocusing effect using a frequency-distance filter, as described by Xia for SPECT. \cite{xia1995fourier,Walls:2007jl} The filter narrows the PSF to in-focus data allowing in-focus, high resolution images to be reconstructed. \cite{Walls:2007jl}
 
+	
+	
 In dosimetry the refractive index within the polymer gels was roughly uniform. In tissue this is not the case, with scattering and refraction occurring at cell membrane interfaces. To make high resolution reconstruction through back projection possible, light paths through the specimen must be able to  be approximated as parallel line integrals, meaning refraction must be minimised. A process called optical clearing or clarification is employed which renders tissue optically transparent. An optical clearing agent (OCA) replaces the lower refractive index intra-cellular fluid acting as a matching fluid within the sample itself. The mechanism for this differs between agents, see Section~\ref{sec:clearing} for more detail. 
 
 
@@ -369,9 +368,12 @@ Optical emission CT (OptECT) also known as emission OPT (eOPT) is the optical eq
 
 Some changes from the set-up (see Figure~\ref{fig:eOPTsetup}) from tOPT  include the addition of a narrow bandwidth excitation filter before the sample. This selects for the excitation wavelength of the fluorescent marker being used in the sample. The illumination is perpendicular to the detector to avoid detection of the illumination light rather than fluorescence. An emission filter before detector selects for the longer emission wavelength of the fluorophores, again to avoid contamination from auto-fluorescent and ambient photons being picked up by the CCD. To avoid photobleaching systems often include a shutter to turn off the lamp when not imaging.  The image forming optics is the same as for tOPT, although the reconstruction and artefacts are different. \cite{Walls:2005ja}
 
+full stops
 
-Oldham \textit{et al.} have made several improvements  on Sharpe's eOPT set-up by changing from microscope to bench-top apparatus.\cite{Oldham:2006, Oldham:2007ku} Microscope based systems suffer from poor DOF as the optics are designed to image flat samples.  Oldham's custom made set-up, which is closer to the dosimetry systems previously seen, employs telecentric optics giving much improved DOF capable of imaging samples up to 3cm. \cite{Oldham:2007ku} However, better DOF is achieved at the cost of worse lateral spatial resolution and this trade-off must be considered with respect to the information required from the specimen. \cite{Krstajic:2006kna}    
+Oldham \textit{et al.} have made several improvements  on Sharpe's eOPT set-up by changing from microscope to bench-top apparatus \cite{Oldham:2006, Oldham:2007ku}. Microscope based systems suffer from poor DOF as the optics are designed to image flat samples.  Oldham's custom made set-up, which is closer to the dosimetry systems previously seen, employs telecentric optics giving much improved DOF capable of imaging samples up to 3cm \cite{Oldham:2007ku}. However, better DOF is achieved at the cost of worse lateral spatial resolution and this trade-off must be considered with respect to the information required from the specimen \cite{Krstajic:2006kna}.   
 
+\textbf{[Was Oldham really trying to improve OPT or just adapting OptCT dosimetry system? Is there detailed comparison? If not then could be an aspect of PhD]
+}
 
 \begin{figure}[H]
 \centering
@@ -387,12 +389,12 @@ Oldham \textit{et al.} have made several improvements  on Sharpe's eOPT set-up b
 
 
 %\subparagraph{Quantitative eOPT:} 
-There are several reasons why eOPT data is not quantitative. The most significant problem is that an unknown number of emitted photons are attenuated within the sample. This requires a mathematical model of attenuation for correction. The second problem is that some incident photons are attenuated before they can cause excitation.  This can be compensated for with simultaneous illumination from multiple angles.\cite{Kim:2008eua}  Another problem identified by Darrell \textit{et al.} is a defocusing effect caused by the lower intensity of of fluorophores positioned outside of the focal plane. Darrell's method of quantifying eOPT data invloved a Fourier optics based model which accounted for the defocusing effect and isotropic emission attenuation. \cite{Darrell:2008gd} A weighting function was calculated based on this model. The function was used in FBP and acts as a window function, spreading the projection information unevenly over the reconstruction image plane.
+There are several reasons why eOPT data is not quantitative. The most significant problem is that an unknown number of emitted photons are attenuated within the sample. This requires a mathematical model of attenuation for correction. The second problem is that some incident photons are attenuated before they can cause excitation.  This can be compensated for with simultaneous illumination from multiple angles \cite{Kim:2008eua}.  Another problem identified by Darrell \textit{et al.} is a defocusing effect caused by the lower intensity of of fluorophores positioned outside of the focal plane. Darrell's method of quantifying eOPT data involved a Fourier optics based model which accounted for the defocusing effect and isotropic emission attenuation \cite{Darrell:2008gd}. A weighting function was calculated based on this model. The function was used in FBP and acts as a window function, spreading the projection information unevenly over the reconstruction image plane.
 
-Kim \textit{et al.} have also published a method for correction of emission attenuation. \cite{Kim:2008eua} This method is similar to those used for attenuation correction in SPECT. A co-registered image from tOPT is used to construct an attenuation map and calculate attenuation-survival probabilities for the sample. The probabilities are then used in an iterative OSEM (ordered-subsets expectation-maximisation) reconstruction. \cite{Kim:2008eua, hudson1994accelerated} This attenuation correction method was tested using a  phantom with known fluorescent fibres and corrected images showed more uniform intensity across the three fibres, differing by 4\% in the corrected images but as much as 24\% in uncorrected data. \cite{Kim:2008eua}
+Kim \textit{et al.} have also published a method for correction of emission attenuation \cite{Kim:2008eua}. This method is similar to those used for attenuation correction in SPECT. A co-registered image from tOPT is used to construct an attenuation map and calculate attenuation-survival probabilities for the sample. The probabilities are then used in an iterative OSEM (ordered-subsets expectation-maximisation) reconstruction \cite{Kim:2008eua, hudson1994accelerated}. This attenuation correction method was tested using a  phantom with known fluorescent fibres and corrected images showed more uniform intensity across the three fibres, differing by 4\% in the corrected images but as much as 24\% in uncorrected data \cite{Kim:2008eua}.
 
-In an extension of Kim's method, Thomas \textit{et al.} were the first to report a comprehensive correction for  eOPT.\cite{Thomas:2010gt} Their iterative method corrects for both emission and excitation attenuation and non-uniformities in the light source. 
-Tests of their technique using phantoms show that it can give quantitative information of 3-D fluorophore concentration. This is could be very biologically useful, for example looking at uptake of drugs in tumour treatment. \textbf{[REF]}
+In an extension of Kim's method, Thomas \textit{et al.} were the first to report a comprehensive correction for  eOPT \cite{Thomas:2010gt}. Their iterative method corrects for both emission and excitation attenuation and non-uniformities in the light source. 
+Tests of their technique using phantoms show that it can give quantitative information of 3-D fluorophore concentration. This is could be very biologically useful, for example looking at uptake of drugs in tumour treatment. 
 
   
 
@@ -400,11 +402,11 @@ Tests of their technique using phantoms show that it can give quantitative infor
 
 
 %\subparagraph{Live eOPT:} 
-There have been attempts at performing OPT  on live specimen. \cite{Boot:2008dt, Vinegoni:2008ix, Colas:2009} The chief difficulties in this are developing a method limiting scatter and refraction  whilst also keeping the specimen alive. Boot and Sharpe reported their efforts for \textit{in vitro} time-lapse quantitative eOPT  imaging through tracking GFP expression of a growing mouse embryo limb bud, about 1mm in size. \cite{Boot:2008dt} 
-Live OPT has also been used in molecular imaging tracking a changing 3-D gene expression pattern. \cite{Colas:2009}
-Vinegoni \textit{et al.} reported \textit{in vivo} imaging of Drosophila melanogaster pupae without clearing or matching fluids. \cite{Vinegoni:2008ix}  As there is no clearing involved and a mathematical model is required for reconstruction Vinegoni called this `mesoscopic' imaging rather than OPT/OptCT.  
+There have been attempts at performing OPT  on live specimen \cite{Boot:2008dt, Vinegoni:2008ix, Colas:2009}. The chief difficulties in this are developing a method limiting scatter and refraction  whilst also keeping the specimen alive. Boot and Sharpe reported their efforts for \textit{in vitro} time-lapse quantitative eOPT  imaging through tracking GFP expression of a growing mouse embryo limb bud, about 1mm in size \cite{Boot:2008dt}. 
+Live OPT has also been used in molecular imaging tracking a changing 3-D gene expression pattern \cite{Colas:2009}.
+Vinegoni \textit{et al.} reported \textit{in vivo} imaging of Drosophila melanogaster pupae without clearing or matching fluids \cite{Vinegoni:2008ix}.  As there is no clearing involved and a mathematical model is required for reconstruction Vinegoni called this `mesoscopic' imaging rather than OPT/OptCT.  
 %A polarisation analyser in front of the CCD rejects highly scattered photons which lose their polarisation state. 
-Although gathering some biologically interesting information, the resolution was much worse than conventional OPT limiting the applications for this technique. 
+Although gathering some biologically interesting information, the resolution was much worse than conventional OPT limiting the applications for this technique. \textbf{[Could have great application of monitoring tumour development in 3-D where the mouse could be its own control, since not sacrificing many mice at different stages. Not sure if this is possible due to limited size and resolution, can tumours develop in embryos? Or could we do open imaging with holes in animal?]}
 
 
 
@@ -421,23 +423,28 @@ Although gathering some biologically interesting information, the resolution was
 \label{sec:clearing}
 
 %Need for refractive index matching to ensure parallel beam assumption is true enough that we can emloy traditional reconstruction techniques. 
-Optical clearing or clarification is a very important step in OptCT imaging of tissue. Tissue are made up of many components of different refractive indices meaning there are many optical boundaries for scatter and refraction to occur at. This is the reason why visible wavelength light does not penetrate very far in tissue. In order for the parallel ray assumption used in CT reconstruction to be true, refraction and scatter at cell membrane interfaces within the sample must be minimised. \cite{Oldham:2006} This is accomplished with clearing.
+Optical clearing or clarification is a very important step in OptCT imaging of tissue. Tissue are made up of many components of different refractive indices meaning there are many optical boundaries for scatter and refraction to occur at. This is the reason why visible wavelength light does not penetrate very far in tissue. In order for the parallel ray assumption used in CT reconstruction to be true, refraction and scatter at cell membrane interfaces within the sample must be minimised \cite{Oldham:2006}.  This is accomplished with clearing.
 
-During clearing, intracellular  fluid is replaced with a optical clearing agent (OCA). There are many choices of OCA but they should all have refractive indices matching the tissue to be imaged and be hyperosmolar (i.e. have a very high solute concentration).
+During clearing, intracellular  fluid is replaced with a optical clearing agent (OCA). There are many choices of OCA but they should all have refractive indices matching the tissue to be imaged and be hyperosmolar (i.e. have a very high solute concentration) \cite{tuchin2007tissue}.
  
  
-A very popular technique for clearing is the Optical Immersion technique. The sample is set in agarose gel for stability. The gel contains pores which allows diffusion of the OCA. The most commonly used OCAs for OPT are benzyl-alcohol-benzyl-benzoate (BABB, refractive index 1.55) or methyl salicylate (MetSal, refractive index 1.53). These are both aromatic organic solvents and are not miscible in water. Therefore a graded sequence of ethanol and OCA solutions is required to replace the intracellular water with the OCA. \cite{Oldham:2006} 
+A very popular technique for clearing is the Optical Immersion technique. The sample is set in agarose gel for stability. The gel contains pores which allows diffusion of the OCA. The most commonly used OCAs for OPT are benzyl-alcohol-benzyl-benzoate (BABB, refractive index 1.55) or methyl salicylate (MetSal, refractive index 1.53). These are both aromatic organic solvents and are not miscible in water. Therefore a graded sequence of ethanol and OCA solutions is required to replace the intracellular water with the OCA \cite{Oldham:2006}. 
 
-Some OCAs including glycerol and DMSO (dimethyl sulfoxide) can be directly applied to the tissue without need for graded ethanol solutions. However, they have been shown to be less effective than BABBs and MetSal and cannot penetrate deeper than 1cm. \cite{Oldham:2006} [MORE REFS?] They may be more suitable for \textit{in vivo} or live studies.
+Some OCAs, including glycerol and dimethyl sulfoxide (DMSO), can be directly applied to the tissue without need for graded ethanol solutions. However, they have been shown to be less effective than BABB and MetSal and cannot penetrate deeper than 1cm \cite{Oldham:2006}.  Glycerol may be more suitable for \textit{in vivo} or live studies as it is biologically inert however DMSO would not be suitable due to high toxicity \cite{Wen:2009is}.
 
-BABB has n=1.56 while water is n=1.33, what is n for tissue? \cite{Walls:2005ja}
+%BABB has n=1.56 while water is n=1.33, what is n for tissue? \cite{Walls:2005ja}
+
+Glycerol appears to be the best OCA for clarification of the skin \cite{Vargas:1999, Wen:2009is}. Its refractive index (1.46) is very similar to that of collagen which is the main scatterer in skin. What is unique about glycerol is the clearing effect is reversible upon rehydration with phosphate buffered saline solution \cite{Vargas:1999}. 
+
+The mechanism for how OCAs bring about optical clarification is not clear. It was previously thought the effect was purely due to refractive index matching however some work has shown that clearing skin with alcohol doesn't correlate with the OCA's refractive index \cite{Choi:2005, Mao:2008}. Additionally glycerol's reversibility indicates that its clarification mechanism is different to other agents. Some  proposed mechanisms include the dissociation of collagen (unravelling of the fibrous structure of collagen) and  dehydration (reducing the space between scatterers) as additional clearing effects \cite{Yeh:2003, Wen:2009is}.
 
 
-\subparagraph{Clearing for OptECT:}
-\cite{Oldham:2008dfa}
-\cite{Sakhalkar:2007hp} 
 
 
+Preserving fluorescent signal is very important when clearing for eOPT/OptECT applications. Oldham and Sakhalkar have tested some clearing and fixing protocols with different fluorescent proteins \cite{Sakhalkar:2007hp, Oldham:2008dfa}. Although it is common to fix tissue samples with paraformaldehyde (PFA) it was found that this resulted in an almost complete loss of fluorescent signal. Fixation with ethanol was found to preserve fluorescence and keep fluorophores robust upon application of BABB or MetSal. Although BABB was found to give better optical clarity in general, MetSal gave better fluorescence preservation. The optimal procedure was a combination of ethanol fixation and MetSal clearing which was tested on red and green fluorescent proteins (RFP and GFP) \cite{Sakhalkar:2007hp}.
+
+
+The exact concentrations of OCA needed and the specific OCA used will depend on the tissue and form of imaging to be performed. Finding the optimum chemicals for our purpose will involve trial and error as it has been previously shown that clearing effects are unpredictable due to the complex nature of the interactions between OCA and tissue \cite{Wen:2009is}.
 
 
 
@@ -445,65 +452,69 @@ BABB has n=1.56 while water is n=1.33, what is n for tissue? \cite{Walls:2005ja}
 \section{Optical Staining}
 \subsection{Staining for Cancer Markers}
 
-The goal of our experiment will be characterising MRI contrast in tumours by comparison with detailed 3-D maps of histological stains given by OptCT. The types of stains used will be useful for tumour recognition and characterisation. This is a well established area for histology and will be briefly reviewed here. We will look at the major markers of cancer and what the most common stains for these markers are. One thing to be investigated is how these stains work in the presence of OCAs. (Find some work on this?) Other groups have combined (list stains) with OCAs very successfully. 
-Being able to use optical stains is extremely useful for computer recognition of organs, can pick better thresholds. \cite{Sharpe:2003cm}
+The goal of our investigation will be characterising MRI contrast in tumours by comparison with detailed 3-D maps of histological stains given by OptCT. Staining for tumour recognition and characterisation is a well established area for histology and will be briefly reviewed here.  One aspect to be investigated is how these stains work in the presence of OCAs. Unfortunately, Oldham has not found a method of combining immunohistological stains with clearing procedures making \textit{in vivo} staining the most attractive option at present \cite{Oldham:2008dfa}.
+
+
+
+%Being able to use optical stains is extremely useful for computer recognition of organs, can pick better thresholds. \cite{Sharpe:2003cm}
 
 %\includegraphics[scale=0.45]{Hanahan_2000_hallmarks.jpg}
 %\caption{Diagram showing the six hallmarks of cancer. These adaptations are believed to be necessary for  tumours to become macroscopic. The changes can be acquired in many different ways and in different orders chronologically, as illustrated in the diagram. Figure adapted from \cite{Hanahan:2000}}
 
+%\begin{figure}[H]
+%\centering
+%\subfigure[Traditional Hallmarks]{\label{subfig:hallmarks}
+%\includegraphics[width=0.45\textwidth]{Hanahan_2011_hallmarks.jpg}}
+%\subfigure[New hallmarks]{\label{subfig:newhallmarks}
+%\includegraphics[width=0.45\textwidth]{Hanahan_2011_emerginghallmarks.jpg}}
+%\caption{Diagram showing the six hallmarks of cancer (\ref{subfig:hallmarks}) and some emerging characteristics that appear to also be necessary for tumours to become macroscopic (\ref{subfig:newhallmarks}). The changes can be acquired in many different ways and in different orders chronologically. Figure adapted from \cite{Hanahan:2011gua}}
+%\label{fig:hallmarks2011}
+%\end{figure}
 
 
+The primary hallmarks of cancer which are believed to be present in virtually all tumours are listed in Figure~\ref{fig:padhani} \cite{Hanahan:2000}. How these acquired capabilities arise differs between individual tumours however, there are some common pathways that can provide targets for therapy. The hallmarks also give some clues for imaging tumours (see Figure~\ref{fig:padhani}). Certain genes have been found to be very common in the route to gaining these capabilities. For example, inactivation of the p53 tumour suppressor gene is found in more than 50\% of  human tumours, giving the tumour cells the ability to evade apoptosis (programmed cell death). This gene can be tracked via reporter genes, such as HSV1-tk(GFP) which can then be imaged with positron emission tomography (PET) \cite{Doubrovin:2001}.  
 
-\begin{figure}[H]
-\centering
-\subfigure[Traditional Hallmarks]{\label{subfig:hallmarks}
-\includegraphics[width=0.45\textwidth]{Hanahan_2011_hallmarks.jpg}}
-\subfigure[New hallmarks]{\label{subfig:newhallmarks}
-\includegraphics[width=0.45\textwidth]{Hanahan_2011_emerginghallmarks.jpg}}
-\caption{Diagram showing the six hallmarks of cancer (\ref{subfig:hallmarks}) and some emerging characteristics that appear to also be necessary for tumours to become macroscopic (\ref{subfig:newhallmarks}). The changes can be acquired in many different ways and in different orders chronologically. Figure adapted from \cite{Hanahan:2011gua}}
-\label{fig:hallmarks2011}
-\end{figure}
+The area of molecular imaging is relatively new and usually involves the use of a reporter gene and complimentary reporter probe, the accumulation of which gives an indication of gene expression \cite{Blasberg:2003}. Different reporter probes can be imaged with MRI, PET, SPECT and optical techniques. Optical techniques have the advantage of being more cost and time-effective than MRI or nuclear methods. As mentioned before, OptCT has the additional advantage of better depth penetration than other common optical imaging methods such as confocal microscopy.
 
+%One such common target is the vascular endothelial growth factor (VEGF) which is often overexpressed in tumours and is important for angiogenesis. Blocking VEGF can stop additional blood flow to the tumour and restrict its growth. 
 
+%Other possible hallmarks have been identified which include evasion of anoikis (cell death signals caused by loss of cell-ECM contact) and increased glucose consumption through increased glycolysis. \cite{Gatenby:2008} 
 
-
-There are six primary hallmarks of cancer, shown in Figure~\ref{fig:hallmarks2011}, which are believed to be present in virtually all tumours. \cite{Hanahan:2000} Other possible hallmarks have been identified which include evasion of anoikis (cell death signals caused by loss of cell-ECM contact) and increased glucose consumption through increased glycolysis. \cite{Gatenby:2008} How these acquired capabilities come about changes between individual tumours however, there are some common pathways that can provide targets for therapy. One such common target is the vascular endothelial growth factor (VEGF) which is often overexpressed in tumours and is important for angiogenesis. Blocking VEGF can stop additional blood flow to the tumour and restrict its growth. 
-
-These hallmarks also give some clues for imaging tumours (see Figure~\ref{fig:padhani}). Certain genes have been found to be very common in the route to gaining these capabilities. For example, inactivation of the p53 tumour suppressor gene is found in more than 50\% of  human tumours, giving the tumour cells the ability to evade apoptosis (programmed cell death). This gene can be tracked via reporter genes, such as HSV1-tk(GFP) which can then be imaged with positron emission tomography (PET). \cite{Doubrovin:2001}  
 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{Padhani_2010_hallmarks.jpg}
-\caption{Diagram linking functional imaging modalities to the hallmarks of cancer. \textit{DW}:diffusion weighted, \textit{DCE}:dynamic contrast agent, \textit{Bold}: blood oxygenation-level dependent,\textit{US}: Ultrasound, \textit{MRS}: magnetic resonance spectroscopy, \textit{Ang-2}: angiopoietin-2, \textit{FLT}: fluorothymidine, \textit{HK}: hexokinase, \textit{OXPHOS}: oxidative phosphorylation, \textit{PGM}: phosphoglycerate mutase, \textit{PI3K}: phosphatidylinositol 3-kinase, \textit{SCO2}: synthesis of cytochrome c oxidase 2, \textit{VDAC}: voltage-dependent anion channel. Figure adapted from \cite{Padhani:2010hfa}}
+\caption{Diagram linking functional imaging modalities to the hallmarks of cancer. \textit{DW}:diffusion weighted, \textit{DCE}:dynamic contrast agent, \textit{Bold}: blood oxygenation-level dependent,\textit{US}: Ultrasound, \textit{MRS}: magnetic resonance spectroscopy, \textit{Ang-2}: angiopoietin-2, \textit{FLT}: fluorothymidine, \textit{HK}: hexokinase, \textit{OXPHOS}: oxidative phosphorylation, \textit{PGM}: phosphoglycerate mutase, \textit{PI3K}: phosphatidylinositol 3-kinase, \textit{SCO2}: synthesis of cytochrome c oxidase 2, \textit{VDAC}: voltage-dependent anion channel. Figure adapted from \cite{Padhani:2010hfa}}.
 \label{fig:padhani}
 \end{figure}
 
 %\includegraphics[scale=0.65]{Blasberg_2003_gene.jpg}
 %\caption{Diagram showing how the dual reporter gene HSV1-tk/GFP works. Figure adapted from \cite{Blasberg:2003} \textbf{Discuss}}
 
-The area of molecular imaging is relatively new and usually involves the use of a reporter gene and complimentary reporter probe, the accumulation of which gives an indication of gene expression. \cite{Blasberg:2003} Different reporter probes can be imaged with MRI, PET, SPECT and optical techniques. Optical techniques have the advantage of being more cost and time-effective than MRI or nuclear methods. As mentioned before, OptCT has the additional advantage of better depth penetration than other common optical imaging methods such as confocal microscopy.
-
-In particular, fluorescent proteins have revolutionised the area of tumour imaging allowing real-time imaging of tumour angiogenesis, metastases, cell invasion and motility. \cite{Hoffman:2005}
-Disadvantages of using fluorescent markers include the complication of  quantifying the data, high autoflourescence in the blue-green window which limits SNR, fluorophore photobleaching and high levels of scatter and attenuation of photons in tissue. \cite{Gross:2005} However, the advantages include the possibility of real-time imaging and specificity of the markers  allowing imaging of single cell metastases. \cite{Hoffman:2005} 
-%(real time since no substrate is required, uncoupling the read-out from substrate pharmacokinetics, too much detail?). \cite{Gross:2005} 
 
 
-The most common fluorescent marker used is \textit{Aequorea victoria} green fluorescent protein (GFP) and its spectrally shifted variants. 
-GFP markers are a family of fluorescent proteins with emission ranges from 442-645nm. \cite{Hoffman:2005} They are popular markers due to their high extinction coefficient and high quantum yield giving very bright and efficient fluorescence. The different types are spectrally different and so can be used at the same time to mark different aspects of the biology. \cite{Hoffman:2005} 
+Fluorescent proteins have revolutionised the area of tumour imaging, allowing real-time imaging of tumour angiogenesis, metastases, cell invasion and motility \cite{Hoffman:2005}. Using these proteins can give visualisation of a single metastatic  cell in normal tissue, far beyond the ability of histology which is the current gold standard of imaging \cite{Hoffman:2009}. The ability to colour-code cells according to genotype and phenotype is a massive advantage when monitoring the progression of tumours and their response to treatment.
+Some disadvantages of using fluorescent markers include the complication of  quantifying the data, high auto-fluorescence in the blue-green window which limits SNR, fluorophore photobleaching and high levels of scatter and attenuation of photons in tissue \cite{Gross:2005}. However, these problems are being solved as fluorescent imaging becomes more common-place. 
 
-Other markers include red proteins Red1 and Red2 and mPlum. \cite{Blasberg:2003} With the discovery of red and NIR fluorophores, fluorescent optical molecular imaging is becoming  more widespread. These markers avoid the problem of blue-green autofluorescence that GFP experiences and also have slightly deeper penetration due to the therapeutic window in tissue in the NIR range. [REF]
 
-Other fluorescent stains which may be interesting inlcude HERC (Spelling?), which is a perfusion marker administered \textit{in vivo}, Doxorubicin which is a fluorescent drug  giving a measure of drug delivery \textit{in vivo} and Evan's blue, a permeability marker which is used clinically. 
-Some non-fluorescent stains which would be used for tOPT include Alcian blue which stains cartilage (CHECK), and Pimonidazole which is a clinically used hypoxia marker giving quantitative and qualitative measures of hypoxia in tissue. \cite{Varia:1998} Resins such as Mercox and Microphil.
+The most common fluorescent marker used is  green fluorescent protein (GFP) and its spectrally shifted variants with emission ranges from 442-645nm \cite{Hoffman:2005}. The GFP gene was first cloned from \textit{Aequorea victoria} jellyfish and has since been humanised giving high expression and signal for use in mammals \cite{Hoffman:2009}. They are popular markers due to their high extinction coefficient and high quantum yield giving very bright and efficient fluorescence. The different variants are spectrally different enough to can be used at the same time, marking different aspects of the biology \cite{Hoffman:2005}. 
+
+With the discovery of red and NIR fluorophores, fluorescent optical molecular imaging is becoming  more widespread. These markers avoid the problem of blue-green autofluorescence that GFP experiences and also have slightly deeper penetration due to the therapeutic window in tissue in the NIR range. The first red fluorescent protein (RFP) was cloned from \textit{Discosoma} coral in the late 1990s and has been modified giving DsRed-2, a very bright protein with emission peak at 588nm. Other longer wavelength variants have been developed such as mPlum and mCherry however these were less bright \cite{Hoffman:2009}. A newer, very bright red marker called Katushka looks very promising with high photo-stability. Its excitation and emission wavelengths of 588nm and 635nm respectively are ideal for tissue being lowly absorbed by both tissue and haemoglobin \cite{Shcherbo:2007}.
+ 
+
+Other fluorescent stains which may be interesting include  Doxorubicin, which is a fluorescent drug  giving a measure of drug delivery \textit{in vivo} and Evan's blue, a permeability marker which is used clinically. 
+Some non-fluorescent stains which would be used for tOPT include Alcian blue which stains cartilage \textbf{(CHECK)}, and Pimonidazole which is a clinically used hypoxia marker giving quantitative and qualitative measures of hypoxia in tissue \cite{Varia:1998}. 
+
+Resins such as Mercox and Microphil. HERC (Spelling?), which is a perfusion marker administered \textit{in vivo}
 \textbf{Ask about Herc and resins}
 
-One issue with choosing stains for use in OptCT finding stains which can diffuse through a whole tumour. Stains administered \textit{in vivo} such as by tail injection may be preferable rather than trying to stain a large volume of tissue after dissection. \textbf{(REF and CHECK)} For example, Soufan \textit{et al.} monitored gene expression during cardiac development in 2003. Their preferred stains  could not penetrate the entire embryo heart and they were forced to take slices, losing valuable 3-D information. \cite{Soufan:2003cd} 
+One issue with choosing stains for use in OptCT is finding stains which can diffuse through a whole tumour. Stains administered \textit{in vivo} such as by tail injection may be preferable rather than trying to stain a large volume of tissue after dissection. For example, Soufan \textit{et al.} monitored gene expression during cardiac development in 2003. Their preferred stains  could not penetrate the entire embryo heart and they were forced to take slices, losing valuable 3-D information \cite{Soufan:2003cd}. 
 
 
 \subsection{Optical Staining in OptCT}
 
-One example of fluorescent proteins being used for OptCT imaging is by Kim in 2008. \cite{Kim:2008eua} A tumour cell line was genetically labelled with GFP and RFP which were used to image hypoxia-indcible factor 1 (HIF1) and necrotic regions respectively. Tumour micro-vasculature was labelled by a dilute solution of isotonic India ink, a light-absorbing stain administered \textit{in vivo} by tail injection. The use of multiple stains allows co-registered images to be taken using tOPT for the micro-vasculature, eOPT with two different emission filters to see hypoxic regions (GFP) and tumour cells (RFP). 
+One example of fluorescent proteins being used for OptCT imaging is by Kim \textit{et al.} in 2008 \cite{Kim:2008eua}. A tumour cell line was genetically labelled with GFP and RFP which were used to image hypoxia-indcible factor 1 (HIF1) and necrotic regions respectively. Tumour micro-vasculature was labelled by a dilute solution of isotonic India ink, a light-absorbing stain administered \textit{in vivo} by tail injection. The use of multiple stains allows co-registered images to be taken using tOPT for the micro-vasculature, eOPT with two different emission filters to see hypoxic regions (GFP) and tumour cells (RFP). 
 
 
 
@@ -512,14 +523,14 @@ One example of fluorescent proteins being used for OptCT imaging is by Kim in 20
 
 
 
-Oldham's group have also used a passive isotonic ink dye to image micro-vasculature but have also tested an active  Fluorescein isothiocyanate (FITC)-lectin conjugate. The lectin protein binds to the endothelial lining while FITC fluorescence gives eOPT signal. \cite{Oldham:2007ku} Both agents were administered by tail vein injection before sacrifice of the animal allowing the stains to be circulated in the blood. Using both absorbing and emitting stains gives contrast in both OptCT and ECT set-ups. For imaging tumour cells themselves, HCT116 tumour cells were transfected with a gene coding for RFP and then implanted in the hind leg of a mouse. \cite{Oldham:2006} USing a DSRed2 filter, viable tumour cells were imaged in the OptECT set-up. Oldham demonstrates the superiority of OptCT/ECT for this type of imaging by comparison with $\mu$-CT and $\mu$-MRI (see Figure~\ref{fig:tumourstaining}).
+Oldham's group have also used a passive isotonic ink dye to image micro-vasculature but have additionally tested an active  Fluorescein isothiocyanate (FITC)-lectin conjugate. The lectin protein binds to the endothelial lining while FITC fluorescence gives eOPT signal \cite{Oldham:2007ku}. Both agents were administered by tail vein injection before sacrifice of the animal allowing the stains to be circulated by the blood.  For imaging tumour cells themselves, HCT116 tumour cells were transfected with a gene coding for RFP and then implanted in the hind leg of a mouse \cite{Oldham:2006}. Using a DSRed2 filter, viable tumour cells were imaged in the OptECT set-up. Oldham demonstrates the superiority of OptCT/ECT for this type of imaging by comparison with $\mu$-CT and $\mu$-MRI (see Figure~\ref{fig:tumourstaining}).
 
 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=1]{Oldham_2006_tumourstaining.jpg}
-\caption{Figure showing the advantage of OptCT imaging over other modalities. Part (A) shows a projection image of a HCT116 tumour after optical clearing. (B) is an \textit{in vivo} micro-Ct image of the same tumour with 50$\mu$m resolution. (C) is \textit{in vivo} T1 weighted contrast enhanced micro-MRI image of a similar tumour. The superior resolution and contrast in the OptCT image is evident. Images  adapted from \cite{Oldham:2006}}
+\caption{Figure showing the advantage of OptCT imaging over other modalities. Part (A) shows a projection image of a HCT116 tumour after optical clearing. (B) is an \textit{in vivo} $\mu$-CT image of the same tumour with 50$\mu$m resolution. (C) is \textit{in vivo} T1 weighted contrast enhanced $\mu$-MRI image of a similar tumour. The superior resolution and contrast in the OptCT image is evident. Images  adapted from \cite{Oldham:2006}.}.
 \label{fig:tumourstaining}
 \end{figure}
 
@@ -528,12 +539,16 @@ Oldham's group have also used a passive isotonic ink dye to image micro-vasculat
 
 
 
+\section{Conclusions}
 
 
+\subparagraph{Recent Research} 
+Some new ideas include combining with FLIM and FRET.. time gated.. some computational techniques including CLAHE.
 
-\section{Recent Research}
 
-Imperial group investigating Opt combined with FRET and FLIM. Define these and some uses for the combined modality. What physical/software changes needed for this imaging.
+Imperial group investigating OPT combined 
+with FRET and FLIM. Define these and some uses for the combined modality.
+ What physical/software changes needed for this imaging.
 FLIM OPT: \cite{McGinty:2008ix}, In vivo FLIM OPT \cite{McGinty:2011vm}.
 
  Time gated OPT Bassi 2010 \cite{Bassi:2010}
@@ -542,8 +557,8 @@ FLIM OPT: \cite{McGinty:2008ix}, In vivo FLIM OPT \cite{McGinty:2011vm}.
 
 Lorbeer - SLOT \cite{Lorbeer:2011}
 
-\section{Conclusions}
 
+\newpage
 \bibliography{bibliography2}
 
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.1.17)  4 FEB 2013 18:26
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.1.17)  5 FEB 2013 17:30
 entering extended mode
 **Lit*Review.tex
 ("C:\Users\cmcerlean\Desktop\Lit Review current\Lit Review.tex"
@@ -291,135 +291,118 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 12.
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) [1
 
-{C:/Users/cmcerlean/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<Russ_projection.jpg, id=9, 350.81062pt x 225.09094pt>
+{C:/Users/cmcerlean/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+<Russ_projection.jpg, id=20, 350.81062pt x 225.09094pt>
 File: Russ_projection.jpg Graphic file (type jpg)
 
 <use Russ_projection.jpg>
-Package pdftex.def Info: Russ_projection.jpg used on input line 72.
+Package pdftex.def Info: Russ_projection.jpg used on input line 87.
 (pdftex.def)             Requested size: 280.64886pt x 180.07298pt.
- [2]
+
 <Doran_2008_sinogram.jpg, id=21, 608.2725pt x 420.82219pt>
 File: Doran_2008_sinogram.jpg Graphic file (type jpg)
 
 <use Doran_2008_sinogram.jpg>
-Package pdftex.def Info: Doran_2008_sinogram.jpg used on input line 98.
+Package pdftex.def Info: Doran_2008_sinogram.jpg used on input line 97.
 (pdftex.def)             Requested size: 430.00462pt x 297.49516pt.
  [3 <C:/Users/cmcerlean/Desktop/Lit Review current/Russ_projection.jpg>] [4 <C:
 /Users/cmcerlean/Desktop/Lit Review current/Doran_2008_sinogram.jpg>]
 Missing character: There is no â in font cmti12!
 Missing character: There is no € in font cmti12!
-Missing character: There is no ˜ in font cmti12!
-Missing character: There is no â in font cmti12!
-Missing character: There is no € in font cmti12!
-Missing character: There is no ™ in font cmti12!
-Missing character: There is no â in font cmti12!
-Missing character: There is no € in font cmti12!
 Missing character: There is no ™ in font cmti12!
  [5] [6]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 194.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 190.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 194.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 190.
  [7]
 <Gore_setup.pdf, id=39, 483.8075pt x 323.2075pt>
 File: Gore_setup.pdf Graphic file (type pdf)
  <use Gore_setup.pdf>
-Package pdftex.def Info: Gore_setup.pdf used on input line 213.
+Package pdftex.def Info: Gore_setup.pdf used on input line 209.
 (pdftex.def)             Requested size: 290.28674pt x 193.926pt.
  [8 <C:/Users/cmcerlean/Desktop/Lit Review current/Gore_setup.pdf>]
 <Tarte_1997_ccdsetup.jpg, id=53, 744.53156pt x 312.41719pt>
 File: Tarte_1997_ccdsetup.jpg Graphic file (type jpg)
 
 <use Tarte_1997_ccdsetup.jpg>
-Package pdftex.def Info: Tarte_1997_ccdsetup.jpg used on input line 235.
+Package pdftex.def Info: Tarte_1997_ccdsetup.jpg used on input line 231.
 (pdftex.def)             Requested size: 297.80734pt x 124.96465pt.
  [9 <C:/Users/cmcerlean/Desktop/Lit Review current/Tarte_1997_ccdsetup.jpg>]
 <Doran_2001_ccdsetup.jpg, id=57, 541.27219pt x 328.22626pt>
 File: Doran_2001_ccdsetup.jpg Graphic file (type jpg)
 
 <use Doran_2001_ccdsetup.jpg>
-Package pdftex.def Info: Doran_2001_ccdsetup.jpg used on input line 255.
+Package pdftex.def Info: Doran_2001_ccdsetup.jpg used on input line 251.
 (pdftex.def)             Requested size: 324.76581pt x 196.93727pt.
- [10 <C:/Users/cmcerlean/Desktop/Lit Review current/Doran_2001_ccdsetup.jpg>]
-<Wolodzko_1999_conesetup.jpg, id=61, 571.38469pt x 636.87938pt>
+ [10]
+<Wolodzko_1999_conesetup.jpg, id=62, 571.38469pt x 636.87938pt>
 File: Wolodzko_1999_conesetup.jpg Graphic file (type jpg)
 
 <use Wolodzko_1999_conesetup.jpg>
-Package pdftex.def Info: Wolodzko_1999_conesetup.jpg used on input line 278.
+Package pdftex.def Info: Wolodzko_1999_conesetup.jpg used on input line 274.
 (pdftex.def)             Requested size: 171.41672pt x 191.06528pt.
- [11 <C:/Users/cmcerlean/Desktop/Lit Review current/Wolodzko_1999_conesetup.jpg
->] [12]
-<Sharpe_2002_setup.jpg, id=68, 309.40594pt x 277.035pt>
+ [11 <C:/Users/cmcerlean/Desktop/Lit Review current/Doran_2001_ccdsetup.jpg>] [
+12 <C:/Users/cmcerlean/Desktop/Lit Review current/Wolodzko_1999_conesetup.jpg>]
+ [13]
+<Sharpe_2002_setup.jpg, id=73, 309.40594pt x 277.035pt>
 File: Sharpe_2002_setup.jpg Graphic file (type jpg)
 
 <use Sharpe_2002_setup.jpg>
-Package pdftex.def Info: Sharpe_2002_setup.jpg used on input line 334.
+Package pdftex.def Info: Sharpe_2002_setup.jpg used on input line 333.
 (pdftex.def)             Requested size: 215.0023pt x 192.5155pt.
 
-<Sharpe_2003_mouse.jpg, id=69, 361.35pt x 476.53032pt>
+<Sharpe_2003_mouse.jpg, id=74, 361.35pt x 476.53032pt>
 File: Sharpe_2003_mouse.jpg Graphic file (type jpg)
 
 <use Sharpe_2003_mouse.jpg>
-Package pdftex.def Info: Sharpe_2003_mouse.jpg used on input line 336.
+Package pdftex.def Info: Sharpe_2003_mouse.jpg used on input line 335.
 (pdftex.def)             Requested size: 180.67456pt x 238.26457pt.
- [13 <C:/Users/cmcerlean/Desktop/Lit Review current/Sharpe_2002_setup.jpg> <C:/
+ [14 <C:/Users/cmcerlean/Desktop/Lit Review current/Sharpe_2002_setup.jpg> <C:/
 Users/cmcerlean/Desktop/Lit Review current/Sharpe_2003_mouse.jpg>] <Fauver_2005
-_setup.jpg, id=75, 377.15906pt x 277.035pt>
+_setup.jpg, id=79, 377.15906pt x 277.035pt>
 File: Fauver_2005_setup.jpg Graphic file (type jpg)
 
 <use Fauver_2005_setup.jpg>
-Package pdftex.def Info: Fauver_2005_setup.jpg used on input line 350.
+Package pdftex.def Info: Fauver_2005_setup.jpg used on input line 349.
 (pdftex.def)             Requested size: 301.72766pt x 221.6283pt.
- [14 <C:/Users/cmcerlean/Desktop/Lit Review current/Fauver_2005_setup.jpg>]
-<Oldham_2007ku_eCTsetup.jpg, id=79, 284.56313pt x 144.54pt>
+ [15 <C:/Users/cmcerlean/Desktop/Lit Review current/Fauver_2005_setup.jpg>] [16
+]
+<Oldham_2007ku_eCTsetup.jpg, id=86, 284.56313pt x 144.54pt>
 File: Oldham_2007ku_eCTsetup.jpg Graphic file (type jpg)
 
 <use Oldham_2007ku_eCTsetup.jpg>
-Package pdftex.def Info: Oldham_2007ku_eCTsetup.jpg used on input line 378.
+Package pdftex.def Info: Oldham_2007ku_eCTsetup.jpg used on input line 380.
 (pdftex.def)             Requested size: 284.56242pt x 144.53963pt.
- [15] [16 <C:/Users/cmcerlean/Desktop/Lit Review current/Oldham_2007ku_eCTsetup
-.jpg>] [17] [18]
-<Hanahan_2011_hallmarks.jpg, id=92, 458.46281pt x 286.82156pt>
-File: Hanahan_2011_hallmarks.jpg Graphic file (type jpg)
-
-<use Hanahan_2011_hallmarks.jpg>
-Package pdftex.def Info: Hanahan_2011_hallmarks.jpg used on input line 460.
-(pdftex.def)             Requested size: 193.50076pt x 121.05505pt.
-
-<Hanahan_2011_emerginghallmarks.jpg, id=93, 449.42906pt x 328.22626pt>
-File: Hanahan_2011_emerginghallmarks.jpg Graphic file (type jpg)
-
-<use Hanahan_2011_emerginghallmarks.jpg>
-Package pdftex.def Info: Hanahan_2011_emerginghallmarks.jpg used on input line 
-462.
-(pdftex.def)             Requested size: 193.50076pt x 141.31483pt.
- [19 <C:/Users/cmcerlean/Desktop/Lit Review current/Hanahan_2011_hallmarks.jpg>
- <C:/Users/cmcerlean/Desktop/Lit Review current/Hanahan_2011_emerginghallmarks.
-jpg>]
-<Padhani_2010_hallmarks.jpg, id=98, 632.3625pt x 442.65375pt>
+ [17 <C:/Users/cmcerlean/Desktop/Lit Review current/Oldham_2007ku_eCTsetup.jpg>
+] [18] [19] [20]
+<Padhani_2010_hallmarks.jpg, id=100, 632.3625pt x 442.65375pt>
 File: Padhani_2010_hallmarks.jpg Graphic file (type jpg)
 
 <use Padhani_2010_hallmarks.jpg>
-Package pdftex.def Info: Padhani_2010_hallmarks.jpg used on input line 477.
+Package pdftex.def Info: Padhani_2010_hallmarks.jpg used on input line 487.
 (pdftex.def)             Requested size: 379.42043pt x 265.59428pt.
- [20 <C:/Users/cmcerlean/Desktop/Lit Review current/Padhani_2010_hallmarks.jpg>
-] [21]
-<Oldham_2006_tumourstaining.jpg, id=105, 393.72093pt x 137.7647pt>
+ [21] [22 <C:/Users/cmcerlean/Desktop/Lit Review current/Padhani_2010_hallmarks
+.jpg>] [23]
+<Oldham_2006_tumourstaining.jpg, id=110, 393.72093pt x 137.7647pt>
 File: Oldham_2006_tumourstaining.jpg Graphic file (type jpg)
 
 <use Oldham_2006_tumourstaining.jpg>
-Package pdftex.def Info: Oldham_2006_tumourstaining.jpg used on input line 521.
+Package pdftex.def Info: Oldham_2006_tumourstaining.jpg used on input line 532.
 
 (pdftex.def)             Requested size: 393.71997pt x 137.76434pt.
- [22]
-("C:\Users\cmcerlean\Desktop\Lit Review current\Lit Review.bbl" [23 <C:/Users/c
-mcerlean/Desktop/Lit Review current/Oldham_2006_tumourstaining.jpg>] [24]
-[25] [26] [27]
+ [24 <C:/Users/cmcerlean/Desktop/Lit Review current/Oldham_2006_tumourstaining.
+jpg>] [25]
+("C:\Users\cmcerlean\Desktop\Lit Review current\Lit Review.bbl" [26] [27]
+[28] [29]
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no “ in font cmr12!
+ [30]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
@@ -429,39 +412,37 @@ Missing character: There is no “ in font cmr12!
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no “ in font cmr12!
- [28]
+ [31]
 Missing character: There is no Î in font cmr12!
 Missing character: There is no ² in font cmr12!
-) [29]
+) [32]
 ("C:\Users\cmcerlean\Desktop\Lit Review current\Lit Review.aux") ) 
 Here is how much of TeX's memory you used:
- 4064 strings out of 494045
- 59301 string characters out of 3148375
+ 4057 strings out of 494045
+ 58954 string characters out of 3148375
  119843 words of memory out of 3000000
- 7303 multiletter control sequences out of 15000+200000
- 13395 words of font info for 52 fonts, out of 3000000 for 9000
+ 7297 multiletter control sequences out of 15000+200000
+ 13754 words of font info for 53 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 36i,10n,38p,1012b,289s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,10n,38p,1335b,289s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program F
 iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmti12.pfb>
-Output written on "Lit Review.pdf" (29 pages, 1018915 bytes).
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cmextra/cmex8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmti12.pfb>
+Output written on "Lit Review.pdf" (32 pages, 925655 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
+ 187 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
