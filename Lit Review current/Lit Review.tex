@@ -1,6 +1,7 @@
 \documentclass[12pt]{article} 
 \usepackage[pdftex]{graphicx}
 \usepackage{subfigure}
+\usepackage{nicefrac}
 \usepackage{geometry, amsmath, amssymb, array, cite, caption, float}
 \setlength{\parindent}{0pt} 
 \setlength{\parskip}{2ex}
@@ -36,7 +37,7 @@ Multiparametric imaging is very important in cancer imaging. It allows the cross
 \section{Theory}
 \label{sec:theory}
 
-The theory behind CT reconstruction is broadly the same between x-ray CT and OptCT. One minor difference is that it is common in x-ray CT for the detectors to rotate around the sample whereas in OptCT the sample rotates and the detectors are stationary. This introduces a minus sign at one stage of the reconstruction algorithm. [WHY IS THIS?]
+%The theory behind CT reconstruction is broadly the same between x-ray CT and OptCT. One minor difference is that it is common in x-ray CT for the detectors to rotate around the sample whereas in OptCT the sample rotates and the detectors are stationary. This introduces a minus sign at one stage of the reconstruction algorithm. [WHY IS THIS?]
 
 
 
@@ -110,65 +111,77 @@ In practice, the finite number of lines $L$ limits the resolution of reconstruct
 
 The information stored in a sinogram is used to reconstruct a map of attenuation within the sample. This is done through the process of back-projection.
 
-Simple back-projection involves  taking each projection point $P_{\phi}(x)$ and working back along the line integral, $L$, which created that projection in real space. Each point along $L$ is  attributed with the value $P_{\phi}(x)$. After doing this for all projection points, certain areas in real space are shaded darker as projections from different angles cross over. This builds up a picture of the shapes inside the sample. However, simple back-projection is flawed, producing blurred images. In order to reconstruct more accurate images a mathematical trick called Filtered Back-projection (FBP) is used.
+Simple back-projection involves  taking each projection point $P_{\phi}(x)$ and working back along the line integral, $L$, which created that projection in real space. Each point along $L$ is  attributed with the value $P_{\phi}(x)$. After doing this for all projection points, certain areas in real space are shaded darker as projections from different angles cross over. This builds up a picture of the shapes inside the sample. 
 
-FBP
+Mathematically, back-projection can be described in terms of Fourier transforms (FTs). The 1-D FT of projection data for  angle, $\phi$, is given by
+
+\begin{equation}
+S_{\phi}(k_x) = \int P_{\phi}(x)\mathrm{e}^{-i x k_x}\, \mathrm{d}x
+\end{equation}
+
+where the FT maps $P_{\phi}(x)$ from the spatial domain to $S_{\phi}(k_x)$ in the frequency domain, also known as k-space.
+
+For the case of $\phi = 0$ this can  be written as
+
+\begin{align}
+S_{0}(k_x) &= \iint \mu(x,y) \mathrm{e}^{-i x k_x }\, \mathrm{d}x\mathrm{d}y \label{eq:1}\\
+  &= \iint \mu(x,y) \mathrm{e}^{-i(k_xx +k_yy)}\, \mathrm{d}x\mathrm{d}y \label{eq:ky} \\ 
+  &= \tilde{\mu}(k_x,k_y=0) \label{eq:3}
+\end{align}
+where $\tilde{\mu}(k_x,k_y)$ is the 2-D FT of $\mu(x,y)$.
+The extra term in (\ref{eq:ky}) is added  under the assumption that $k_y = 0$ giving $\mathrm{e}^{k_yy}=\mathrm{e}^{0}=1$. 
+
+Since the co-ordinate system can be chosen arbitrarily, equations (\ref{eq:1}-\ref{eq:3}) can be generalised for any angle $\phi$.
+This  is formalised in the Fourier Slice Theorem which states that the 2-D FT of $\mu(x,y)$ along the line at $\phi$ in k space is the same as the 1-D FT of the projection, $P_{\phi}(x)$ \cite{Doran:2008kh}.
+
+However, simple back-projection is flawed. As all the projections cross in the middle of the image, an artefact of high attenuation builds up there and edges of features in the sample are blurred.  In order to reconstruct more accurate images a mathematical trick called Filtered Back-projection (FBP) is used. 
+
+The blurring is similar to that of an out-of-focus system with point spread function (PSF) proportional to $\nicefrac{1}{f}$ where $f$ is the frequency \cite{russ2002image}. Therefore, to remove this blurring effect the image should be multiplied by the inverse of the blurring function in frequency space.
+
+Therefore, the formula for reconstructing $\mu(x,y)$ using FBP involves a 2-D inverse FT of $S_{\phi}(k)$
+
+\begin{equation}
+\mu(x,y) = \frac{1}{2\pi} \iint \tilde{\mu}(k_x,k_y) \mathrm{e}^{i\left(k_xx+k_yy\right)}\, \mathrm{d}k_x\mathrm{d}k_y
+\end{equation}
+
+Converting to polar coordinates where $k_x=k\cos\phi$ and $k_y=k\sin\phi$ gives
+\begin{align}
+\mu(x,y) &= \frac{1}{2\pi} \int\limits_0^{2\pi} \int\limits_0^{\infty} \tilde{\mu}(k,\phi) \mathrm{e}^{ik\left(x\cos\phi+y\sin\phi\right)}k\, \mathrm{d}k\mathrm{d}\phi \\
+&= \frac{1}{2\pi} \int\limits_0^{2\pi}\left[\int\limits_0^{\infty}S_{\phi}(k)\mathrm{e}^{ikx'}k\, \mathrm{d}k \right]\, \mathrm{d}\phi \\
+&= \frac{1}{2\pi} \int\limits_0^{2\pi}Q_{\phi}(x')\, \mathrm{d}\phi
+\end{align}
+where $Q_{\phi}(x')$ is the projection filtered by in the frequency domain by multiplication with $k$. This is known as the ideal inverse filter, giving high weighting to high frequency components but low weighting to low frequencies. Other commonly used filters include the Hann,  Hamming, Butterworth, Shepp-Logan and Ram-Lak. Choice of filter can affect the quality of reconstructions \cite{russ2002image}.
+
+In order to use the FBP to reconstruct projections from OptCT two requirements of the Fourier Slice theorem must be satisfied. The first is that projections should be the result of rays travelling parallel to the optical axis through the sample. The second is that all points along a projection should contribute with the same weighting to the signal \cite{Wang:2007}. OptCT design considerations focus on satisfying these requirements to obtain high quality images.
 
 
-%Fourier Slice Theory
 
-%Filtering, Hamm, Ram Lak, Shepp Logan
+%Computational methods for improving reconstructions in OPT by Birk in 2011 \cite{Birk:2011}
 
-%Number of projections acquired affects image noise/blurriness. Don't need more than $180^{\circ}$.check
-
-%Mention alternative, Algebraic Reconstruction Technique and other iterative methods. 
-
-
-Walls 2005 \cite{Walls:2005ja} : \textit{the tOPT views must be transformed according to Beer’s law, standard in x-ray CT, in order to obtain sums of attenuation coefficients along the projection cones, necessitating sample removal and capture of brightfield images. Each view is divided by a low noise estimate of the illumination that is obtained by averaging several brightfield images.}
-
-Fourier slice theorem requirements, see Wang 2007 \cite{Wang:2007}
-
-Nyquist sampling theory dictates minimum number of projection/views required.
-
-Computational methods for improving reconstructions in OPT by Birk in 2011 \cite{Birk:2011}
-
-
-%\textit{Imaging with high resolution using this principle requires that the projection data are a direct result of the line integral of   the   parallel   rays   passing   through   the   sample.} \cite{Wang:2006hy}
-%\textit{The optical images captured by the CCD are approximated as parallel projections throughout the specimen. A series of images at different views are then obtained by rotating the specimen. In such a way, the cross sections of the specimen can be independently reconstructed with the data on the corresponding rows of the CCD captured at sufficient different views.}\cite{Wang:2006hy}
-%\textit{ In fact, two assumptions are made to enable the conventional OPT to use the term of ‘projection’ and the reconstruction algorithm. First, the narrow cones of the light ray projected onto a CCD are assumed to be the strip integrals through the sample. Second, the axes of the light cones are taken to be parallel to each other. The two assumptions place severe constraints on the resolution of OPT imaging. In this paper, we present improved image-forming optics for OPT, with which the axes of the light cones are parallel to the optical axis of the optics. As a result, the parallel integral throughout a sample can be satisfied, and the second assumption mentioned above is relaxed. This method results in an improved spatial resolution, especially for the cross sections far from the optical axis}. \cite{Wang:2006hy}
-
-\subsection{Refractive index matching}
 
 
 \subsection{Optics}
 
-(See Walls 2007) Resolution given by Rayleigh criterion.
-
+(See Walls 2007) Resolution for an optical system is given by the Rayleigh criterion,
 \begin{equation}
 r_{Airy} = \dfrac{0.61n\lambda}{\rm{NA}}
 \end{equation}
 where $r_{Airy}$ is the radius of the Airy function which is a measure of resolution in the focal plane. $n$ is the refractive index of the medium around the lens, $\lambda$ is the wavelength of light and NA is the numerical aperture of the lens. 
 
 Depth of field (DOF) is given by [REF]
- 
 \begin{equation}
 DOF = n_{bath}(\dfrac{n\lambda}{\rm{NA}^{2}} + \dfrac{n}{M\rm{NA}}e)
 \end{equation}
-
 where e is the pixel size of the CCD, $n_{bath}$ is the refractive index of the medium surrounding the specimen and $M$ is the lateral magnification.
 
 According to Nyquist the Airy disc must be sampled more than twice per DOF distance to avoid aliasing. This constrains the detector spacing to
-
 \begin{equation}
 e \leq M \dfrac{r_{Airy}}{2}
 \end{equation}
-
 so the maximum possible DOF is given by
-
 \begin{equation}
-DOF_{max} = n_{bath}(\dfrac{1.305\lambda}{NA^{2}})
+DOF_{max} = n_{bath}(\dfrac{1.305\lambda}{\mathrm{NA}^{2}})
 \end{equation}
-
 Shows trade-off between high resolution with high NA and high DOF with low NA. Generally choose NA based on size of sample.
 [Say how this impacts on scanning process, include sinogram from Doran 2010 PMB. Refer to discussion of Sharpe's set-up and DOF]
 
@@ -187,9 +200,9 @@ Walls 2005 \textit{Noise is Poisson distributed below 2\% on an averaged signal.
 %\label{subsec:doshist}
 
 
-One of the first reported optical computed tomography (OptCT) systems was developed in the area of gel dosimetry. Accurate 3-D measurement of dose delivery in radiotherapy is extremely important in developing safe treatment plans. Specialist polymer gels, such as BANG\textsuperscript{\textregistered} \cite{Maryanski:1996}, respond to irradiation with changes in optical attenuation and scattering properties.  This makes them ideal for measuring 3-D dose distributions. Previously the irradiated gels were measured by MRI and x-ray CT. However, these are expensive imaging modalities. In 1996, Gore and Maryanski published the first system for scanning polymer gels using optical computed tomography. \cite{Gore:1999tg} In later comparisons, OptCT has been found to be more precise, have reduced noise and smoother line profiles than MRI for gel dosimetry. \cite{Oldham:2001gs} [DISPUTED PAPER]
+One of the first reported optical computed tomography (OptCT) systems was developed in the area of gel dosimetry. Accurate 3-D measurement of dose delivery in radiotherapy is extremely important in developing safe treatment plans. Specialist polymer gels, such as BANG\textsuperscript{\textregistered} \cite{Maryanski:1996}, respond to irradiation with changes in optical attenuation and scattering properties.  This makes them ideal for measuring 3-D dose distributions. Previously the irradiated gels were measured by MRI and x-ray CT. However, these are expensive imaging modalities. In 1996, Gore and Maryanski published the first system for scanning polymer gels using optical computed tomography \cite{Gore:1999tg}. In later comparisons, OptCT has been found to be more precise, have reduced noise and smoother line profiles than MRI for gel dosimetry \cite{Oldham:2001gs}. [DISPUTED PAPER]
 
-Gore's system consisted of a  He-Ne laser source and large area photodiode detector (see Figure~\ref{fig:gore_setup}). Translate-rotate acquisition was employed whereby the sample was rotated and projection data  acquired  by the photodiode over $360^{\circ}$. Small angular steps between projections are necessary for high quality reconstruction \cite{russ2002image}. For a 2-D reconstruction, projections are acquired for multiple spots across a slice of the sample by translating the laser beam using mirrors. For 3-D information, the sample height  had to be manually adjusted and many 2-D slices acquired. This meant scanning an entire sample took  hours and lengthy scanning times are the chief disadvantage of the laser scanning method.  Accuracy of 5\% is reported and spatial resolution of 2mm, which is roughly the same as the laser beam width. \cite{Gore:1999tg}
+Gore's system consisted of a  He-Ne laser source and large area photo-diode detector (see Figure~\ref{fig:gore_setup}). Translate-rotate acquisition was employed whereby the sample was rotated and projection data  acquired  by the photo-diode over $360^{\circ}$. Small angular steps between projections are necessary for high quality reconstruction \cite{russ2002image}. For a 2-D reconstruction, projections are acquired for multiple spots across a slice of the sample by translating the laser beam using mirrors. For 3-D information, the sample height  had to be manually adjusted and many 2-D slices acquired. This meant scanning an entire sample took  hours and lengthy scanning times are the chief disadvantage of the laser scanning method.  Accuracy of 5\% is reported and spatial resolution of 2mm, which is roughly the same as the laser beam width \cite{Gore:1999tg}.
 
 The idea of OptCT scanning in dosimetry was quickly developed by other groups. Laser scanning set-ups were published in 1996 by Tarte \textit{et al.},  \cite{Tarte:2006} and Kelly \textit{et al.} [REF]
 \textit{Can't find the paper 1996 Kelly references in 1998 \cite{Kelly:1998} Med Phys says it doesn't exist.}
@@ -197,7 +210,7 @@ Kelly \textit{et al.} claim to have independently developed their scanner which 
 
 
 A commercial laser scanning OptCT system, OCTOPUS\texttrademark by MGS Research, Inc.
-(Madison, CT),  is an extension of Gore's original set-up with the addition of a platform capable of vertical movement for automated slice-selection. \cite{Islam:2003gs} For a number of years it was the only commercially available system and has been characterised by several groups. \cite{Xu:2003cc, Islam:2003gs, Xu:2004iv, Sakhalkar:2009hb} According to Oldham, characterisation of OptCT systems should include checks on geometric distortion, accuracy of reconstruction, scatter artefacts and reflection and refraction artefacts.\cite{Oldham:2004cj}
+(Madison, CT),  is an extension of Gore's original set-up with the addition of a platform capable of vertical movement for automated slice-selection \cite{Islam:2003gs}. For a number of years it was the only commercially available system and has been characterised by several groups \cite{Xu:2003cc, Islam:2003gs, Xu:2004iv, Sakhalkar:2009hb}. According to Oldham, characterisation of OptCT systems should include checks on geometric distortion, accuracy of reconstruction, scatter artefacts and reflection and refraction artefacts \cite{Oldham:2004cj}.
 
 
  
@@ -207,14 +220,14 @@ A commercial laser scanning OptCT system, OCTOPUS\texttrademark by MGS Research,
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{Gore_setup.pdf}
-\caption{A first generation,  Laser Scanning OptCT system developed by Gore. The sample is rotated and projections recorded at a number of angles. The  mirrors scan the laser beam across the sample but movement in the vertical direction is by manual adjustment only (figure from \cite{Gore:1999tg}). }
+\caption{A first generation,  Laser Scanning OptCT system developed by Gore. The sample is rotated and projections recorded at a number of angles. The  mirrors scan the laser beam across the sample but movement in the vertical direction is by manual adjustment only Figure adapted from \cite{Gore:1999tg}. }
 \label{fig:gore_setup}
 \end{figure}
 
 
-Laser scanning systems include a  beam splitter before the sample to create a reference beam. Dividing projections by the reference intensity  corrects for laser beam intensity fluctuations. \cite{Gore:1999tg}
+Laser scanning systems include a  beam splitter before the sample to create a reference beam. Dividing projections by the reference intensity  corrects for laser beam intensity fluctuations \cite{Gore:1999tg}.
 
-Refraction and reflection at container walls are significant concerns for all configurations of dosimetry with OptCT. Generally, laser beams are incident on the gel container at a small angle, such as $5^{\circ}$, to avoid large reflection at the interface. In addition, the gel container is usually placed in a tank containing `matching fluid' with a refractive index close to that of the gel. This prevents significant refraction as the light passes into the gel. Doran found through ray tracing simulations that the refractive index of the walls of the matching tank and  gel container are not important compared to the gel and matching fluid. The optimum difference in refractive index between these two was interestingly found to be non-zero \cite{Doran:2001ee}. \textbf{[COMMENT?]}
+Refraction and reflection at container walls are significant concerns for all configurations of dosimetry with OptCT. Generally, laser beams are incident on the gel container at a small angle, such as $5^{\circ}$, to avoid large reflection at the interface. In addition, the gel container is usually placed in a tank containing `matching fluid' with a refractive index close to that of the gel. This prevents significant refraction as the light passes into the gel. Doran found through ray tracing simulations that the refractive index of the walls of the matching tank and  gel container are not important compared to the gel and matching fluid. The optimum difference in refractive index between these two was interestingly found to be non-zero \cite{Doran:2001ee}. 
 
 To maximise the dynamic range of the system, coloured dye is commonly added to the matching fluid so both the refractive index and optical density of the matching fluid and gel are very similar \cite{Krstajic:2006kna}. 
 
@@ -223,28 +236,29 @@ To maximise the dynamic range of the system, coloured dye is commonly added to t
 
 \subsection{Pixelated detector based systems}
 \textbf{[MENTION WINFREE]}
-In 1997 the first charge coupled device (CCD) camera based OptCT system was published by Tarte \textit{et al.} which employed an incoherent white light source and CCD camera detection. \cite{Tarte:2007} The advantage  of a pixelated detector based system  is that an entire 2-D projection can be imaged at once, potentially increasing the scanning speed by several  orders of magnitude depending on the data through-put rate. Tarte's system used a divergent light source and diffusing screen to measure optical density in a thin gel section (see Figure~\ref{fig:tarte_ccd_setup}). 
+In 1997 the first charge coupled device (CCD) camera based OptCT system was published by Tarte \textit{et al.} which employed an incoherent white light source and CCD camera detection \cite{Tarte:2007}. The advantage  of a pixelated detector based system  is that an entire 2-D projection can be imaged at once, potentially increasing the scanning speed by several  orders of magnitude depending on the data through-put rate. Tarte's system used a divergent light source and diffusing screen to measure optical density in a thin gel section (see Figure~\ref{fig:tarte_ccd_setup}). 
 %For a very thin sample this adequate however, more sophisticated optics are required for bigger samples. \textbf{Does tarte reconstruct at all?}
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4]{Tarte_1997_ccdsetup.jpg}
-\caption{Diagram of the first CCD-based  OptCT system, developed by Tarte \textit{et al.} It uses  divergent illumination from a white light source and CCD camera detection to record an entire 2D projection at once   (figure from \cite{Tarte:2007}). }
+\caption{Diagram of the first CCD-based  OptCT system, developed by Tarte \textit{et al.} It uses  divergent illumination from a white light source and CCD camera detection to record an entire 2D projection at once.   Figure adapted from \cite{Tarte:2007}. }
 \label{fig:tarte_ccd_setup}
 \end{figure}
 
 
-The accuracy of Tarte's system  was checked by comparison with the standard measure of dosimetry, the parallel plate ionisation chamber. It was found to be on average within 3\% of the value from the ionisation chamber. \cite{Tarte:2007} A comparison between Tarte's laser scanning and CCD set-ups found that they had similar spatial resolutions. The CCD method had improved speed of acquistion but suffered from consistently worse SNR as a photodiode detector can collect many more photons per `pixel' than a CCD camera. \cite{Tarte:2007}
+The accuracy of Tarte's system  was checked by comparison with the standard measure of dosimetry, the parallel plate ionisation chamber. It was found to be on average within 3\% of the value from the ionisation chamber \cite{Tarte:2007}. A comparison between Tarte's laser scanning and CCD set-ups found that they had similar spatial resolutions. The CCD method had improved speed of acquistion but suffered from consistently worse SNR as a photodiode detector can collect many more photons per `pixel' than a CCD camera \cite{Tarte:2007}.
 
 %The laser system 'pixel' is defined by the region illuminated by the laser spot while the photodiode has a much larger area than the spot, so it collects even photons which have diverged from a straight line. 
 
-Advances in technology have meant that  high quality detectors are much more affordable. A cheaper alternative to very high quality CCD cameras is the CMOS (Complementary Metal-Oxide-Semiconductor) detector which has the potential for higher resolution and dynamic range. \cite{Doran:2008kh} Using a higher quality detector would improve many OptCT systems  in terms of scanning speed and reduced artefacts. \cite{Tarte:2007, Doran:2001ee}
+Advances in technology have meant that  high quality detectors are much more affordable. A cheaper alternative to very high quality CCD cameras is the CMOS (Complementary Metal-Oxide-Semiconductor) detector which has the potential for higher resolution and dynamic range \cite{Doran:2008kh}. Using a higher quality detector would improve many OptCT systems  in terms of scanning speed and reduced artefacts \cite{Tarte:2007, Doran:2001ee}.
 
 
-\paragraph{Parallel beam configuration:} One method to reconstruct 3-D images with a CCD or CMOS detector is to create a broad parallel beam. This allows the use of parallel reconstruction algorithms, very similar to those used for x-ray CT. Each 2-D projection image recorded corresponds to one row for every slice in the 3-D reconstruction sinogram. \cite{Doran:2008kh}
-Telecentric optics, in which the chief rays are parallel to the optical axis, are key in the design of this configuration. \cite{Walls:2005ja} Telecentric optics can be achieved either through a careful arrangement  of  a large converging lens before the sample and standard camera lens  \cite{Doran:2001ee} (see Figure~\ref{fig:doran_ccd_setup}) or through an expensive telecentric lens \cite{Sakhalkar:2008exa}. The process of forming a parallel beam results in non-uniformities in the lightfield. This is compensated for by dividing by a `correction' or `open lightfield', image which is a projection taken with no sample in the tank. \cite{Doran:2001ee}
+\paragraph{Parallel beam configuration:} One method to reconstruct 3-D images with a CCD or CMOS detector is to create a broad parallel beam. This allows the use of parallel reconstruction algorithms, very similar to those used for x-ray CT. Each 2-D projection image recorded corresponds to one row for every slice in the 3-D reconstruction sinogram \cite{Doran:2008kh}.
+Telecentric optics, in which the chief rays are parallel to the optical axis, are key in the design of this configuration \cite{Walls:2005ja}. Telecentric optics can be achieved either through a careful arrangement  of  a large converging lens before the sample and standard camera lens  \cite{Doran:2001ee} (see Figure~\ref{fig:doran_ccd_setup}) or through an expensive telecentric lens \cite{Sakhalkar:2008exa}. The process of forming a parallel beam results in non-uniformities in the lightfield. This is compensated for by dividing by a `correction' or `open lightfield', image which is a projection taken with no sample in the tank \cite{Doran:2001ee}.
 
-\textbf{\textit{Telecentric lenses have two advantages for the purpose of parallel ray computed tomograhy: they provide a near constant perspective across the field of view, and the image magnification is constant with sample depth.}} \cite{Oldham:2007ku}
+Telecentric lenses give the advantages of parallel rays and almost constant magnification throughout the sample \cite{Oldham:2007ku}. This helps to satisfy the requirements of the Fourier Slice Theorem for high quality reconstruction mentioned in Section~\ref{subsec:FBP}.
+
 
 \begin{figure}[H]
 \centering
@@ -255,18 +269,18 @@ Telecentric optics, in which the chief rays are parallel to the optical axis, ar
 
 
 
-Initial systems  suffered from `graininess' due to the unstable gain of cheap CCD cameras and granularity of the diffusing screen. \cite{Doran:2001ee}   Doran \textit{et al.} proposed some methods of correcting these problems. Oscillating the diffuser screen at high frequency 
-``\,`smears' out the granularity'' while randomly horizontally displacing the CCD camera by a few pixels  between acquisitions can reduce the effect of `bad'  pixels.
- \cite{Doran:2001ee}
- The parallel configuration appears to be more susceptible to schlieren artefacts caused by refractive index inhomogeneities in the sample. \cite{Krstajic:2007hk}
+Initial systems  suffered from `graininess' due to the unstable gain of cheap CCD cameras and granularity of the diffusing screen \cite{Doran:2001ee}. Superior optics meant later systems did not require a diffuser and instead lenses were used to image directly onto the CCD. More recent CCD and CMOS camera designs have also vastly improved OptCT system quality 
 
-\textbf{[Take this out, mention that CCDs have improved so don't have to do this. Diffuser screens have been replaced by lenses to get light directly onto CCD.]}
+%Doran \textit{et al.} proposed some methods of correcting these problems. Oscillating the diffuser screen at high frequency ``\,`smears' out the granularity'' while randomly horizontally displacing the CCD camera by a few pixels  between acquisitions can reduce the effect of `bad'  pixels \cite{Doran:2001ee}.
+% The parallel configuration appears to be more susceptible to schlieren artefacts caused by refractive index inhomogeneities in the sample \cite{Krstajic:2007hk}.
+
+
 
 
 
 
 \paragraph{Cone beam configuration:}
-Wolodzko \textit{et al.} published the first cone beam OptCT system with CCD detection for gel dosimetry.\cite{Wolodzko:1999} One advantage of this configuration is the optics for producing a cone beam are much simpler than those for producing accurate parallel beams. \cite{Doran:2008kh} However, the reconstruction is computationally more complex. \cite{hsieh2003computed} A commercial cone-beam system, Vista\texttrademark by Modus Medical Devices Inc. (London, ON, Canada),  is available and reviewed recently by Olding \textit{et al.} \cite{Olding:2011eta}
+Wolodzko \textit{et al.} published the first cone beam OptCT system with CCD detection for gel dosimetry \cite{Wolodzko:1999}. One advantage of this configuration is the optics for producing a cone beam are much simpler than those for producing accurate parallel beams \cite{Doran:2008kh}. However, the reconstruction is computationally more complex \cite{hsieh2003computed}. A commercial cone-beam system, Vista\texttrademark by Modus Medical Devices Inc. (London, ON, Canada),  is available and reviewed recently by Olding \textit{et al.} \cite{Olding:2011eta}.
 
 
 \begin{figure}[H]
@@ -275,8 +289,8 @@ Wolodzko \textit{et al.} published the first cone beam OptCT system with CCD det
 \caption{Cone-beam CCD configuration (figure from \cite{Wolodzko:1999}).}
 \end{figure}
 
-When pixelated detectors are used, there appears to be more literature based on the parallel beam configuration than cone-beam. \textbf{[Could just be due to Oldham, not based on difference of set-ups]}
-Although there has not been experimental comparison of the two Doran suggests that while cone-beam is usually somewhat cheaper due to simplified optics, modern parallel-beam systems have better scatter-rejection and may have fewer stray light problems. \cite{Doran:2008kh, Olding:2011eta, Thomas:2011eja}
+
+There has not been experimental comparison of parallel and cone-beam systems. However,  Doran suggests that while cone-beam is usually somewhat cheaper due to simplified optics, modern parallel-beam systems have better scatter-rejection and may have fewer stray light problems \cite{Doran:2008kh, Olding:2011eta, Thomas:2011eja}.
 
 
 
@@ -310,14 +324,13 @@ Although there has not been experimental comparison of the two Doran suggests th
 \section{Tissue imaging}
 \subsection{Optical Projection Tomography}
 
-Another version of OptCT was  developed by Sharpe \textit{et al.} in the area of 3-D microscopy for gene expression studies. \cite{Sharpe:2002jp} Although this set-up in 2002 came after Gore's they are apparently independent and Sharpe named his technique Optical Projection Tomography (OPT).
+Another version of OptCT was  developed by Sharpe \textit{et al.} in the area of 3-D microscopy for gene expression studies \cite{Sharpe:2002jp}. Although this set-up in 2002 came after Gore's they are apparently independent and Sharpe named his technique Optical Projection Tomography (OPT).
 
 Other techniques for 3-D microscopy are well established however, OPT offers some unique advantages. 
-Confocal microscopy is offers high resolution images up to a depth of about 1mm. \cite{Webb:1996} However, it is limited to fluorescent signals meaning many optical stains used routinely in histology would not work. Optical coherence tomography (OCT), which is commonly used in ophthalmology, is capable of micrometer-scale resolution with  depth limited to 2-3mm in tissue. \cite{huang1993optical} Both of these techniques generate tomographic images through sectioning whereas OPT is a projection based tomography technique. \cite{Sharpe:2003cm} Avoiding sectioning is important in producing truly representative 3-D images. \cite{Oldham:2007ku} Another advantage of  OPT is its ability to  image much larger specimen, with depth of around 3cm being reported. \cite{Oldham:2007ku} 
+Confocal microscopy is offers high resolution images up to a depth of about 1mm \cite{Webb:1996}. However, it is limited to fluorescent signals meaning many optical stains used routinely in histology would not work. Optical coherence tomography (OCT), which is commonly used in ophthalmology, is capable of micrometer-scale resolution with  depth limited to 2-3mm in tissue \cite{huang1993optical}. Both of these techniques generate tomographic images through sectioning whereas OPT is a projection based tomography technique \cite{Sharpe:2003cm}. Avoiding sectioning is important in producing truly representative 3-D images \cite{Oldham:2007ku}. Another advantage of  OPT is its ability to  image much larger specimen, with depth of around 3cm being reported \cite{Oldham:2007ku}. This superior imaging depth not just due to clarification of the samples, discussed in Section~\ref{sec:clearing}. OCT and confocal systems have also been tested with clearing agents and the reported gains in depth vary between 20-150\% in OCT \cite{Tuchin:2002} which is significantly shallower than OptCT.
 
-\textbf{[DISCUSS: how much of OPT depth superiority is derived from clearing? Would OCT signal be degraded from clearing? (Due to scatter being origin of contrast) and can confocal be cleared?]}
 
-Sharpe's original system uses a microscope to focus projections of a mouse embryo onto a camera imaging chip. Image-focusing optics are one difference between OPT and x-ray CT, which records shadows of the sample. \cite{Sharpe:2002jp} Sharpe reports some impressive images as reproduced in Figure~\ref{fig:SharpeOPT}. Use of the microscope gives resolution of about 5-10$\mu$m meaning single-cell membranes, around 10$\mu$m thick, can be seen.\cite{Sharpe:2002jp} However, the high NA  optics which give high resolution limit the depth of field (DOF). Sharpe decided to circumvent the problem of a low DOF by positioning the rotational axis so only half the specimen was in focus at once and the specimen was scanned $360^{\circ}$ to collect in-focus data from all points. The problem with only having half of specimen in focus at once is that unfocused light is superimposed upon the focused data and included in the reconstruction. This leads to blurring which is worse with distance from the axis of rotation. Walls proposed a method of correcting this defocusing effect using a frequency-distance filter, as described by Xia for SPECT. \cite{xia1995fourier,Walls:2007jl} The filter narrows the PSF to in-focus data allowing in-focus, high resolution images to be reconstructed. \cite{Walls:2007jl}
+Sharpe's original system uses a microscope to focus projections of a mouse embryo onto a camera imaging chip. Image-focusing optics are one difference between OPT and x-ray CT, which records shadows of the sample \cite{Sharpe:2002jp}. Sharpe reports some impressive images as reproduced in Figure~\ref{fig:SharpeOPT}. Use of the microscope gives resolution of about 5-10$\mu$m meaning single-cell membranes, around 10$\mu$m thick, can be seen\cite{Sharpe:2002jp}. However, the high NA  optics which give high resolution limit the depth of field (DOF). Sharpe decided to circumvent the problem of a low DOF by positioning the rotational axis so only half the specimen was in focus at once and the specimen was scanned $360^{\circ}$ to collect in-focus data from all points. The problem with only having half of specimen in focus at once is that unfocused light is superimposed upon the focused data and included in the reconstruction. This leads to blurring which is worse with distance from the axis of rotation. Walls proposed a method of correcting this defocusing effect using a frequency-distance filter, as described by Xia for SPECT \cite{xia1995fourier,Walls:2007jl}. The filter narrows the PSF to in-focus data allowing in-focus, high resolution images to be reconstructed \cite{Walls:2007jl}.
 
 	
 	
@@ -340,35 +353,35 @@ In dosimetry the refractive index within the polymer gels was roughly uniform. I
 
 
 
-In 2005 Fauver reported a modified version of OPT capable of imaging single cell nuclei with 0.9$\mu$m resolution (see Figure~\ref{fig:fauver_setup}).\cite{Fauver:2005} The OPT microscope includes a rotation stage and  piezoelectrically driven objective lens. In a technique similar to Hausler \cite{hausler1972method} the objective lens is scanned axially to create an extended DOF image which is also known as a pseudoprojection. The extended DOF means features have the same focus from all angles, allowing high resolution reconstruction. However, this is not a truly quantitative technique, hence pseudo and not true projections are recorded. A high numerical aperture (NA) lens gives high resolution at the expense of low depth of field. If such high resolution is not required, low NA optics such as those used by Sharpe would be a more quantitative way to generate  projections than scanning a high NA lens.
+In 2005 Fauver reported a modified version of OPT capable of imaging single cell nuclei with 0.9$\mu$m resolution (see Figure~\ref{fig:fauver_setup})\cite{Fauver:2005}. The OPT microscope includes a rotation stage and  piezoelectrically driven objective lens. In a technique similar to Hausler \cite{hausler1972method} the objective lens is scanned axially to create an extended DOF image which is also known as a pseudo-projection. The extended DOF means features have the same focus from all angles, allowing high resolution reconstruction. However, this is not a truly quantitative technique, hence pseudo and not true projections are recorded. A high numerical aperture (NA) lens gives high resolution at the expense of low depth of field. If such high resolution is not required, low NA optics such as those used by Sharpe would be a more quantitative way to generate  projections than scanning a high NA lens.
 
 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.8]{Fauver_2005_setup.jpg}
-\caption{OPT microscope for imaging single cell nuclei. A microcapillary tube injected with cells is rotated with sub-micron precision and refractive index matching  to 0.02. The piezoelectric objective lens is scanned axially to create extended depth of field images (figure from \cite{Fauver:2005}).}
+\caption{OPT microscope for imaging single cell nuclei. A microcapillary tube injected with cells is rotated with sub-micron precision and refractive index matching  to 0.02. The piezoelectric objective lens is scanned axially to create extended depth of field images. Figure adapted from \cite{Fauver:2005}.}
 \label{fig:fauver_setup}
 \end{figure}
 
 
-Wang and Wang report an improvement to OPT giving higher axial and lateral resolution, even for slices far from the optical axis. \cite{Wang:2006hy, Wang:2007} As previously mentioned, to obtain high quality reconstructions the projections should closely approximate a line integral of parallel rays passing through the sample. \cite{Wang:2006hy} This is not exactly the case for  OPT, limiting the best resolution possible. Wang proposed placing an iris at the back focus of the objective lens. This reduces divergence of the projection rays from paths parallel to the optical axis giving qualitatively better resolution.
+Wang and Wang report an improvement to OPT giving higher axial and lateral resolution, even for slices far from the optical axis \cite{Wang:2006hy, Wang:2007}. As previously mentioned, to obtain high quality reconstructions the projections should closely approximate a line integral of parallel rays passing through the sample \cite{Wang:2006hy}. This is not exactly the case for  OPT, limiting the best resolution possible. Wang proposed placing an iris at the back focus of the objective lens. This reduces divergence of the projection rays from paths parallel to the optical axis giving qualitatively better resolution.
 
 
 \subsection{Fluorescent/emission  OptCT}
 \label{subsec:eOPT}
 
-Sharpe was the first to identify the possibility of using OPT to image fluorescent stains in biological specimen. \cite{Sharpe:2002jp} There are a wide range of fluorescent optical stains in use in histology making this development particularly useful for biological imaging. It also offers the advantage of being able to record multiple signals independently unlike  transmission OPT (tOPT). \cite{Sharpe:2002jp} 
+Sharpe was the first to identify the possibility of using OPT to image fluorescent stains in biological specimen \cite{Sharpe:2002jp}. There are a wide range of fluorescent optical stains in use in histology making this development particularly useful for biological imaging. It also offers the advantage of being able to record multiple signals independently unlike  transmission OPT (tOPT) \cite{Sharpe:2002jp}. 
 
 %Include a paragraph on terminology? OPT and OptCT seem to be able to be used almost interchangeably in later tissue imaging papers. Need to pick one name and explain other groups use other terminology.
 
-Optical emission CT (OptECT) also known as emission OPT (eOPT) is the optical equivalent of SPECT (single photon emission computed tomography). \cite{Oldham:2007ku}  Instead of measuring the attenuation of photons through a sample (tOPT), eOPT signal comprises of fluorescence photons emitted along a ray path. \cite{Walls:2005ja}
+Optical emission CT (OptECT) also known as emission OPT (eOPT) is the optical equivalent of SPECT (single photon emission computed tomography) \cite{Oldham:2007ku}.  Instead of measuring the attenuation of photons through a sample (tOPT), eOPT signal comprises of fluorescence photons emitted along a ray path \cite{Walls:2005ja}.
 
 
 
-Some changes from the set-up (see Figure~\ref{fig:eOPTsetup}) from tOPT  include the addition of a narrow bandwidth excitation filter before the sample. This selects for the excitation wavelength of the fluorescent marker being used in the sample. The illumination is perpendicular to the detector to avoid detection of the illumination light rather than fluorescence. An emission filter before detector selects for the longer emission wavelength of the fluorophores, again to avoid contamination from auto-fluorescent and ambient photons being picked up by the CCD. To avoid photobleaching systems often include a shutter to turn off the lamp when not imaging.  The image forming optics is the same as for tOPT, although the reconstruction and artefacts are different. \cite{Walls:2005ja}
+Some changes from the set-up (see Figure~\ref{fig:eOPTsetup}) from tOPT  include the addition of a narrow bandwidth excitation filter before the sample. This selects for the excitation wavelength of the fluorescent marker being used in the sample. The illumination is perpendicular to the detector to avoid detection of the illumination light rather than fluorescence. An emission filter before detector selects for the longer emission wavelength of the fluorophores, again to avoid contamination from auto-fluorescent and ambient photons being picked up by the CCD. To avoid photobleaching systems often include a shutter to turn off the lamp when not imaging.  The image forming optics is the same as for tOPT, although the reconstruction and artefacts are different \cite{Walls:2005ja}.
 
-full stops
+
 
 Oldham \textit{et al.} have made several improvements  on Sharpe's eOPT set-up by changing from microscope to bench-top apparatus \cite{Oldham:2006, Oldham:2007ku}. Microscope based systems suffer from poor DOF as the optics are designed to image flat samples.  Oldham's custom made set-up, which is closer to the dosimetry systems previously seen, employs telecentric optics giving much improved DOF capable of imaging samples up to 3cm \cite{Oldham:2007ku}. However, better DOF is achieved at the cost of worse lateral spatial resolution and this trade-off must be considered with respect to the information required from the specimen \cite{Krstajic:2006kna}.   
 

@@ -22,29 +22,11 @@ S~J Doran.
   scanning 3-D radiation dosimeters: 2008 update}.
 \newblock {\em Journal of Physics: Conference Series}, 164:012020, June 2009.
 
-\bibitem{Wang:2006hy}
-Y~Wang and R~Wang.
-\newblock {Imaging using parallel integrals in optical projection tomography}.
-\newblock {\em Physics in Medicine and Biology}, 51(23):6023--6032, October
-  2006.
-
-\bibitem{Walls:2005ja}
-J~R Walls, J~G Sled, J~Sharpe, and R~M Henkelman.
-\newblock {Correction of artefacts in optical projection tomography}.
-\newblock {\em Physics in Medicine and Biology}, 50(19):4645--4665, September
-  2005.
-
 \bibitem{Wang:2007}
 Y~Wang and R~K Wang.
 \newblock {Optimization of image-forming optics for transmission optical
   projection tomography}.
 \newblock {\em Applied optics}, 46(27):6815--6820, 2007.
-
-\bibitem{Birk:2011}
-U~Jochen~Birk, A~Darrell, N~Konstantinides, A~Sarasa-Renedo, and J~Ripoll.
-\newblock {Improved reconstructions and generalized filtered back projection
-  for optical projection tomography}.
-\newblock {\em Applied optics}, 50(4):392--398, 2011.
 
 \bibitem{Dong:2012}
 D~Dong, S~Zhu, C~Qin, V~Kumar, J~V~Stein, S~Oehler, C~Savakis, J~Tian, and
@@ -133,6 +115,12 @@ B~J Tarte, P~A Jardine, T~van Doorn, K~N Nitschke, and M~G Poulsen.
   distributions in doped agarose gels}.
 \newblock {\em Medical Physics}, 24:1521, 1997.
 
+\bibitem{Walls:2005ja}
+J~R Walls, J~G Sled, J~Sharpe, and R~M Henkelman.
+\newblock {Correction of artefacts in optical projection tomography}.
+\newblock {\em Physics in Medicine and Biology}, 50(19):4645--4665, September
+  2005.
+
 \bibitem{Sakhalkar:2008exa}
 H~S Sakhalkar and M~Oldham.
 \newblock {Fast, high-resolution 3D dosimetry utilizing a novel optical-CT
@@ -200,6 +188,12 @@ J~Sharpe.
   anatomy}.
 \newblock {\em Journal of Anatomy}, 202(2):175--181, February 2003.
 
+\bibitem{Tuchin:2002}
+V~V Tuchin, X~Xu, and R~K Wang.
+\newblock {Dynamic Optical Coherence Tomography in Studies of Optical Clearing,
+  Sedimentation, and Aggregation of Immersed Blood}.
+\newblock {\em Applied optics}, 41(1):258--271, 2002.
+
 \bibitem{xia1995fourier}
 W.~Xia, R.M. Lewitt, and P.R. Edholm.
 \newblock Fourier correction for spatially variant collimator blurring in
@@ -222,6 +216,12 @@ M~Fauver, E~J Seibel, J~R Rahn, M~G Meyer, F~W Patten, T~Neumann, and A~C
 G~H{\"a}usler.
 \newblock A method to increase the depth of focus by two step image processing.
 \newblock {\em Optics Communications}, 6(1):38--42, 1972.
+
+\bibitem{Wang:2006hy}
+Y~Wang and R~Wang.
+\newblock {Imaging using parallel integrals in optical projection tomography}.
+\newblock {\em Physics in Medicine and Biology}, 51(23):6023--6032, October
+  2006.
 
 \bibitem{Oldham:2006}
 M~Oldham, H~Sakhalkar, T~Oliver, Y~M Wang, J~Kirkpatrick, Y~Cao, C~Badea, G~A
@@ -309,17 +309,17 @@ A~T Yeh, B~Choi, J~S Nelson, and B~J Tromberg.
 \newblock {Reversible Dissociation of Collagen in Tissues}.
 \newblock {\em The Journal of Investigative Dermatology}, 121(6):1332--5, 2003.
 
-\bibitem{Oldham:2008dfa}
-M~Oldham, H~Sakhalkar, T~Oliver, G~Allan~Johnson, and M~Dewhirst.
-\newblock {Optical clearing of unsectioned specimens for three-dimensional
-  imaging via optical transmission and emission tomography}.
-\newblock {\em Journal of Biomedical Optics}, 13(2):021113, 2008.
-
 \bibitem{Sakhalkar:2007hp}
 H~S Sakhalkar, M~Dewhirst, T~Oliver, Y~Cao, and M~Oldham.
 \newblock {Functional imaging in bulk tissue specimens using optical emission
   tomography: fluorescence preservation during optical clearing}.
 \newblock {\em Physics in Medicine and Biology}, 52(8):2035--2054, March 2007.
+
+\bibitem{Oldham:2008dfa}
+M~Oldham, H~Sakhalkar, T~Oliver, G~Allan~Johnson, and M~Dewhirst.
+\newblock {Optical clearing of unsectioned specimens for three-dimensional
+  imaging via optical transmission and emission tomography}.
+\newblock {\em Journal of Biomedical Optics}, 13(2):021113, 2008.
 
 \bibitem{Hanahan:2000}
 D~Hanahan and R~A Weinberg.
