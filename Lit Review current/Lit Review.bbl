@@ -5,6 +5,37 @@ A~R Padhani and K~A Miles.
 \newblock {Multiparametric Imaging of Tumor Response to Therapy}.
 \newblock {\em Radiology}, 256(2):348--364, July 2010.
 
+\bibitem{ray1983laser}
+S~R Ray and H~G Semerjian.
+\newblock Laser tomography for simultaneous concentration and temperature
+  measurement in reacting flows.
+\newblock In {\em American Institute of Aeronautics and Astronautics,
+  Thermophysics Conference, 18 th, Montreal, Canada}, 1983.
+
+\bibitem{kawata1990laser}
+S~Kawata, O~Nakamura, T~Noda, H~Ooki, K~Ogino, Y~Kuroiwa, and S~Minami.
+\newblock Laser computed-tomography microscope.
+\newblock {\em Applied optics}, 29(26):3805--3809, 1990.
+
+\bibitem{Brown:1992}
+C~S Brown, D~H Burns, F~A Spelman, and A~C Nelson.
+\newblock {Computed tomography from optical projections for three-dimensional
+  reconstruction of thick objects}.
+\newblock {\em Applied optics}, 31(29):6247--6254, 1992.
+
+\bibitem{Gore:1999tg}
+J~C Gore, M~Ranade, and M~J Maryanski.
+\newblock {Radiation dose distributions in three dimensions from tomographic
+  optical density scanning of polymer gels: I. Development of an optical
+  scanner - Abstract - Physics in Medicine and Biology - IOPscience}.
+\newblock {\em Physics in medicine {\ldots}}, 1999.
+
+\bibitem{Sharpe:2002jp}
+J~Sharpe.
+\newblock {Optical Projection Tomography as a Tool for 3D Microscopy and Gene
+  Expression Studies}.
+\newblock {\em Science}, 296(5567):541--545, April 2002.
+
 \bibitem{natterer2001mathematics}
 F.~Natterer.
 \newblock {\em The Mathematics of Computerized Tomography}.
@@ -28,12 +59,27 @@ Y~Wang and R~K Wang.
   projection tomography}.
 \newblock {\em Applied optics}, 46(27):6815--6820, 2007.
 
-\bibitem{Dong:2012}
-D~Dong, S~Zhu, C~Qin, V~Kumar, J~V~Stein, S~Oehler, C~Savakis, J~Tian, and
-  J~Ripoll.
-\newblock {Automated Recovery of the Center of Rotation in Optical Projection
-  Tomography in the Presence of Scattering}.
-\newblock 2012.
+\bibitem{hecht2002optics}
+E~Hecht.
+\newblock {\em Optics}.
+\newblock Addison-Wesley, 2002.
+
+\bibitem{shinya1997video}
+S~Inou{\'e} and K~R Spring.
+\newblock {\em Video Microscopy: The Fundamentals}.
+\newblock The Language of Science. Plenum Press, 1997.
+
+\bibitem{Walls:2007jl}
+J~R Walls, J~G Sled, J~Sharpe, and R~M Henkelman.
+\newblock {Resolution improvement in emission optical projection tomography}.
+\newblock {\em Physics in Medicine and Biology}, 52(10):2775--2790, April 2007.
+
+\bibitem{Fauver:2005}
+M~Fauver, E~J Seibel, J~R Rahn, M~G Meyer, F~W Patten, T~Neumann, and A~C
+  Nelson.
+\newblock {Three-dimensional imaging of single isolated cell nuclei using
+  optical projection tomography}.
+\newblock {\em Opt. Express}, 13(11):4210--4223, 2005.
 
 \bibitem{Maryanski:1996}
 M~J Maryanski, Y~Z Zastavker, and J~C Gore.
@@ -41,13 +87,6 @@ M~J Maryanski, Y~Z Zastavker, and J~C Gore.
   optical density scanning of polymer gels: Ii. optical properties of the bang
   polymer gel.
 \newblock {\em Physics in medicine and biology}, 41(12):2705, 1999.
-
-\bibitem{Gore:1999tg}
-J~C Gore, M~Ranade, and M~J Maryanski.
-\newblock {Radiation dose distributions in three dimensions from tomographic
-  optical density scanning of polymer gels: I. Development of an optical
-  scanner - Abstract - Physics in Medicine and Biology - IOPscience}.
-\newblock {\em Physics in medicine {\ldots}}, 1999.
 
 \bibitem{Oldham:2001gs}
 M~Oldham, J~H Siewerdsen, A~Shetty, and D~A Jaffray.
@@ -109,6 +148,13 @@ N~Krstaji{\'c} and S~J Doran.
   for 3D radiation gel dosimetry}.
 \newblock {\em Physics in Medicine and Biology}, 51(8):2055--2075, April 2006.
 
+\bibitem{Winfree:1996}
+A~T Winfree, S~Caudle, G~Chen, P~McGuire, and Z~Szilagyi.
+\newblock Quantitative optical tomography of chemical waves and their
+  organizing centers.
+\newblock {\em Chaos: An Interdisciplinary Journal of Nonlinear Science},
+  6(4):617--626, 1996.
+
 \bibitem{Tarte:2007}
 B~J Tarte, P~A Jardine, T~van Doorn, K~N Nitschke, and M~G Poulsen.
 \newblock {Development of a CCD array imaging system for measurement of dose
@@ -134,12 +180,6 @@ M~Oldham, H~Sakhalkar, Y~M Wang, P~Guo, T~Oliver, R~Bentley, Z~Vujaskovic, and
   computed and emission tomography}.
 \newblock {\em Journal of Biomedical Optics}, 12(1):014009, 2007.
 
-\bibitem{Krstajic:2007hk}
-N~Krstaji{\'c} and S~J Doran.
-\newblock {Fast laser scanning optical-CT apparatus for 3D radiation
-  dosimetry}.
-\newblock {\em Physics in Medicine and Biology}, 52(11):N257--N263, May 2007.
-
 \bibitem{Wolodzko:1999}
 J~G Wolodzko, C~Marsden, and A~Appleby.
 \newblock {CCD imaging for optical tomography of gel radiation dosimeters}.
@@ -163,12 +203,6 @@ A~Thomas, J~Newton, and M~Oldham.
 \newblock {A method to correct for stray light in telecentric optical-CT
   imaging of radiochromic dosimeters}.
 \newblock {\em Physics in Medicine and Biology}, 56(14):4433--4451, June 2011.
-
-\bibitem{Sharpe:2002jp}
-J~Sharpe.
-\newblock {Optical Projection Tomography as a Tool for 3D Microscopy and Gene
-  Expression Studies}.
-\newblock {\em Science}, 296(5567):541--545, April 2002.
 
 \bibitem{Webb:1996}
 R~H Webb.
@@ -199,18 +233,6 @@ W.~Xia, R.M. Lewitt, and P.R. Edholm.
 \newblock Fourier correction for spatially variant collimator blurring in
   spect.
 \newblock {\em Medical Imaging, IEEE Transactions on}, 14(1):100--115, 1995.
-
-\bibitem{Walls:2007jl}
-J~R Walls, J~G Sled, J~Sharpe, and R~M Henkelman.
-\newblock {Resolution improvement in emission optical projection tomography}.
-\newblock {\em Physics in Medicine and Biology}, 52(10):2775--2790, April 2007.
-
-\bibitem{Fauver:2005}
-M~Fauver, E~J Seibel, J~R Rahn, M~G Meyer, F~W Patten, T~Neumann, and A~C
-  Nelson.
-\newblock {Three-dimensional imaging of single isolated cell nuclei using
-  optical projection tomography}.
-\newblock {\em Opt. Express}, 13(11):4210--4223, 2005.
 
 \bibitem{hausler1972method}
 G~H{\"a}usler.
@@ -377,6 +399,12 @@ A~T Soufan, J~M Ruijter, M~J~B van~den Hoff, P~A~J de~Boer, J~Hagoort, and
   cardiac development}.
 \newblock {\em Physiological genomics}, 13(3):187--195, 2003.
 
+\bibitem{Bassi:2010}
+A~Bassi, D~Brida, C~D'Andrea, G~Valentini, R~Cubeddu, S~De~Silvestri, and
+  G~Cerullo.
+\newblock {Time-gated optical projection tomography}.
+\newblock {\em Optics letters}, 35(16):2732--2734, 2010.
+
 \bibitem{McGinty:2008ix}
 J~McGinty, K~B Tahir, R~Laine, C~B Talbot, C~Dunsby, M~A~A Neil, L~Quintana,
   J~Swoger, J~Sharpe, and P~M~W French.
@@ -389,18 +417,25 @@ J~McGinty, H~B Taylor, L~Chen, L~Bugeon, J~R Lamb, M~J Dallman, and P~M~W
 \newblock {In vivo fluorescence lifetime optical projection tomography}.
 \newblock {\em Biomedical optics express}, 2(5):1340--1350, 2011.
 
-\bibitem{Bassi:2010}
-A~Bassi, D~Brida, C~D'Andrea, G~Valentini, R~Cubeddu, S~De~Silvestri, and
-  G~Cerullo.
-\newblock {Time-gated optical projection tomography}.
-\newblock {\em Optics letters}, 35(16):2732--2734, 2010.
-
 \bibitem{Hornblad:2011fh}
 A~H{\"o}rnblad, A~Cheddad, and U~Ahlgren.
 \newblock {An improved protocol for optical projection tomography imaging
   reveals lobular heterogeneities in pancreatic islet and β-cell mass
   distribution}.
 \newblock {\em Islets}, 3(4):204--208, July 2011.
+
+\bibitem{Chen:2012}
+L~Chen, J~McGinty, H~B Taylor, L~Bugeon, J~R Lamb, M~J Dallman, and P~M~W
+  French.
+\newblock {Incorporation of an experimentally determined MTF for spatial
+  frequency filtering and deconvolution during optical projection tomography
+  reconstruction}.
+\newblock {\em Optics Express}, 20(7):7323--7337, 2012.
+
+\bibitem{Peng:2012wi}
+P~Fei, Z~Yu, X~Wang, P~J Lu, Y~Fu, Z~He, J~Xiong, and Y~Huang.
+\newblock {High dynamic range optical projection tomography (HDR-OPT)}.
+\newblock {\em Optics Express}, 20(8):8824--8836, 2012.
 
 \bibitem{Lorbeer:2011}
 R~A Lorbeer, M~Heidrich, C~Lorbeer, D~F Ram{\'\i}rez~Ojeda, G~Bicker, H~Meyer,
